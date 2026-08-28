@@ -150,6 +150,10 @@ export default {
   },
   elPosition: {
     layer: 'Layer',
+    layerTop: 'Bring to Front',
+    layerBottom: 'Send to Back',
+    layerUp: 'Move Up',
+    layerDown: 'Move Down',
     alignLeft: 'Align Left',
     alignCenterH: 'Align Horizontal Center',
     alignRight: 'Align Right',
@@ -463,7 +467,7 @@ export default {
   screen: {
     // BaseView
     baseView: {
-      slideNumber: 'Slide {{current}} / {{total}}',
+      slideNumber: 'Slide {current} / {total}',
       enterFullscreen: 'Enter Fullscreen',
       exitFullscreen: 'Exit Fullscreen',
       endScreening: 'End Slideshow',
@@ -650,6 +654,11 @@ export default {
     graph: 'Shapes',
     emoji: 'Emoji',
   },
+  outline: {
+    level1: 'Topic',
+    level2: 'Chapter',
+    level3: 'Section',
+  },
   lines: {
     straight: 'Straight Line',
     polyline: 'Polyline',
@@ -725,6 +734,8 @@ export default {
     custom: 'Custom',
     align: 'Align',
     layer: 'Layer',
+    width: 'Width',
+    height: 'Height',
     fill: 'Fill',
     backgroundColor: 'Background Color',
     borderColor: 'Border Color',
@@ -1057,8 +1068,8 @@ export default {
 
   // === Notes Panel ===
   notesPanel: {
-    title: 'Notes - Slide {{n}}',
-    replyPlaceholder: 'Add note (for {{target}})',
+    title: 'Notes - Slide {n}',
+    replyPlaceholder: 'Add note (for {target})',
     addPlaceholder: 'Add note',
     subject: 'selected element',
     currentSlide: 'current slide',

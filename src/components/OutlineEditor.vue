@@ -18,7 +18,7 @@
       />
       <div class="text" @click="handleFocus(item.id)" v-else>{{ item.content }}</div>
 
-      <div class="flag"></div>
+      <div class="flag"><span class="flag-badge" v-if="flagText(item)">{{ flagText(item) }}</span></div>
     </div>
   </div>
 </template>
@@ -49,6 +49,13 @@ const emit = defineEmits<{
 
 const data = ref<OutlineItem[]>([])
 const activeItemId = ref('')
+
+function flagText(item: OutlineItem) {
+  if (item.lv === 1) return t('outline.level1')
+  if (item.lv === 2) return t('outline.level2')
+  if (item.lv === 3) return t('outline.level3')
+  return ''
+}
 
 watch(data, () => {
   let markdown = ''
@@ -321,8 +328,7 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
       left: 50%;
       background-color: rgba($color: $themeColor, $alpha: .1);
     }
-    &::after {
-      content: '';
+    .flag-badge {
       width: 32px;
       height: 22px;
       border-radius: 2px;
@@ -336,18 +342,6 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
       font-size: 12px;
       font-weight: 400;
     }
-  }
-  .item.lv-1 .flag::after {
-    content: '主题';
-  }
-  .item.lv-2 .flag::after {
-    content: '章';
-  }
-  .item.lv-3 .flag::after {
-    content: '节';
-  }
-  .item.lv-4 .flag::after {
-    opacity: 0;
   }
 }
 </style>

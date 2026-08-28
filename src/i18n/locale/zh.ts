@@ -517,7 +517,7 @@ export default {
   screen: {
     // BaseView
     baseView: {
-      slideNumber: '幻灯片 {{current}} / {{total}}',
+      slideNumber: '幻灯片 {current} / {total}',
       enterFullscreen: '进入全屏',
       exitFullscreen: '退出全屏',
       endScreening: '结束放映',
@@ -711,6 +711,13 @@ export default {
     arrow: '箭头',
     graph: '图形',
     emoji: 'Emoji',
+  },
+
+  // === Outline ===
+  outline: {
+    level1: '主题',
+    level2: '章',
+    level3: '节',
   },
 
   // === Lines ===
@@ -1131,8 +1138,8 @@ export default {
 
   // === Notes Panel ===
   notesPanel: {
-    title: '幻灯片{{n}}的批注',
-    replyPlaceholder: '输入批注（为{{target}}）',
+    title: '幻灯片{n}的批注',
+    replyPlaceholder: '输入批注（为{target}）',
     addPlaceholder: '输入批注',
     subject: '选中元素',
     currentSlide: '当前页幻灯片',
