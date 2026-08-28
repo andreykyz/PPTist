@@ -745,6 +745,7 @@ export default {
     applyThemeToAll: 'Apply to All',
     uniformFont: 'Uniform Font',
     extractTheme: 'Extract Theme',
+    untitledPresentation: 'Untitled Presentation',
   },
 
   // === Animations ===

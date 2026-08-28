@@ -709,6 +709,7 @@ export default {
     applyThemeToAll: 'Применить ко всем',
     uniformFont: 'Единый шрифт',
     extractTheme: 'Извлечь тему',
+    untitledPresentation: 'Презентация без названия',
   },
 
   // === Animations ===

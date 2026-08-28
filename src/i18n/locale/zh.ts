@@ -819,6 +819,7 @@ export default {
     applyThemeToAll: '应用到全部',
     uniformFont: '统一字体',
     extractTheme: '提取主题',
+    untitledPresentation: '未命名演示文稿',
   },
 
   // === Animations ===
