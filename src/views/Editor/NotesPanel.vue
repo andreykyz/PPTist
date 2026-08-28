@@ -3,7 +3,7 @@
     class="notes-panel" 
     :width="300" 
     :height="560" 
-    :title="`幻灯片${slideIndex + 1}的批注`" 
+    :title="panelTitle" 
     :left="-270" 
     :top="90"
     :minWidth="300"
@@ -25,8 +25,8 @@
               </div>
             </div>
             <div class="btns">
-              <div class="btn reply" @click="replyNoteId = note.id">回复</div>
-              <div class="btn delete" @click.stop="deleteNote(note.id)">删除</div>
+              <div class="btn reply" @click="replyNoteId = note.id">{{ t('notes.reply') }}</div>
+              <div class="btn delete" @click.stop="deleteNote(note.id)">{{ t('notes.delete') }}</div>
             </div>
           </div>
           <div class="content">{{ note.content }}</div>
@@ -41,35 +41,35 @@
                   </div>
                 </div>
                 <div class="btns">
-                  <div class="btn delete" @click.stop="deleteReply(note.id, reply.id)">删除</div>
+                  <div class="btn delete" @click.stop="deleteReply(note.id, reply.id)">{{ t('notes.delete') }}</div>
                 </div>
               </div>
               <div class="content">{{ reply.content }}</div>
             </div>
           </div>
           <div class="note-reply" v-if="replyNoteId === note.id">
-            <TextArea :padding="6" v-model:value="replyContent" placeholder="输入回复内容" :rows="1" @enter.prevent="createNoteReply()" />
+            <TextArea :padding="6" v-model:value="replyContent" :placeholder="t('notes.replyPlaceholder')" :rows="1" @enter.prevent="createNoteReply()" />
             <div class="reply-btns">
-              <Button class="btn" size="small" @click="replyNoteId = ''">取消</Button>
-              <Button class="btn" size="small" type="primary" @click="createNoteReply()">回复</Button>
+              <Button class="btn" size="small" @click="replyNoteId = ''">{{ t('notes.cancel') }}</Button>
+              <Button class="btn" size="small" type="primary" @click="createNoteReply()">{{ t('notes.replyBtn') }}</Button>
             </div>
           </div>
         </div>
-        <div class="empty" v-if="!notes.length">本页暂无批注</div>
+        <div class="empty" v-if="!notes.length">{{ t('notes.empty') }}</div>
       </div>
       <div class="send">
         <TextArea 
           ref="textAreaRef"
           v-model:value="content"
           :padding="6"
-          :placeholder="`输入批注（为${handleElementId ? '选中元素' : '当前页幻灯片' }）`"
+          :placeholder="newPlaceholder"
           :rows="2"
           @focus="replyNoteId = ''; activeNoteId = ''"
           @enter.prevent="createNote()"
         />
         <div class="footer">
-          <i-icon-park-outline:delete class="btn icon" v-tooltip="'清空本页批注'" style="flex: 1" @click="clear()" />
-          <Button type="primary" class="btn" style="flex: 12" @click="createNote()"><i-icon-park-outline:plus /> 添加批注</Button>
+          <i-icon-park-outline:delete class="btn icon" v-tooltip="t('notes.clearAll')" style="flex: 1" @click="clear()" />
+          <Button type="primary" class="btn" style="flex: 12" @click="createNote()"><i-icon-park-outline:plus /> {{ t('notes.add') }}</Button>
         </div>
       </div>
     </div>
@@ -80,6 +80,7 @@
 import { ref, computed, watch, nextTick, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { nanoid } from 'nanoid'
+import { useI18n } from 'vue-i18n'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { Note } from '@/types/slides'
 
@@ -89,6 +90,7 @@ import Button from '@/components/Button.vue'
 
 const slidesStore = useSlidesStore()
 const mainStore = useMainStore()
+const { t } = useI18n()
 const { slideIndex, currentSlide } = storeToRefs(slidesStore)
 const { handleElementId } = storeToRefs(mainStore)
 
@@ -99,6 +101,9 @@ const activeNoteId = ref('')
 const replyNoteId = ref('')
 const textAreaRef = useTemplateRef<InstanceType<typeof TextArea>>('textAreaRef')
 const notesRef = useTemplateRef<HTMLElement>('notesRef')
+
+const panelTitle = computed(() => `幻灯片${slideIndex.value + 1}的批注`)
+const newPlaceholder = computed(() => `输入批注（为${handleElementId.value ? '选中元素' : '当前页幻灯片' }）`)
 
 watch(slideIndex, () => {
   activeNoteId.value = ''
@@ -121,7 +126,7 @@ const createNote = () => {
     id: nanoid(),
     content: content.value,
     time: new Date().getTime(),
-    user: '测试用户',
+    user: t('notes.user'),
   }
   if (handleElementId.value) newNote.elId = handleElementId.value
 
@@ -153,7 +158,7 @@ const createNoteReply = () => {
       id: nanoid(),
       content: replyContent.value,
       time: new Date().getTime(),
-      user: '测试用户',
+      user: t('notes.user'),
     },
   ]
   const newNote: Note = {

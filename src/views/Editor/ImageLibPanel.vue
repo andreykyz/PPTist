@@ -10,12 +10,12 @@
       display: 'flex',
       flexDirection: 'column',
     }"
-    title="图片库（来自 pexels.com）" 
+    :title="t('imageLib.title')" 
     @close="close()"
   >
-    <div class="container" v-loading="{ state: loading, text: '加载中...' }">
+    <div class="container" v-loading="{ state: loading, text: t('imageLib.loading') }">
       <div class="tools">
-        <Input class="input" v-model:value="searchWord" placeholder="搜索图片" @enter="search()">
+        <Input class="input" v-model:value="searchWord" :placeholder="t('imageLib.search')" @enter="search()">
           <template #prefix>
             <Popover class="more-icon" trigger="click" v-model:value="orientationVisible">
               <template #content>
@@ -48,7 +48,7 @@
           <div class="img-item">
             <img :src="props.src">
             <div class="mask">
-              <Button type="primary" size="small" @click="createImageElement(props.src)">插入</Button>
+              <Button type="primary" size="small" @click="createImageElement(props.src)">{{ t('imageLib.insert') }}</Button>
             </div>
           </div>
         </template>
@@ -59,6 +59,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import api from '@/services'
 import { useMainStore } from '@/store/main'
 import useCreateElement from '@/hooks/useCreateElement'
@@ -69,6 +70,8 @@ import ImageWaterfallViewer from '@/components/ImageWaterfallViewer.vue'
 import Input from '@/components/Input.vue'
 import Popover from '@/components/Popover.vue'
 import PopoverMenuItem from '@/components/PopoverMenuItem.vue'
+
+const { t } = useI18n()
 
 interface ImageItem {
   id: number
@@ -96,16 +99,16 @@ const orientationOptions: {
   key: Orientation
   label: string
 }[] = [
-  { key: 'all', label: '全部' },
-  { key: 'landscape', label: '横向' },
-  { key: 'portrait', label: '纵向' },
-  { key: 'square', label: '方形' },
+  { key: 'all', label: t('imageLib.orientation.all') },
+  { key: 'landscape', label: t('imageLib.orientation.horizontal') },
+  { key: 'portrait', label: t('imageLib.orientation.vertical') },
+  { key: 'square', label: t('imageLib.orientation.square') },
 ]
 const orientationMap: Record<string, string> = {
-  'all': '全部',
-  'landscape': '横向',
-  'portrait': '纵向',
-  'square': '方形',
+  'all': t('imageLib.orientation.all'),
+  'landscape': t('imageLib.orientation.horizontal'),
+  'portrait': t('imageLib.orientation.vertical'),
+  'square': t('imageLib.orientation.square'),
 }
 
 const close = () => {
@@ -118,7 +121,7 @@ onMounted(() => {
 
 const search = (q?: string) => {  
   const query = q || searchWord.value
-  if (!query) return message.error('请输入搜索关键词')
+  if (!query) return message.error(t('imageLib.searchPlaceholder'))
 
   loading.value = true
   page.value = 1

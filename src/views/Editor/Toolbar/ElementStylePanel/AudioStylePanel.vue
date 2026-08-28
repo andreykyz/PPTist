@@ -1,7 +1,7 @@
 <template>
   <div class="audio-style-panel">
     <div class="row">
-      <div style="width: 40%;">图标颜色：</div>
+      <div style="width: 40%;">{{ t('generic.iconColor') }}</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -14,7 +14,7 @@
     </div>
 
     <div class="row switch-row">
-      <div style="width: 40%;">自动播放：</div>
+      <div style="width: 40%;">{{ t('generic.autoPlay') }}</div>
       <div class="switch-wrapper" style="width: 60%;">
         <Switch 
           :value="handleAudioElement.autoplay" 
@@ -24,7 +24,7 @@
     </div>
 
     <div class="row switch-row">
-      <div style="width: 40%;">循环播放：</div>
+      <div style="width: 40%;">{{ t('generic.loop') }}</div>
       <div class="switch-wrapper" style="width: 60%;">
         <Switch 
           :value="handleAudioElement.loop" 
@@ -36,11 +36,14 @@
 </template>
 
 <script lang="ts" setup>
-import type { Ref } from 'vue'
+import { type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTAudioElement } from '@/types/slides'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
+
+const { t } = useI18n()
 
 import ColorButton from '@/components/ColorButton.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'

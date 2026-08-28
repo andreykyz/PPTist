@@ -41,15 +41,15 @@
       @mouseenter="rightToolsVisible = true"
     >
       <div class="content">
-        <div class="tool-btn page-number" @click="slideThumbnailModelVisible = true">幻灯片 {{slideIndex + 1}} / {{slides.length}}</div>
-        <i-icon-park-outline:write class="tool-btn" v-tooltip="'画笔工具'" @click="writingBoardToolVisible = true" />
-        <i-icon-park-outline:magic class="tool-btn" v-tooltip="'激光笔'" :class="{ 'active': laserPen }" @click="laserPen = !laserPen" />
-        <i-icon-park-outline:stopwatch-start class="tool-btn" v-tooltip="'计时器'" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible" />
-        <i-icon-park-outline:list-view class="tool-btn" v-tooltip="'演讲者视图'" @click="changeViewMode('presenter')" />
-        <i-icon-park-outline:peoples-two class="tool-btn" v-tooltip="'观众视图'" @click="openAudienceView()" />
-        <i-icon-park-outline:off-screen-one class="tool-btn" v-tooltip="'退出全屏'" v-if="fullscreenState" @click="manualExitFullscreen()" />
-        <i-icon-park-outline:full-screen-one class="tool-btn" v-tooltip="'进入全屏'" v-else @click="enterFullscreen()" />
-        <i-icon-park-outline:power class="tool-btn" v-tooltip="'结束放映'" @click="exitScreening()" />
+        <div class="tool-btn page-number" @click="slideThumbnailModelVisible = true">{{ t('screen.baseView.slideNumber', { current: slideIndex + 1, total: slides.length }) }}</div>
+        <i-icon-park-outline:write class="tool-btn" v-tooltip="t('screen.writingBoardTool.pen')" @click="writingBoardToolVisible = true" />
+        <i-icon-park-outline:magic class="tool-btn" v-tooltip="t('screen.baseView.laserPen')" :class="{ 'active': laserPen }" @click="laserPen = !laserPen" />
+        <i-icon-park-outline:stopwatch-start class="tool-btn" v-tooltip="t('screen.countdownTimer.timer')" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible" />
+        <i-icon-park-outline:list-view class="tool-btn" v-tooltip="t('screen.presenter.speakerView')" @click="changeViewMode('presenter')" />
+        <i-icon-park-outline:peoples-two class="tool-btn" v-tooltip="t('screen.presenter.audienceView')" @click="openAudienceView()" />
+        <i-icon-park-outline:off-screen-one class="tool-btn" v-tooltip="t('screen.baseView.exitFullscreen')" v-if="fullscreenState" @click="manualExitFullscreen()" />
+        <i-icon-park-outline:full-screen-one class="tool-btn" v-tooltip="t('screen.baseView.enterFullscreen')" v-else @click="enterFullscreen()" />
+        <i-icon-park-outline:power class="tool-btn" v-tooltip="t('screen.baseView.endScreening')" @click="exitScreening()" />
       </div>
     </div>
 
@@ -59,6 +59,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
@@ -77,6 +78,8 @@ import BottomThumbnails from './BottomThumbnails.vue'
 const props = defineProps<{
   changeViewMode: (mode: 'base' | 'presenter') => void
 }>()
+
+const { t } = useI18n()
 
 const { slides, slideIndex } = storeToRefs(useSlidesStore())
 
@@ -125,84 +128,84 @@ const exitScreening = () => {
 const contextmenus = (): ContextmenuItem[] => {
   return [
     {
-      text: '上一页',
+      text: t('screen.contextmenu.prevPage'),
       subText: '↑ ←',
       disable: slideIndex.value <= 0,
       handler: () => turnPrevSlide(),
     },
     {
-      text: '下一页',
+      text: t('screen.contextmenu.nextPage'),
       subText: '↓ →',
       disable: slideIndex.value >= slides.value.length - 1,
       handler: () => turnNextSlide(),
     },
     {
-      text: '第一页',
+      text: t('screen.contextmenu.firstPage'),
       disable: slideIndex.value === 0,
       handler: () => turnSlideToIndex(0),
     },
     {
-      text: '最后一页',
+      text: t('screen.contextmenu.lastPage'),
       disable: slideIndex.value === slides.value.length - 1,
       handler: () => turnSlideToIndex(slides.value.length - 1),
     },
     { divider: true },
     {
-      text: autoPlayTimer.value ? '取消自动放映' : '自动放映',
+      text: autoPlayTimer.value ? t('screen.contextmenu.cancelAutoPlay') : t('screen.contextmenu.autoPlay'),
       handler: autoPlayTimer.value ? closeAutoPlay : autoPlay,
       children: [
         {
-          text: '2.5秒',
+          text: t('screen.contextmenu.interval2500ms'),
           subText: autoPlayInterval.value === 2500 ? '√' : '',
           handler: () => setAutoPlayInterval(2500),
         },
         {
-          text: '5秒',
+          text: t('screen.contextmenu.interval5000ms'),
           subText: autoPlayInterval.value === 5000 ? '√' : '',
           handler: () => setAutoPlayInterval(5000),
         },
         {
-          text: '7.5秒',
+          text: t('screen.contextmenu.interval7500ms'),
           subText: autoPlayInterval.value === 7500 ? '√' : '',
           handler: () => setAutoPlayInterval(7500),
         },
         {
-          text: '10秒',
+          text: t('screen.contextmenu.interval10000ms'),
           subText: autoPlayInterval.value === 10000 ? '√' : '',
           handler: () => setAutoPlayInterval(10000),
         },
       ],
     },
     {
-      text: '循环放映',
+      text: t('screen.contextmenu.loopPlay'),
       subText: loopPlay.value ? '√' : '',
       handler: () => setLoopPlay(!loopPlay.value),
     },
     { divider: true },
     {
-      text: '显示工具栏',
+      text: t('screen.contextmenu.showToolbar'),
       handler: () => rightToolsVisible.value = true,
     },
     {
-      text: '查看所有幻灯片',
+      text: t('screen.contextmenu.viewAllSlides'),
       handler: () => slideThumbnailModelVisible.value = true,
     },
     {
-      text: '触底显示缩略图',
+      text: t('screen.contextmenu.bottomThumbnails'),
       subText: bottomThumbnailsVisible.value ? '√' : '',
       handler: () => bottomThumbnailsVisible.value = !bottomThumbnailsVisible.value,
     },
     {
-      text: '画笔工具',
+      text: t('screen.contextmenu.penTool'),
       handler: () => writingBoardToolVisible.value = true,
     },
     {
-      text: '演讲者视图',
+      text: t('screen.presenter.speakerView'),
       handler: () => props.changeViewMode('presenter'),
     },
     { divider: true },
     {
-      text: '结束放映',
+      text: t('screen.baseView.endScreening'),
       subText: 'ESC',
       handler: exitScreening,
     },

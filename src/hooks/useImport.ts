@@ -13,6 +13,10 @@ import useHistorySnapshot from './useHistorySnapshot'
 import message from '@/utils/message'
 import { getSvgPathRange, toPoints } from '@/utils/svgPathParser'
 import { loadGoogleFonts } from '@/utils/font'
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
+
 import type {
   Slide,
   TableCellStyle,
@@ -355,7 +359,7 @@ export default () => {
         else addSlidesFromData(slides)
       }
       catch {
-        message.error('无法正确读取 / 解析该文件')
+        message.error(t('message.readFail'))
       }
     })
     reader.readAsText(file)
@@ -388,7 +392,7 @@ export default () => {
         else addSlidesFromData(slides)
       }
       catch {
-        message.error('无法正确读取 / 解析该文件')
+        message.error(t('message.readFail'))
       }
     })
     reader.readAsText(file)
@@ -674,7 +678,7 @@ export default () => {
       }
       catch {
         exporting.value = false
-        message.error('无法正确读取 / 解析该文件')
+        message.error(t('message.readFail'))
         return
       }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="theme-colors-setting">
-    <div class="title">编辑主题色</div>
+    <div class="title">{{ t('themeColors.editTheme') }}</div>
 
     <Draggable 
       class="list"
@@ -14,7 +14,7 @@
     >
       <template #item="{ element, index }">
         <div class="row">
-          <div class="label" style="width: 40%;">幻灯片主题色{{ index + 1 }}：</div>
+          <div class="label" style="width: 40%;">{{ t('themeColors.themeColorX').replace('X', String(index + 1)) }}：</div>
           <Popover trigger="click" style="width: 60%;">
             <template #content>
               <ColorPicker
@@ -28,14 +28,17 @@
       </template>
     </Draggable>
 
-    <Button class="btn" type="primary" @click="setThemeColors()">确认</Button>
+    <Button class="btn" type="primary" @click="setThemeColors()">{{ t('generic.confirm') }}</Button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
+
+const { t } = useI18n()
 import Popover from '@/components/Popover.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
 import ColorButton from '@/components/ColorButton.vue'

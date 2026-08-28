@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { useMainStore } from '@/store'
 import type { DialogForExportTypes } from '@/types/export'
 
@@ -32,15 +33,16 @@ interface TabItem {
 
 const mainStore = useMainStore()
 const { dialogForExport } = storeToRefs(mainStore)
+const { t } = useI18n()
 
 const setDialogForExport = mainStore.setDialogForExport
 
 const tabs: TabItem[] = [
-  { key: 'pptist', label: '导出 PPTIST 文件' },
-  { key: 'pptx', label: '导出 PPTX' },
-  { key: 'image', label: '导出图片' },
-  { key: 'json', label: '导出 JSON' },
-  { key: 'pdf', label: '打印 / 导出 PDF' },
+  { key: 'pptist', label: t('export.pptist') },
+  { key: 'pptx', label: t('export.pptx') },
+  { key: 'image', label: t('export.image') },
+  { key: 'json', label: t('export.json') },
+  { key: 'pdf', label: t('export.pdf') },
 ]
 
 const currentDialogComponent = computed<unknown>(() => {

@@ -12,6 +12,9 @@ import { type SvgPoints, toPoints } from '@/utils/svgPathParser'
 import { encrypt } from '@/utils/crypto'
 import { svg2Base64 } from '@/utils/svg2Base64'
 import message from '@/utils/message'
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
 
 import BaseLatexElement from '@/views/components/element/LatexElement/BaseLatexElement.vue'
 import BaseShapeElement from '@/views/components/element/ShapeElement/BaseShapeElement.vue'
@@ -72,7 +75,7 @@ export default () => {
         saveAs(dataUrl, `${title.value}.${format}`)
       }).catch(() => {
         exporting.value = false
-        message.error('导出图片失败')
+        message.error(t('message.exportImageFailed'))
       })
     }, 200)
   }
@@ -113,7 +116,7 @@ export default () => {
         pptx.writeFile({ fileName: `${title.value}.pptx` }).then(() => exporting.value = false)
       }).catch(() => {
         exporting.value = false
-        message.error('导出失败')
+        message.error(t('message.exportFailed'))
       })
     }, 200)
   }
@@ -993,7 +996,7 @@ export default () => {
     setTimeout(() => {
       pptx.writeFile({ fileName: `${title.value}.pptx` }).then(() => exporting.value = false).catch(() => {
         exporting.value = false
-        message.error('导出失败')
+        message.error(t('message.exportFailed'))
       })
     }, 200)
   }

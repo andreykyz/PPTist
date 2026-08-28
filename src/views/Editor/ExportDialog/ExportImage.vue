@@ -13,28 +13,28 @@
     </div>
     <div class="configs">
       <div class="row">
-        <div class="title">导出格式：</div>
+        <div class="title">{{ t('export.format') }}</div>
         <RadioGroup
           class="config-item"
           v-model:value="format"
         >
-          <RadioButton style="width: 50%;" value="jpeg">JPEG</RadioButton>
-          <RadioButton style="width: 50%;" value="png">PNG</RadioButton>
+          <RadioButton style="width: 50%;" value="jpeg">{{ t('export.imageFormat.jpeg') }}</RadioButton>
+          <RadioButton style="width: 50%;" value="png">{{ t('export.imageFormat.png') }}</RadioButton>
         </RadioGroup>
       </div>
       <div class="row">
-        <div class="title">导出范围：</div>
+        <div class="title">{{ t('export.range') }}</div>
         <RadioGroup
           class="config-item"
           v-model:value="rangeType"
         >
-          <RadioButton style="width: 33.33%;" value="all">全部</RadioButton>
-          <RadioButton style="width: 33.33%;" value="current">当前页</RadioButton>
-          <RadioButton style="width: 33.33%;" value="custom">自定义</RadioButton>
+          <RadioButton style="width: 33.33%;" value="all">{{ t('export.all') }}</RadioButton>
+          <RadioButton style="width: 33.33%;" value="current">{{ t('export.current') }}</RadioButton>
+          <RadioButton style="width: 33.33%;" value="custom">{{ t('export.custom') }}</RadioButton>
         </RadioGroup>
       </div>
       <div class="row" style="margin-bottom: 32px" v-if="rangeType === 'custom'">
-        <div class="title" :data-range="`（${range[0]} ~ ${range[1]}）`">自定义范围：</div>
+        <div class="title" :data-range="`（${range[0]} ~ ${range[1]}）`">{{ t('export.rangeCustom') }}</div>
         <Slider
           class="config-item"
           range
@@ -46,7 +46,7 @@
       </div>
 
       <div class="row">
-        <div class="title">图片质量：</div>
+        <div class="title">{{ t('export.quality') }}</div>
         <Slider
           class="config-item"
           :min="0"
@@ -57,25 +57,26 @@
       </div>
 
       <div class="row">
-        <div class="title">忽略在线字体：</div>
+        <div class="title">{{ t('export.ignoreFont') }}</div>
         <div class="config-item">
-          <Switch v-model:value="ignoreWebfont" v-tooltip="'导出时默认忽略在线字体，若您在幻灯片中使用了在线字体，且希望导出后保留相关样式，可选择关闭「忽略在线字体」选项，但要注意这将会增加导出用时。'" />
+          <Switch v-model:value="ignoreWebfont" v-tooltip="t('tip.ignoreWebfont')" />
         </div>
       </div>
     </div>
 
     <div class="btns">
-      <Button class="btn export" type="primary" @click="expImage()"><i-icon-park-outline:download /> 导出图片</Button>
-      <Button class="btn close" @click="emit('close')">关闭</Button>
+      <Button class="btn export" type="primary" @click="expImage()"><i-icon-park-outline:download /> {{ t('export.buttonExportImage') }}</Button>
+      <Button class="btn close" @click="emit('close')">{{ t('export.close') }}</Button>
     </div>
 
-    <FullscreenSpin :loading="exporting" tip="正在导出..." />
+    <FullscreenSpin :loading="exporting" :tip="t('export.exporting')" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { useSlidesStore } from '@/store'
 import useExport from '@/hooks/useExport'
 
@@ -86,6 +87,8 @@ import Slider from '@/components/Slider.vue'
 import Button from '@/components/Button.vue'
 import RadioButton from '@/components/RadioButton.vue'
 import RadioGroup from '@/components/RadioGroup.vue'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
   (event: 'close'): void

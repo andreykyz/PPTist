@@ -1,7 +1,10 @@
 <template>
   <div class="shape-pool">
     <div class="category" v-for="item in SHAPE_LIST" :key="item.type">
-      <div class="category-name">{{item.type}}</div>
+      <div class="category-name" v-if="item.type === '矩形'">{{ t('shapes.rect') }}</div>
+      <div class="category-name" v-else-if="item.type === '常用形状'">{{ t('shapes.common') }}</div>
+      <div class="category-name" v-else-if="item.type === '箭头'">{{ t('shapes.arrows') }}</div>
+      <div class="category-name" v-else>{{ t('shapes.other') }}</div>
       <div class="shape-list">
         <ShapeItemThumbnail 
           class="shape-item"
@@ -17,7 +20,10 @@
 
 <script lang="ts" setup>
 import { SHAPE_LIST, type ShapePoolItem } from '@/configs/shapes'
+import { useI18n } from 'vue-i18n'
 import ShapeItemThumbnail from './ShapeItemThumbnail.vue'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
   (event: 'select', payload: ShapePoolItem): void

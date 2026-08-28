@@ -60,7 +60,7 @@
         </template>
 
         <div class="row-block" v-if="textColorPropsEnable">
-          <div class="label">文字颜色：</div>
+          <div class="label">{{ t('mobile.elementToolbar.textColor') }}</div>
           <div class="colors">
             <div class="color" 
               v-for="color in colors" 
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="row-block" v-if="fillPropsEnable">
-          <div class="label">填充色：</div>
+          <div class="label">{{ t('mobile.elementToolbar.fillColor') }}</div>
           <div class="colors">
             <div class="color" 
               v-for="color in colors" 
@@ -100,35 +100,35 @@
           </div>
         </div>
 
-        <div class="tip" v-if="!textPropsEnable && !textColorPropsEnable && !fillPropsEnable">暂无可用属性</div>
+        <div class="tip" v-if="!textPropsEnable && !textColorPropsEnable && !fillPropsEnable">{{ t('mobile.elementToolbar.noProperties') }}</div>
       </div>
 
       <div class="common" v-if="activeTab === 'common'">
         <ButtonGroup class="row">
-          <Button style="flex: 1;" @click="copyElement()"><i-icon-park-outline:copy class="icon" /> 复制</Button>
-          <Button style="flex: 1;" @click="deleteElement()"><i-icon-park-outline:delete class="icon" /> 删除</Button>
+          <Button style="flex: 1;" @click="copyElement()"><i-icon-park-outline:copy class="icon" /> {{ t('mobile.elementToolbar.copy') }}</Button>
+          <Button style="flex: 1;" @click="deleteElement()"><i-icon-park-outline:delete class="icon" /> {{ t('mobile.elementToolbar.delete') }}</Button>
         </ButtonGroup>
         
         <Divider :margin="20" />
 
         <ButtonGroup class="row">
-          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><i-icon-park-outline:send-to-back class="icon" /> 置顶</Button>
-          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><i-icon-park-outline:bring-to-front-one class="icon" /> 置底</Button>
-          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><i-icon-park-outline:bring-to-front class="icon" /> 上移</Button>
-          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><i-icon-park-outline:sent-to-back class="icon" /> 下移</Button>
+          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><i-icon-park-outline:send-to-back class="icon" /> {{ t('mobile.elementToolbar.toTop') }}</Button>
+          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><i-icon-park-outline:bring-to-front-one class="icon" /> {{ t('mobile.elementToolbar.toBottom') }}</Button>
+          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><i-icon-park-outline:bring-to-front class="icon" /> {{ t('mobile.elementToolbar.moveUp') }}</Button>
+          <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><i-icon-park-outline:sent-to-back class="icon" /> {{ t('mobile.elementToolbar.moveDown') }}</Button>
         </ButtonGroup>
         
         <Divider :margin="20" />
 
         <ButtonGroup class="row">
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><i-icon-park-outline:align-left class="icon" /> 左对齐</Button>
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><i-icon-park-outline:align-vertically class="icon" /> 水平居中</Button>
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><i-icon-park-outline:align-right class="icon" /> 右对齐</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><i-icon-park-outline:align-left class="icon" /> {{ t('mobile.elementToolbar.alignLeft') }}</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><i-icon-park-outline:align-vertically class="icon" /> {{ t('mobile.elementToolbar.alignCenterH') }}</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><i-icon-park-outline:align-right class="icon" /> {{ t('mobile.elementToolbar.alignRight') }}</Button>
         </ButtonGroup>
         <ButtonGroup class="row">
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><i-icon-park-outline:align-top class="icon" /> 上对齐</Button>
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><i-icon-park-outline:align-horizontally class="icon" /> 垂直居中</Button>
-          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><i-icon-park-outline:align-bottom class="icon" /> 下对齐</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><i-icon-park-outline:align-top class="icon" /> {{ t('mobile.elementToolbar.alignTop') }}</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><i-icon-park-outline:align-horizontally class="icon" /> {{ t('mobile.elementToolbar.alignCenterV') }}</Button>
+          <Button style="flex: 1;" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><i-icon-park-outline:align-bottom class="icon" /> {{ t('mobile.elementToolbar.alignBottom') }}</Button>
         </ButtonGroup>
       </div>
     </div>
@@ -137,6 +137,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTElement, TableCell } from '@/types/slides'
@@ -163,6 +164,8 @@ interface TabItem {
   label: string
 }
 
+const { t } = useI18n()
+
 const colors = ['#000000', '#ffffff', '#eeece1', '#1e497b', '#4e81bb', '#e2534d', '#9aba60', '#8165a0', '#47acc5', '#c21401', '#ff1e02', '#ffc12a', '#ffff3a', '#90cf5b', '#00af57']
 
 const mainStore = useMainStore()
@@ -176,10 +179,10 @@ const updateElement = (id: string, props: Partial<PPTElement>) => {
   addHistorySnapshot()
 }
 
-const tabs: TabItem[] = [
-  { key: 'style', label: '样式' },
-  { key: 'common', label: '布局' },
-]
+const tabs = computed<TabItem[]>(() => [
+  { key: 'style', label: t('mobile.elementToolbar.tabStyle') },
+  { key: 'common', label: t('mobile.elementToolbar.tabLayout') },
+])
 const activeTab = ref('common')
 
 const textPropsEnable = computed(() => {

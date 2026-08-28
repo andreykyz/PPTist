@@ -1,13 +1,13 @@
 <template>
   <div class="latex-style-panel">
     <div class="row">
-      <Button style="flex: 1;" @click="openLatexEditor()"><i-icon-park-outline:edit /> 编辑 LaTeX</Button>
+      <Button style="flex: 1;" @click="openLatexEditor()"><i-icon-park-outline:edit /> {{ t('generic.editLaTeX') }}</Button>
     </div>
 
     <Divider />
 
     <div class="row">
-      <div style="width: 40%;">颜色：</div>
+      <div style="width: 40%;">{{ t('generic.latexColor') }}</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -19,7 +19,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">粗细：</div>
+      <div style="width: 40%;">{{ t('generic.latexStroke') }}</div>
       <NumberInput 
         :min="1"
         :max="3"
@@ -33,11 +33,14 @@
 
 <script lang="ts" setup>
 import { type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTLatexElement } from '@/types/slides'
 import emitter, { EmitterEvents } from '@/utils/emitter'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
+
+const { t } = useI18n()
 
 import ColorButton from '@/components/ColorButton.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'

@@ -7,9 +7,9 @@
     :top="top"
   >
     <div class="header">
-      <span class="text-btn" @click="toggle()">{{ inTiming ? '暂停' : '开始'}}</span>
-      <span class="text-btn" @click="reset()">重置</span>
-      <span class="text-btn" @click="toggleCountdown()" :class="{ 'active': isCountdown }">倒计时</span>
+      <span class="text-btn" @click="toggle()">{{ inTiming ? t('screen.countdownTimer.pause') : t('screen.countdownTimer.start')}}</span>
+      <span class="text-btn" @click="reset()">{{ t('screen.countdownTimer.reset') }}</span>
+      <span class="text-btn" @click="toggleCountdown()" :class="{ 'active': isCountdown }">{{ t('screen.countdownTimer.countdown') }}</span>
     </div>
     <div class="content">
       <div class="timer">
@@ -43,6 +43,7 @@
 
 <script lang="ts" setup>
 import { computed, onUnmounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { fillDigit } from '@/utils/common'
 
 import MoveablePanel from '@/components/MoveablePanel.vue'
@@ -58,6 +59,8 @@ withDefaults(defineProps<{
 const emit = defineEmits<{
   (event: 'close'): void
 }>()
+
+const { t } = useI18n()
 
 const timer = ref<number | null>(null)
 const inTiming = ref(false)

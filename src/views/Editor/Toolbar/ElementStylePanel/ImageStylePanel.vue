@@ -8,11 +8,11 @@
     <ElementFlip />
 
     <ButtonGroup class="row" passive>
-      <Button first style="width: calc(100% - 32px);" @click="clipImage()"><i-icon-park-outline:tailoring /> 裁剪图片</Button>
+      <Button first style="width: calc(100% - 32px);" @click="clipImage()"><i-icon-park-outline:tailoring /> {{ t('generic.imageClip') }}</Button>
       <Popover trigger="click" v-model:value="clipPanelVisible" style="width: 32px;">
         <template #content>
           <div class="clip">
-            <div class="title">按形状：</div>
+            <div class="title">{{ t('generic.shapeClip') }}</div>
             <div class="shape-clip">
               <div 
                 class="shape-clip-item" 
@@ -42,7 +42,7 @@
     </ButtonGroup>
     
     <div class="row">
-      <div style="width: 40%;">圆角半径：</div>
+      <div style="width: 40%;">{{ t('generic.imageRadius') }}</div>
       <NumberInput 
         :value="handleImageElement.radius || 0" 
         @update:value="value => updateImage({ radius: value })" 
@@ -61,21 +61,24 @@
     <Divider />
     
     <FileInput @change="files => replaceImage(files)">
-      <Button class="full-width-btn"><i-icon-park-outline:transform /> 替换图片</Button>
+      <Button class="full-width-btn"><i-icon-park-outline:transform /> {{ t('generic.replaceImage') }}</Button>
     </FileInput>
-    <Button class="full-width-btn" @click="resetImage()"><i-icon-park-outline:undo /> 重置样式</Button>
-    <Button class="full-width-btn" @click="setBackgroundImage()"><i-icon-park-outline:theme /> 设为背景</Button>
+    <Button class="full-width-btn" @click="resetImage()"><i-icon-park-outline:undo /> {{ t('generic.resetStyle') }}</Button>
+    <Button class="full-width-btn" @click="setBackgroundImage()"><i-icon-park-outline:theme /> {{ t('generic.setBackgroundColor') }}</Button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { type Ref, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTImageElement, SlideBackground } from '@/types/slides'
 import { CLIPPATHS } from '@/configs/imageClip'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import useImageHandler from '@/hooks/useImageHandler'
+
+const { t } = useI18n()
 
 import ElementOutline from '../common/ElementOutline.vue'
 import ElementShadow from '../common/ElementShadow.vue'
@@ -92,13 +95,13 @@ import NumberInput from '@/components/NumberInput.vue'
 const shapeClipPathOptions = CLIPPATHS
 const ratioClipOptions = [
   {
-    label: '纵横比（正方形）',
+    label: t('generic.aspectRatioSquare'),
     children: [
       { key: '1:1', ratio: 1 / 1 },
     ],
   },
   {
-    label: '纵横比（纵向）',
+    label: t('generic.aspectRatioPortrait'),
     children: [
       { key: '2:3', ratio: 3 / 2 },
       { key: '3:4', ratio: 4 / 3 },
@@ -107,7 +110,7 @@ const ratioClipOptions = [
     ],
   },
   {
-    label: '纵横比（横向）',
+    label: t('generic.aspectRatioLandscape'),
     children: [
       { key: '3:2', ratio: 2 / 3 },
       { key: '4:3', ratio: 3 / 4 },

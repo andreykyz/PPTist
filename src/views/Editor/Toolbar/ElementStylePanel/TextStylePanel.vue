@@ -15,12 +15,12 @@
     <Divider />
 
     <div class="row">
-      <div style="width: 40%;">行间距：</div>
+      <div style="width: 40%;">{{ t('generic.lineHeight') }}：</div>
       <Select style="width: 60%;"
         :value="lineHeight || 1"
         @update:value="value => updateText({ lineHeight: value as number })"
         :options="lineHeightOptions.map(item => ({
-          label: item + '倍', value: item
+          label: `${item}${t('generic.lineHeightSuffix')}`, value: item
         }))"
       >
         <template #icon>
@@ -29,12 +29,12 @@
       </Select>
     </div>
     <div class="row">
-      <div style="width: 40%;">段间距：</div>
+      <div style="width: 40%;">{{ t('generic.paragraphSpaceValue') }}：</div>
       <Select style="width: 60%;"
         :value="paragraphSpace || 0"
         @update:value="value => updateText({ paragraphSpace: value as number })"
         :options="paragraphSpaceOptions.map(item => ({
-          label: item + 'px', value: item
+          label: item + t('generic.paragraphSpaceSuffix'), value: item
         }))"
       >
         <template #icon>
@@ -43,12 +43,12 @@
       </Select>
     </div>
     <div class="row">
-      <div style="width: 40%;">字间距：</div>
+      <div style="width: 40%;">{{ t('generic.wordSpaceValue') }}：</div>
       <Select style="width: 60%;"
         :value="wordSpace || 0"
         @update:value="value => updateText({ wordSpace: value as number })"
         :options="wordSpaceOptions.map(item => ({
-          label: item + 'px', value: item
+          label: item + t('generic.paragraphSpaceSuffix'), value: item
         }))"
       >
         <template #icon>
@@ -57,7 +57,7 @@
       </Select>
     </div>
     <div class="row">
-      <div style="width: 40%;">文本框填充：</div>
+      <div style="width: 40%;">{{ t('generic.textBoxFill') }}：</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -79,7 +79,21 @@
         @update:value="value => updateInset(0, value)"
         style="width: 45%;"
       >
-        <template #prefix>上边距：</template>
+        <template #prefix>
+          {{ t('generic.topInset') }}：
+        </template>
+      </NumberInput>
+      <div style="width: 10%;"></div>
+      <NumberInput
+        :min="0"
+        :max="50"
+        :value="inset[2]"
+        @update:value="value => updateInset(2, value)"
+        style="width: 45%;"
+      >
+        <template #prefix>
+          {{ t('generic.bottomInset') }}：
+        </template>
       </NumberInput>
       <div style="width: 10%;"></div>
       <NumberInput
@@ -100,7 +114,21 @@
         @update:value="value => updateInset(3, value)"
         style="width: 45%;"
       >
-        <template #prefix>左边距：</template>
+        <template #prefix>
+          {{ t('generic.leftInset') }}：
+        </template>
+      </NumberInput>
+      <div style="width: 10%;"></div>
+      <NumberInput
+        :min="0"
+        :max="50"
+        :value="inset[1]"
+        @update:value="value => updateInset(1, value)"
+        style="width: 45%;"
+      >
+        <template #prefix>
+          {{ t('generic.rightInset') }}：
+        </template>
       </NumberInput>
       <div style="width: 10%;"></div>
       <NumberInput
@@ -116,7 +144,7 @@
 
     <Divider />
     <div class="row">
-      <div style="width: 40%;">固定高度：</div>
+      <div style="width: 40%;">{{ t('generic.fixedHeight') }}：</div>
       <div class="switch-wrapper" style="width: 60%;">
         <Switch
           :value="fixedHeight"
@@ -131,9 +159,9 @@
       @update:value="value => updateText({ vAlign: value as TextAlignVertical })"
       v-if="fixedHeight"
     >
-      <RadioButton value="top" v-tooltip="'顶对齐'" style="flex: 1;"><i-icon-park-outline:align-text-top-one /></RadioButton>
-      <RadioButton value="middle" v-tooltip="'垂直居中'" style="flex: 1;"><i-icon-park-outline:align-text-middle-one /></RadioButton>
-      <RadioButton value="bottom" v-tooltip="'底对齐'" style="flex: 1;"><i-icon-park-outline:align-text-bottom-one /></RadioButton>
+      <RadioButton value="top" v-tooltip="t('elPosition.alignTop')" style="flex: 1;"><i-icon-park-outline:align-text-top-one /></RadioButton>
+      <RadioButton value="middle" v-tooltip="t('elPosition.alignCenterV')" style="flex: 1;"><i-icon-park-outline:align-text-middle-one /></RadioButton>
+      <RadioButton value="bottom" v-tooltip="t('elPosition.alignBottom')" style="flex: 1;"><i-icon-park-outline:align-text-bottom-one /></RadioButton>
     </RadioGroup>
     <Divider />
     <ElementOutline />
@@ -146,8 +174,11 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
+
+const { t } = useI18n()
 import type { PPTTextElement, TextAlignVertical, TextInset } from '@/types/slides'
 import emitter, { EmitterEvents, type RichTextAction } from '@/utils/emitter'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
@@ -170,7 +201,7 @@ import Popover from '@/components/Popover.vue'
 // 因此在执行预置样式命令时，将加粗命令放在尽可能靠前的位置，避免字号增大后再加粗
 const presetStyles = [
   {
-    label: '大标题',
+    label: t('generic.largeTitle'),
     style: {
       fontSize: '26px',
       fontWeight: 700,
@@ -183,7 +214,7 @@ const presetStyles = [
     ],
   },
   {
-    label: '小标题',
+    label: t('generic.smallTitle'),
     style: {
       fontSize: '22px',
       fontWeight: 700,
@@ -196,7 +227,7 @@ const presetStyles = [
     ],
   },
   {
-    label: '正文',
+    label: t('generic.bodyText'),
     style: {
       fontSize: '20px',
     },
@@ -206,7 +237,7 @@ const presetStyles = [
     ],
   },
   {
-    label: '正文[小]',
+    label: t('generic.bodyTextSmall'),
     style: {
       fontSize: '18px',
     },
@@ -216,7 +247,7 @@ const presetStyles = [
     ],
   },
   {
-    label: '注释 1',
+    label: t('generic.note1'),
     style: {
       fontSize: '16px',
       fontStyle: 'italic',
@@ -228,7 +259,7 @@ const presetStyles = [
     ],
   },
   {
-    label: '注释 2',
+    label: t('generic.note2'),
     style: {
       fontSize: '16px',
       textDecoration: 'underline',

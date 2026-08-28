@@ -12,15 +12,18 @@
         <div class="animation-text">{{item.label}}</div>
       </div>
     </div>
-    <Button style="width: 100%;" @click="applyAllSlide()"><i-icon-park-outline:check /> 应用到全部</Button>
+    <Button style="width: 100%;" @click="applyAllSlide()"><i-icon-park-outline:check /> {{ t('generic.applyToAll') }}</Button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
 import type { TurningMode } from '@/types/slides'
+
+const { t } = useI18n()
 import { SLIDE_ANIMATIONS } from '@/configs/animation'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import message from '@/utils/message'
@@ -51,7 +54,7 @@ const applyAllSlide = () => {
     }
   })
   slidesStore.setSlides(newSlides)
-  message.success('已应用到全部')
+  message.success(t('message.appliedToAll'))
   addHistorySnapshot()
 }
 </script>

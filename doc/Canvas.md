@@ -1,28 +1,28 @@
-## 画布与元素
+## Canvas and Elements
 
-#### 编辑器的基本结构
+#### The Basic Structure of the Editor
 ```
-└──编辑器
-    ├── 顶部菜单栏
-    ├── 左侧导航栏
-    ├── 右侧导航栏
-    ├── 中上部插入/工具栏
-    ├── 底部演讲者备注
-    └── 画布
-         ├── 可视区域
-         │    ├── 可编辑元素
-         │    └── 鼠标选框
+└──Editor
+    ├── Top menu bar
+    ├── Left navigation bar
+    ├── Right navigation bar
+    ├── Upper-middle insert/toolbar
+    ├── Bottom speaker notes
+    └── Canvas
+         ├── Visible area
+         │    ├── Editable elements
+         │    └── Mouse selection box
          │
-         └── 画布工具
-              ├── 参考线
-              ├── 标尺
-              ├── 元素操作节点层（如拖拽缩放点）
-              ├── 吸附对齐线
-              └── 可视区域背景
+         └── Canvas tools
+              ├── Guide lines
+              ├── Rulers
+              ├── Element operation node layer (e.g. drag-resize points)
+              ├── Snap alignment lines
+              └── Visible area background
 ```
 
-#### 画布的基本原理
-我们把关注点放在相对复杂的【画布】部分。画布中的每一个元素都由一组数据来描述，例如：
+#### The Basic Principle of the Canvas
+Let's focus on the relatively complex [Canvas] part. Every element in the canvas is described by a set of data, for example:
 ```typescript
 interface PPTBaseElement {
   id: string;
@@ -32,14 +32,14 @@ interface PPTBaseElement {
   height: number;
 }
 ```
-顾名思义，`left` 表示元素距离画布左上角的位置，`width` 表示元素的宽度，以此类推。
-重点需要知道的是：可视区域默认以 宽1000像素 、高562.5像素为基础比例。即无论画布和可视区域实际大小是多少，一个 `{ width: 1000px, height: 562.5px, left: 0, top: 0 }` 的元素一定会正好铺满整个可视区域。
-具体实现的方法很简单：假设可视区域的实际宽度为 1200px ，计算出此时的缩放比为 1200 / 1000 = 1.2 ，然后将可视区域内的元素全部缩放到 1.2 倍即可。
-同理【缩略图】 和 【放映页面】 其实上就是一个实际大小更小或更大的可视区域。
-> 注：1000×562.5的宽高是可以通过修改`src/store/slides.ts`中的`viewportSize`来调整的。
+As the name implies, `left` represents the element's position relative to the top-left corner of the canvas, `width` represents the element's width, and so on.
+The key point to understand is: the visible area defaults to a base ratio of 1000 pixels wide by 562.5 pixels high. That is, regardless of the actual size of the canvas and visible area, an element of `{ width: 1000px, height: 562.5px, left: 0, top: 0 }` will always fill the entire visible area exactly.
+The concrete implementation is simple: assuming the actual width of the visible area is 1200px, calculate the scale ratio as 1200 / 1000 = 1.2, then scale all elements in the visible area by 1.2 times.
+Similarly, the [Thumbnail] and [Presentation Page] are essentially just visible areas of a smaller or larger actual size.
+> Note: The 1000×562.5 width and height can be adjusted by modifying `viewportSize` in `src/store/slides.ts`.
 
-#### 画布内的元素
-除了上述中的位置和尺寸信息，还可以携带更多的数据，以一个文本元素为例：
+#### Elements Within the Canvas
+In addition to the position and size information above, more data can be carried. Taking a text element as an example:
 ```typescript
 interface PPTTextElement {
   type: 'text';
@@ -63,5 +63,5 @@ interface PPTTextElement {
   shadow?: PPTElementShadow;
 }
 ```
-你可以定义一个 `rotate` 来表示文本框旋转的角度、定义一个 `opacity` 来表示文本框的透明度 等。在实现时只需要按照你所定义的数据来渲染元素组件即可，而编辑元素的本质就是在修改这些数据。
-以上就是一个画布最基本的组成了。
+You can define a `rotate` to represent the rotation angle of the text box, an `opacity` to represent the transparency of the text box, and so on. During implementation, you only need to render the element component according to the data you defined, and the essence of editing an element is modifying these data values.
+The above is the most basic composition of a canvas.

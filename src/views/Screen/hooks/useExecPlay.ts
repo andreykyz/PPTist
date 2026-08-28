@@ -1,4 +1,5 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { throttle } from 'lodash'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
@@ -24,6 +25,7 @@ type SyncMessage =
   | { type: 'EXIT' }
 
 export default () => {
+  const { t } = useI18n()
   const slidesStore = useSlidesStore()
   const { slides, slideIndex, formatedAnimations, viewportSize, viewportRatio } = storeToRefs(slidesStore)
 
@@ -190,7 +192,7 @@ export default () => {
     }
     else {
       if (loopPlay.value) turnSlideToIndex(slides.value.length - 1)
-      else throttleMassage('已经是第一页了')
+      else throttleMassage(t('screen.message.alreadyFirstPage'))
     }
     inAnimation.value = false
   }
@@ -207,7 +209,7 @@ export default () => {
     else {
       if (loopPlay.value) turnSlideToIndex(0)
       else {
-        throttleMassage('已经是最后一页了')
+        throttleMassage(t('screen.message.alreadyLastPage'))
         closeAutoPlay()
       }
       inAnimation.value = false
@@ -218,7 +220,7 @@ export default () => {
   const autoPlayInterval = ref(2500)
   const autoPlay = () => {
     closeAutoPlay()
-    message.success('开始自动放映')
+    message.success(t('screen.message.startAutoPlay'))
     autoPlayTimer.value = setInterval(execNext, autoPlayInterval.value)
   }
 

@@ -1,12 +1,12 @@
-## 如何自定义一个元素
+## How to Define a Custom Element
 
-我们以【网页元素】为例，来梳理下自定义一个元素的过程。
-> 完整代码在 https://github.com/pipipi-pikachu/PPTist/tree/document-demo
+Let's use the [Web Page Element] as an example to walk through the process of defining a custom element.
+> The complete code is at https://github.com/pipipi-pikachu/PPTist/tree/document-demo
 
-> 注意：由于版本更新，该文档和仓库中的代码并不是直接复制粘贴就可以使用，这里仅提供思路。
+> Note: Because the versions have been updated, the code in this document and the repository cannot be used by directly copy-pasting. This document only provides the approach.
 
-### 编写新元素的结构与配置
-首先需要定义这个元素的结构，并添加该元素类型
+### Write the Structure and Configuration of the New Element
+First, define the structure of the element and add its type.
 ```typescript 
 // types/slides.ts
 
@@ -31,14 +31,14 @@ export interface PPTFrameElement extends PPTBaseElement {
   top: number;
   width: number;
   height: number;
-  url: string; // 网页链接地址
+  url: string; // web page link address
 }
 
-// 修改 PPTElement Type
+// modify the PPTElement type
 export type PPTElement = PPTTextElement | PPTImageElement | PPTShapeElement | PPTLineElement | PPTChartElement | PPTTableElement | PPTLatexElement | PPTVideoElement | PPTAudioElement | PPTFrameElement
 ```
 
-在配置文件中添加新元素的中文名，以及最小尺寸：
+In the configuration file, add the Chinese name of the new element, as well as its minimum size:
 ```typescript
 // configs/element
 
@@ -66,8 +66,8 @@ export const MIN_SIZE = {
 }
 ```
 
-### 编写新元素组件
-然后开始编写该元素的组件：
+### Write the Component for the New Element
+Then start writing the component for the element:
 ```html
 <!-- views/components/element/FrameElement/index.vue -->
 
@@ -189,7 +189,7 @@ const handleSelectElement = (e: MouseEvent | TouchEvent, canMove = true) => {
 </style>
 ```
 
-此外我们需要另一个不带编辑功能的基础版组件，用于缩略图/放映模式下显示：
+In addition, we need another basic version of the component without editing functionality, used for display in thumbnail/presentation mode:
 ```html
 <!-- views/components/element/FrameElement/BaseFrameElement.vue -->
 
@@ -251,17 +251,17 @@ const props = defineProps({
 </style>
 ```
 
-在这里你可能会发现，这两个组件非常相似，确实如此，对于比较简单的元素组件来说，可编辑版和不可编辑版是高度一致的，不可编辑版可能仅仅是少了一些方法而已。但是对于比较复杂的元素组件，两者的差异就会比较大了（具体可以比较文本元素和图片元素的两版），因此，你可以自行判断是否将二者合并抽象为一个组件，这里不过多展开。
+Here you might notice that these two components are very similar. Indeed, for relatively simple element components, the editable and non-editable versions are highly consistent; the non-editable version may simply lack a few methods. However, for more complex element components, the differences between the two can be quite large (you can compare the two versions of the text element and image element for specifics). Therefore, you can decide for yourself whether to merge and abstract the two into a single component; this won't be expanded upon here.
 
-编写完元素组件，我们需要把它用在需要的地方，具体可能包括：
+After writing the element component, we need to use it in the appropriate places, which may include:
 
-- 缩略图元素组件 `views/components/ThumbnailSlide/ThumbnailElement.vue`
-- 放映元素组件 `views/Screen/ScreenElement.vue`
-- 可编辑元素组件 `views/Editor/Canvas/EditableElement.vue`
-- 移动端可编辑元素组件 `views/Mobile/MobileEditor/MobileEditableElement.vue`
+- Thumbnail element component `views/components/ThumbnailSlide/ThumbnailElement.vue`
+- Presentation element component `views/Screen/ScreenElement.vue`
+- Editable element component `views/Editor/Canvas/EditableElement.vue`
+- Mobile editable element component `views/Mobile/MobileEditor/MobileEditableElement.vue`
 
-一般来说，前两者使用不可编辑版，后两者使用可编辑版。
-这里仅以画布中的可编辑元素组件为例：
+Generally speaking, the first two use the non-editable version, and the latter two use the editable version.
+Here we only use the editable element component on the canvas as an example:
 ```html
 <!-- views/Editor/Canvas/EditableElement.vue -->
 
@@ -286,7 +286,7 @@ const props = defineProps({
 </script>
 ```
 
-在画布的可编辑元素中，还需要为元素添加操作节点 `Operate`（一般包括八个缩放点、四条边线、一个旋转点），对于特殊的元素（如线条的操作节点明显与其他不同）你可以自己编写该组件，但是一般情况下可以直接使用已经编写好的通用操作节点：
+For the editable element on the canvas, you also need to add an operation node `Operate` for the element (which generally includes eight resize points, four edge lines, and one rotation point). For special elements (such as a line, whose operation nodes are clearly different from others), you can write this component yourself, but in general you can directly use the already-written common operation nodes:
 ```html
 <!-- src\views\Editor\Canvas\Operate\index.vue -->
 
@@ -309,18 +309,18 @@ const currentOperateComponent = computed(() => {
 </script>
 ```
 
-### 编写右侧元素编辑面板
-接下来需要为元素添加一个样式面板。当选中元素时，右侧工具栏会自动聚焦到该面板，你需要在这里添加一些你认为需要的设置项来操作元素本身，只需要记住一点：修改元素实际是修改元素的数据，也就是最开始定义的结构中的各个字段。
-另外，修改元素后不要忘了将操作添加到历史记录。
+### Write the Right-Side Element Editing Panel
+Next, you need to add a style panel for the element. When the element is selected, the right toolbar will automatically focus on this panel. You need to add some settings you think are necessary to operate the element itself. Just remember one thing: modifying the element is actually modifying the element's data, that is, the various fields in the structure defined at the beginning.
+Also, after modifying the element, don't forget to add the operation to the history.
 ```html
 <!-- src\views\Editor\Toolbar\ElementStylePanel\FrameStylePanel.vue -->
 
 <template>
   <div class="frame-style-panel">
     <div class="row">
-      <div>网页链接：</div>
-      <Input v-model:value="url" placeholder="请输入网页链接" />
-      <Button @click="updateURL()">确定</Button>
+      <div>Web page link:</div>
+      <Input v-model:value="url" placeholder="Please enter a web page link" />
+      <Button @click="updateURL()">OK</Button>
     </div>
   </div>
 </template>
@@ -364,8 +364,8 @@ const panelMap = {
 </script>
 ```
 
-### 创建元素
-这是自定义一个新元素的最后一步。首先编写一个创建元素的方法：
+### Creating an Element
+This is the last step in defining a new element. First, write a method for creating an element:
 ```typescript
 // src\hooks\useCreateElement.ts
 
@@ -382,7 +382,7 @@ const createFrameElement = (url: string) => {
   })
 }
 ```
-然后在插入工具栏中使用：
+Then use it in the insert toolbar:
 ```html
 <!-- src\views\Editor\CanvasTool\index.vue -->
 
@@ -390,7 +390,7 @@ const createFrameElement = (url: string) => {
   <div class="canvas-tool">
     <div class="add-element-handler">
       <!-- add -->
-      <span class="handler-item" @click="createFrameElement('https://v3.cn.vuejs.org/')">插入网页</span>
+      <span class="handler-item" @click="createFrameElement('https://v3.cn.vuejs.org/')">Insert Web Page</span>
     </div>
   </div>
 </template>
@@ -407,8 +407,9 @@ const {
 } = useCreateElement()
 </script>
 ```
-点击【插入网页】按钮，你就会看到一个网页元素被添加到画布中了。
+Click the [Insert Web Page] button and you will see a web page element added to the canvas.
 
-### 总结
-至此就是自定义一个元素的基本流程了。整个过程比较繁琐，但并不复杂，重点在于元素结构的定义与元素组件的编写，这决定了新元素将具备怎样的能力与外表。而其他的部分仅依葫芦画瓢即可。
-除此之外，还有一些非必须的调整：比如你希望导出能够支持新元素，则需要在导出相关的方法中进行扩展；比如你希望主题功能能够应用在新元素上，则需要在主题相关的方法中进行扩展，以此类推。
+### Summary
+At this point, this is the basic process of defining a custom element. The whole process is quite tedious, but not complicated. The key lies in the definition of the element structure and the writing of the element component, which determine the capabilities and appearance the new element will have. Everything else can be done by following the pattern.
+
+In addition, there are some non-essential adjustments: for example, if you want export to support the new element, you need to extend the relevant export methods; if you want the theme feature to apply to the new element, you need to extend the relevant theme methods, and so on.

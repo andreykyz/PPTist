@@ -1,15 +1,15 @@
 <template>
   <div class="slide-design-panel">
-    <div class="title">背景填充</div>
+    <div class="title">{{ t('generic.backgroundColorFill') }}</div>
     <div class="row">
       <Select 
         style="flex: 1;" 
         :value="background.type" 
         @update:value="value => updateBackgroundType(value as 'gradient' | 'image' | 'solid')"
         :options="[
-          { label: '纯色填充', value: 'solid' },
-          { label: '图片填充', value: 'image' },
-          { label: '渐变填充', value: 'gradient' },
+          { label: t('slideDesign.solid'), value: 'solid' },
+          { label: t('slideDesign.image'), value: 'image' },
+          { label: t('slideDesign.linearGradient'), value: 'gradient' },
         ]"
       />
       <div style="width: 10px;"></div>
@@ -30,9 +30,9 @@
         @update:value="value => updateImageBackground({ size: value as SlideBackgroundImageSize })"
         v-else-if="background.type === 'image'"
         :options="[
-          { label: '缩放', value: 'contain' },
-          { label: '拼贴', value: 'repeat' },
-          { label: '缩放铺满', value: 'cover' },
+          { label: t('slideDesign.scale'), value: 'contain' },
+          { label: t('slideDesign.tile'), value: 'repeat' },
+          { label: t('slideDesign.scaleFill'), value: 'cover' },
         ]"
       />
 
@@ -42,8 +42,8 @@
         @update:value="value => updateGradientBackground({ type: value as GradientType })"
         v-else
         :options="[
-          { label: '线性渐变', value: 'linear' },
-          { label: '径向渐变', value: 'radial' },
+          { label: t('slideDesign.linearGradient'), value: 'linear' },
+          { label: t('slideDesign.radialGradient'), value: 'radial' },
         ]"
       />
     </div>
@@ -93,7 +93,7 @@
     </div>
 
     <div class="row">
-      <Button style="flex: 1;" @click="applyBackgroundAllSlide()"><i-icon-park-outline:check /> 应用背景到全部</Button>
+      <Button style="flex: 1;" @click="applyBackgroundAllSlide()"><i-icon-park-outline:check /> {{ t('slideDesign.applyToAll') }}</Button>
     </div>
 
     <Divider />
@@ -105,12 +105,12 @@
         :value="viewportRatio" 
         @update:value="value => updateViewportRatio(value)"
         :options="[
-          { label: '宽屏 16 : 9', value: 0.5625 },
-          { label: '宽屏 16 : 10', value: 0.625 },
-          { label: '标准 4 : 3', value: 0.75 },
-          { label: '纸张 A3 / A4', value: 0.70710678 },
-          { label: '竖向 A3 / A4', value: 1.41421356 },
-          { label: '自定义', value: 'custom' },
+          { label: t('slideDesign.canvasSize.widescreen16_9'), value: 0.5625 },
+          { label: t('slideDesign.canvasSize.widescreen16_10'), value: 0.625 },
+          { label: t('slideDesign.canvasSize.standard4_3'), value: 0.75 },
+          { label: t('slideDesign.canvasSize.paperA3A4'), value: 0.70710678 },
+          { label: t('slideDesign.canvasSize.verticalA3A4'), value: 1.41421356 },
+          { label: t('slideDesign.canvasSize.custom'), value: 'custom' },
         ]"
       />
     </div>
@@ -122,15 +122,15 @@
     <Divider />
 
     <div class="title">
-      <span>全局主题</span>
+      <span>{{ t('generic.globalTheme') }}</span>
       <span class="more" @click="moreThemeConfigsVisible = !moreThemeConfigsVisible">
-        <span class="text">更多</span>
+        <span class="text">{{ t('generic.more') }}</span>
         <i-icon-park-outline:down v-if="moreThemeConfigsVisible" />
         <i-icon-park-outline:right v-else />
       </span>
     </div>
     <div class="row">
-      <div style="width: 40%;">字体：</div>
+      <div style="width: 40%;">{{ t('generic.fontFamily') }}：</div>
       <Select
         style="width: 60%;"
         :value="theme.fontName"
@@ -142,7 +142,7 @@
       />
     </div>
     <div class="row">
-      <div style="width: 40%;">字体颜色：</div>
+      <div style="width: 40%;">{{ t('generic.fontColor') }}：</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -154,7 +154,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">背景颜色：</div>
+      <div style="width: 40%;">{{ t('generic.backgroundColorLabel') }}：</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -166,7 +166,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">主题色：</div>
+      <div style="width: 40%;">{{ t('generic.themeColor') }}：</div>
       <ColorListButton style="width: 60%;" :colors="theme.themeColors" @click="themeColorsSettingVisible = true" />
     </div>
     
@@ -252,20 +252,20 @@
     </template>
 
     <div class="row">
-      <Button style="flex: 1;" @click="applyThemeToAllSlides(moreThemeConfigsVisible)"><i-icon-park-outline:check /> 应用主题到全部</Button>
+      <Button style="flex: 1;" @click="applyThemeToAllSlides(moreThemeConfigsVisible)"><i-icon-park-outline:check /> {{ t('generic.applyThemeToAll') }}</Button>
     </div>
 
     <div class="row">
-      <Button style="flex: 1;" @click="applyFontToAllSlides(theme.fontName)"><i-icon-park-outline:check /> 全局统一字体</Button>
+      <Button style="flex: 1;" @click="applyFontToAllSlides(theme.fontName)"><i-icon-park-outline:check /> {{ t('generic.uniformFont') }}</Button>
     </div>
 
     <div class="row">
-      <Button style="flex: 1;" @click="themeStylesExtractVisible = true"><i-icon-park-outline:platte /> 从幻灯片提取主题</Button>
+      <Button style="flex: 1;" @click="themeStylesExtractVisible = true"><i-icon-park-outline:platte /> {{ t('generic.extractTheme') }}</Button>
     </div>
 
     <Divider />
 
-    <div class="title">预置主题</div>
+    <div class="title">{{ t('generic.presetThemes') }}</div>
     <div class="theme-list">
       <div 
         class="theme-item" 
@@ -318,8 +318,11 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
+
+const { t } = useI18n()
 import type { 
   Gradient,
   GradientType,

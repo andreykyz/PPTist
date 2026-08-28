@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="menu">
-      <div class="menu-item" @click="changeMode('editor')"><i-icon-park-outline:edit class="icon" /> 编辑</div>
+      <div class="menu-item" @click="changeMode('editor')"><i-icon-park-outline:edit class="icon" /> {{ t('mobile.view.edit') }}</div>
       <Divider type="vertical" style="height: 30px;" />
-      <div class="menu-item" @click="changeMode('player')"><i-icon-park-outline:full-screen-play class="icon" /> 播放</div>
+      <div class="menu-item" @click="changeMode('player')"><i-icon-park-outline:full-screen-play class="icon" /> {{ t('mobile.view.play') }}</div>
       <Divider type="vertical" style="height: 30px;" />
       <div class="menu-item ai" @click="openAIPPTDialog()">AIPPT</div>
     </div>
@@ -33,6 +33,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, useTemplateRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import useLoadSlides from '@/hooks/useLoadSlides'
@@ -42,6 +43,8 @@ import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'
 import Divider from '@/components/Divider.vue'
 import Modal from '@/components/Modal.vue'
 import AIPPTDialog from '../Editor/AIPPTDialog.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   changeMode: (mode: Mode) => void

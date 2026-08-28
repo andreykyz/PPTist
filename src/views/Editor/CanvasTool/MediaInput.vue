@@ -7,27 +7,27 @@
     />
 
     <template v-if="type === 'video'">
-      <Input v-model:value="videoSrc" placeholder="请输入视频地址，e.g. https://xxx.mp4"></Input>
+      <Input v-model:value="videoSrc" :placeholder="t('mediaInput.videoPlaceholder')"></Input>
       <div class="btns">
         <FileInput accept="video/*" @change="files => uploadVideo(files)">
-          <Button><i-icon-park-outline:upload /> 上传本地视频</Button>
+          <Button><i-icon-park-outline:upload /> {{ t('mediaInput.videoUpload') }}</Button>
         </FileInput>
         <div class="group">
-          <Button @click="emit('close')" style="margin-right: 10px;">取消</Button>
-          <Button type="primary" @click="insertVideo()">确认</Button>
+          <Button @click="emit('close')" style="margin-right: 10px;">{{ t('generic.cancel') }}</Button>
+          <Button type="primary" @click="insertVideo()">{{ t('generic.confirm') }}</Button>
         </div>
       </div>
     </template>
 
     <template v-if="type === 'audio'">
-      <Input v-model:value="audioSrc" placeholder="请输入音频地址，e.g. https://xxx.mp3"></Input>
+      <Input v-model:value="audioSrc" :placeholder="t('mediaInput.audioPlaceholder')"></Input>
       <div class="btns">
         <FileInput accept="audio/*" @change="files => uploadAudio(files)">
-          <Button><i-icon-park-outline:upload /> 上传本地音频</Button>
+          <Button><i-icon-park-outline:upload /> {{ t('mediaInput.audioUpload') }}</Button>
         </FileInput>
         <div class="group">
-          <Button @click="emit('close')" style="margin-right: 10px;">取消</Button>
-          <Button type="primary" @click="insertAudio()">确认</Button>
+          <Button @click="emit('close')" style="margin-right: 10px;">{{ t('generic.cancel') }}</Button>
+          <Button type="primary" @click="insertAudio()">{{ t('generic.confirm') }}</Button>
         </div>
       </div>
     </template>
@@ -36,6 +36,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import message from '@/utils/message'
 import { MIME_MAP } from '@/configs/mime'
 import Tabs from '@/components/Tabs.vue'
@@ -55,23 +56,25 @@ const emit = defineEmits<{
   (event: 'close'): void
 }>()
 
+const { t } = useI18n()
+
 const type = ref<TypeKey>('video')
 
 const videoSrc = ref('https://videos.pexels.com/video-files/29261597/12623866_640_360_24fps.mp4')
 const audioSrc = ref('https://freesound.org/data/previews/614/614107_11861866-lq.mp3')
 
 const tabs: TabItem[] = [
-  { key: 'video', label: '视频' },
-  { key: 'audio', label: '音频' },
+  { key: 'video', label: t('mediaInput.video') },
+  { key: 'audio', label: t('mediaInput.audio') },
 ]
 
 const insertVideo = () => {
-  if (!videoSrc.value) return message.error('请先输入正确的视频地址')
+  if (!videoSrc.value) return message.error(t('mediaInput.videoErrorMsg'))
   emit('insertVideo', { src: videoSrc.value })
 }
 
 const insertAudio = () => {
-  if (!audioSrc.value) return message.error('请先输入正确的音频地址')
+  if (!audioSrc.value) return message.error(t('mediaInput.audioErrorMsg'))
   emit('insertAudio', { src: audioSrc.value })
 }
 

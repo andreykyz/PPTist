@@ -5,8 +5,8 @@
     </div>
 
     <div class="btns">
-      <Button class="btn export" type="primary" @click="exportJSON()"><i-icon-park-outline:download /> 导出 JSON</Button>
-      <Button class="btn close" @click="emit('close')">关闭</Button>
+      <Button class="btn export" type="primary" @click="exportJSON()"><i-icon-park-outline:download /> {{ t('export.buttonExportJSON') }}</Button>
+      <Button class="btn close" @click="emit('close')">{{ t('export.close') }}</Button>
     </div>
   </div>
 </template>
@@ -14,9 +14,12 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { useSlidesStore } from '@/store'
 import useExport from '@/hooks/useExport'
 import Button from '@/components/Button.vue'
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
   (event: 'close'): void

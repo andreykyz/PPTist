@@ -1,5 +1,8 @@
 import axios from 'axios'
 import message from '@/utils/message'
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
 
 const instance = axios.create({ timeout: 1000 * 300 })
 
@@ -9,7 +12,7 @@ instance.interceptors.response.use(
       return Promise.resolve(response.data)
     }
 
-    message.error('未知的请求错误！')
+    message.error(t('message.unknownError'))
     return Promise.reject(response)
   },
   error => {
@@ -21,11 +24,11 @@ instance.interceptors.response.use(
         return Promise.reject(error.message)
       }
       
-      message.error('服务器遇到未知错误！')
+      message.error(t('message.serverError'))
       return Promise.reject(error.message)
     }
 
-    message.error('连接到服务器失败 或 服务器响应超时！')
+    message.error(t('message.connectionFailed'))
     return Promise.reject(error)
   }
 )

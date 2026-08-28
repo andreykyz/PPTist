@@ -46,7 +46,7 @@
 
     <template v-if="toolVisible">
       <div class="header">
-        <div class="back" @click="changeMode('preview')"><i-icon-park-outline:logout /> 退出播放</div>
+        <div class="back" @click="changeMode('preview')"><i-icon-park-outline:logout /> {{ t('mobile.view.exitPlayer') }}</div>
       </div>
       <MobileThumbnails class="thumbnails" />
     </template>
@@ -55,6 +55,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
 import type { Mode } from '@/types/mobile'
@@ -62,6 +63,8 @@ import useSlidesWithTurningMode from '../Screen/hooks/useSlidesWithTurningMode'
 
 import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'
 import MobileThumbnails from './MobileThumbnails.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   changeMode: (mode: Mode) => void

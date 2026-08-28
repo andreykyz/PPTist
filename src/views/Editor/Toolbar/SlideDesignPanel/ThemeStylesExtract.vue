@@ -8,46 +8,46 @@
     />
     <div class="content">
       <div class="config-item" v-if="themeStyles.fontNames.length">
-        <div class="label">字体：</div>
+        <div class="label">{{ t('generic.fontFamily') }}：</div>
         <div class="values">
           <div class="value-wrap" v-for="(item, index) in themeStyles.fontNames" :key="item">
             <div class="value" :style="{ fontFamily: item }">{{ fontMap[item] || item }}</div>
             <div class="handler">
               <div class="state" :class="{ 'active': selectedIndex.fontName === index }"><i-icon-park-outline:check /></div>
-              <div class="config-btn" @click="selectedIndex.fontName = index">选择</div>
-              <div class="config-btn" @click="updateTheme({ fontName: item }); selectedIndex.fontName = index">应用到主题</div>
+              <div class="config-btn" @click="selectedIndex.fontName = index">{{ t('generic.select') }}</div>
+              <div class="config-btn" @click="updateTheme({ fontName: item }); selectedIndex.fontName = index">{{ t('generic.applyAsTheme') }}</div>
             </div>
           </div>
         </div>
       </div>
       <div class="config-item" v-if="themeStyles.fontColors.length">
-        <div class="label">文字颜色：</div>
+        <div class="label">{{ t('generic.fontColor') }}：</div>
         <div class="values">
           <div class="value-wrap" v-for="(item, index) in themeStyles.fontColors" :key="item">
             <div class="value" :style="{ backgroundColor: item, color: getMostReadableColor(item) }">{{ getHexColor(item) }}</div>
             <div class="handler">
               <div class="state" :class="{ 'active': selectedIndex.fontColor === index }"><i-icon-park-outline:check /></div>
-              <div class="config-btn" @click="selectedIndex.fontColor = index">选择</div>
-              <div class="config-btn" @click="updateTheme({ fontColor: item }); selectedIndex.fontColor = index">应用到主题</div>
+              <div class="config-btn" @click="selectedIndex.fontColor = index">{{ t('generic.select') }}</div>
+              <div class="config-btn" @click="updateTheme({ fontColor: item }); selectedIndex.fontColor = index">{{ t('generic.applyAsTheme') }}</div>
             </div>
           </div>
         </div>
       </div>
       <div class="config-item" v-if="themeStyles.backgroundColors.length">
-        <div class="label">背景颜色：</div>
+        <div class="label">{{ t('generic.backgroundColorLabel') }}：</div>
         <div class="values">
           <div class="value-wrap" v-for="(item, index) in themeStyles.backgroundColors" :key="item">
             <div class="value" :style="{ backgroundColor: item, color: getMostReadableColor(item) }">{{ getHexColor(item) }}</div>
             <div class="handler">
               <div class="state" :class="{ 'active': selectedIndex.backgroundColor === index }"><i-icon-park-outline:check /></div>
-              <div class="config-btn" @click="selectedIndex.backgroundColor = index">选择</div>
-              <div class="config-btn" @click="updateTheme({ backgroundColor: item }); selectedIndex.backgroundColor = index">应用到主题</div>
+              <div class="config-btn" @click="selectedIndex.backgroundColor = index">{{ t('generic.select') }}</div>
+              <div class="config-btn" @click="updateTheme({ backgroundColor: item }); selectedIndex.backgroundColor = index">{{ t('generic.applyAsTheme') }}</div>
             </div>
           </div>
         </div>
       </div>
       <div class="config-item" v-if="themeStyles.themeColors.length">
-        <div class="label">主题色：<span class="tip">（点击色块排除不要的颜色）</span></div>
+        <div class="label">{{ t('generic.themeColorsLabel') }}：<span class="tip">{{ t('generic.excludeColors') }}</span></div>
         <div class="values inline">
           <div class="value-wrap" v-for="(item, index) in themeStyles.themeColors" :key="item" @click="removeThemeColor(index)">
             <div class="value" :class="{ 'disabled': !selectedIndex.themeColors.includes(index) }" :style="{ backgroundColor: item }"></div>
@@ -57,16 +57,19 @@
     </div>
 
     <div class="btns">
-      <Button class="btn" type="primary" @click="updateAllThemes()"><i-icon-park-outline:check /> 将选中配置保存为主题</Button>
+      <Button class="btn" type="primary" @click="updateAllThemes()"><i-icon-park-outline:check /> {{ t('generic.saveAsTheme') }}</Button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import tinycolor from 'tinycolor2'
 import { useSlidesStore } from '@/store'
+
+const { t } = useI18n()
 import { FONTS } from '@/configs/font'
 import useSlideTheme from '@/hooks/useSlideTheme'
 import Tabs from '@/components/Tabs.vue'
@@ -88,8 +91,8 @@ interface TabItem {
 }
 
 const tabs: TabItem[] = [
-  { key: 'single', label: '从当前页中提取' },
-  { key: 'all', label: '从全部幻灯片提取' },
+  { key: 'single', label: t('themeStyleExtract.fromCurrent') },
+  { key: 'all', label: t('themeStyleExtract.fromAll') },
 ]
 const activeTab = ref<'single' | 'all'>('single')
 
@@ -140,7 +143,7 @@ const updateAllThemes = () => {
   let themeColors = themeStyles.value.themeColors.filter((item, index) => selectedIndex.value.themeColors.includes(index))
   if (themeColors.length > 6) {
     themeColors = themeColors.slice(0, 6)
-    message.warning('主题色超出数量限制，已自动选取前6个')
+    message.warning(t('generic.colorLimit'))
   }
 
   const backgroundColor = themeStyles.value.backgroundColors[selectedIndex.value.backgroundColor]

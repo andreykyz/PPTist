@@ -138,6 +138,7 @@ declare module 'vue' {
     'IIconParkOutline:textUnderline': typeof import('~icons/icon-park-outline/text-underline')['default']
     'IIconParkOutline:theme': typeof import('~icons/icon-park-outline/theme')['default']
     'IIconParkOutline:transform': typeof import('~icons/icon-park-outline/transform')['default']
+    'IIconParkOutline:translate': typeof import('~icons/icon-park-outline/translate')['default']
     'IIconParkOutline:undo': typeof import('~icons/icon-park-outline/undo')['default']
     'IIconParkOutline:ungroup': typeof import('~icons/icon-park-outline/ungroup')['default']
     'IIconParkOutline:unlock': typeof import('~icons/icon-park-outline/unlock')['default']

@@ -1,27 +1,27 @@
 <template>
   <div class="element-positopn-panel">
-    <div class="title">层级：</div>
+    <div class="title">{{ t('elPosition.layer') }}</div>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><i-icon-park-outline:send-to-back /> 置顶</Button>
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><i-icon-park-outline:bring-to-front-one /> 置底</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><i-icon-park-outline:send-to-back /> {{ t('elPosition.layerTop') }}</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><i-icon-park-outline:bring-to-front-one /> {{ t('elPosition.layerBottom') }}</Button>
     </ButtonGroup>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><i-icon-park-outline:BringToFront /> 上移</Button>
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><i-icon-park-outline:SentToBack /> 下移</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><i-icon-park-outline:BringToFront /> {{ t('elPosition.layerUp') }}</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><i-icon-park-outline:SentToBack /> {{ t('elPosition.layerDown') }}</Button>
     </ButtonGroup>
 
     <Divider />
-    
-    <div class="title">对齐：</div>
+
+    <div class="title">{{ t('generic.align') }}</div>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" v-tooltip="'左对齐'" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><i-icon-park-outline:align-left /></Button>
-      <Button style="flex: 1;" v-tooltip="'水平居中'" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><i-icon-park-outline:align-vertically /></Button>
-      <Button style="flex: 1;" v-tooltip="'右对齐'" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><i-icon-park-outline:align-right /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignLeft')" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><i-icon-park-outline:align-left /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignCenterH')" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><i-icon-park-outline:align-vertically /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignRight')" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><i-icon-park-outline:align-right /></Button>
     </ButtonGroup>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" v-tooltip="'上对齐'" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><i-icon-park-outline:align-top /></Button>
-      <Button style="flex: 1;" v-tooltip="'垂直居中'" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><i-icon-park-outline:align-horizontally /></Button>
-      <Button style="flex: 1;" v-tooltip="'下对齐'" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><i-icon-park-outline:align-bottom /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignTop')" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><i-icon-park-outline:align-top /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignCenterV')" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><i-icon-park-outline:align-horizontally /></Button>
+      <Button style="flex: 1;" v-tooltip="t('elPosition.alignBottom')" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><i-icon-park-outline:align-bottom /></Button>
     </ButtonGroup>
 
     <Divider />
@@ -35,7 +35,7 @@
         style="width: 45%;"
       >
         <template #prefix>
-          水平：
+          {{ t('elPosition.horizontal') }}：
         </template>
       </NumberInput>
       <div style="width: 10%;"></div>
@@ -47,7 +47,7 @@
         style="width: 45%;"
       >
         <template #prefix>
-          垂直：
+          {{ t('elPosition.vertical') }}：
         </template>
       </NumberInput>
     </div>
@@ -64,11 +64,11 @@
           style="width: 45%;"
         >
           <template #prefix>
-            宽度：
+            {{ t('elPosition.width') }}：
           </template>
         </NumberInput>
         <template v-if="['image', 'shape', 'audio'].includes(handleElement!.type)">
-          <span style="width: 10%;" class="icon-btn" :class="{ 'active': fixedRatio }" v-tooltip="fixedRatio ? '解除宽高比锁定' : '宽高比锁定'" @click="updateFixedRatio(!fixedRatio)">
+          <span style="width: 10%;" class="icon-btn" :class="{ 'active': fixedRatio }" v-tooltip="fixedRatio ? t('elPosition.unlockAspect') : t('elPosition.lockAspect')" @click="updateFixedRatio(!fixedRatio)">
             <i-icon-park-outline:lock v-if="fixedRatio" />
             <i-icon-park-outline:unlock v-else />
           </span>
@@ -84,7 +84,7 @@
           style="width: 45%;"
         >
           <template #prefix>
-            高度：
+            {{ t('elPosition.height') }}：
           </template>
         </NumberInput>
       </div>
@@ -103,7 +103,7 @@
           style="width: 45%;" 
         >
           <template #prefix>
-            旋转：
+            {{ t('elPosition.rotate') }}：
           </template>
         </NumberInput>
         <div style="width: 7%;"></div>
@@ -117,8 +117,11 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { round } from 'lodash'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
+
+const { t } = useI18n()
 import type { PPTElement } from '@/types/slides'
 import { ElementAlignCommands, ElementOrderCommands } from '@/types/edit'
 import { MIN_SIZE } from '@/configs/element'

@@ -1,13 +1,13 @@
 <template>
   <div class="hotkey-doc">
     <template v-for="item in HOTKEY_DOC" :key="item.type">
-      <div class="title">{{item.type}}</div>
+      <div class="title">{{t(item.type)}}</div>
       <div class="hotkey-item" v-for="hotkey in item.children" :key="hotkey.label">
         <template v-if="hotkey.value">
-          <div class="label">{{hotkey.label}}</div>
+          <div class="label">{{t(hotkey.label)}}</div>
           <div class="value">{{hotkey.value}}</div>
         </template>
-        <div class="row" v-else>{{hotkey.label}}</div>
+        <div class="row" v-else>{{t(hotkey.label)}}</div>
       </div>
     </template>
   </div>
@@ -15,6 +15,9 @@
 
 <script lang="ts" setup>
 import { HOTKEY_DOC } from '@/configs/hotkey' 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>
