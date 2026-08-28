@@ -897,7 +897,6 @@ export default {
     labelBorder: 'Стиль границы:',
     labelBorderColor: 'Цвет границы:',
     labelBorderWidth: 'Толщина границы:',
-    labelBorder: 'Граница',
     labelEnableShadow: 'Тень:',
     labelShadowOffsetX: 'Сдвиг по горизонтали:',
     labelShadowOffsetY: 'Сдвиг по вертикали:',
@@ -969,14 +968,10 @@ export default {
     renameSubject: 'Переименовать раздел',
     newPage: 'Новая страница',
     slideshow: 'Показ слайдов',
-    copy: 'Копировать',
     copyPage: 'Копировать страницу',
     deletePage: 'Удалить страницу',
     addSubject: 'Добавить раздел',
     playFromCurrent: 'Играть сейчас',
-    paste: 'Вставить',
-    cut: 'Вырезать',
-    copy: 'Копировать',
     sectionPlaceholder: 'Введите name раздела',
   },
 
@@ -1126,20 +1121,6 @@ export default {
     confirm: 'OK',
   },
 
-  // === Typing ===
-  notes: {
-    title: 'Примечания — Слайд X',
-    reply: 'Ответить',
-    delete: 'Удалить',
-    replyPlaceholder: 'Введите текст ответа',
-    cancel: 'Отмена',
-    replyBtn: 'Ответить',
-    empty: 'На этой странице нет примечаний',
-    clearAll: 'Очистить все примечания',
-    add: 'Добавить примечание',
-    user: 'Тест Пользователь',
-  },
-
   // === Mobile ===
   mobile: {
     // Header
@@ -1188,32 +1169,4 @@ export default {
     },
   },
 
-  // === Generic ===
-  generic: {
-    template: 'Шаблон',
-    insert: 'Вставить',
-    loading: 'Загрузка',
-    cancel: 'Отмена',
-    confirm: 'Подтвердить',
-    close: 'Закрыть',
-    back: 'Назад',
-    edit: 'Редактировать',
-    delete: 'Удалить',
-    add: 'Добавить',
-    save: 'Сохранить',
-    yes: 'Да',
-    no: 'Нет',
-    ok: 'OK',
-    yesAll: 'Все',
-    current: 'Текущий',
-    custom: 'Пользовательский',
-    align: 'Выравнивание',
-    layer: 'Слой',
-    fill: 'Заливка',
-    backgroundColor: 'Цвет фона',
-    borderColor: 'Цвет границы',
-    width: 'Ширина',
-    height: 'Высота',
-    fontSize: 'Размер шрифта',
-  },
 }

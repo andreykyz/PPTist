@@ -994,7 +994,6 @@ export default {
     labelBorder: '边框样式：',
     labelBorderColor: '边框颜色：',
     labelBorderWidth: '边框粗细：',
-    labelBorder: '边框',
     labelEnableShadow: '启用阴影：',
     labelShadowOffsetX: '水平阴影：',
     labelShadowOffsetY: '垂直阴影：',
@@ -1067,14 +1066,10 @@ export default {
     renameSubject: '重命名节',
     newPage: '新建页面',
     slideshow: '幻灯片放映',
-    copy: '复制',
     copyPage: '复制页面',
     deletePage: '删除页面',
     addSubject: '增加节',
     playFromCurrent: '从当前放映',
-    paste: '粘贴',
-    cut: '剪切',
-    copy: '复制',
     sectionPlaceholder: '输入节名称',
   },
 
@@ -1224,20 +1219,6 @@ export default {
     confirm: '确定',
   },
 
-  // === Typing ===
-  notes: {
-    title: '幻灯片X的批注',
-    reply: '回复',
-    delete: '删除',
-    replyPlaceholder: '输入回复内容',
-    cancel: '取消',
-    replyBtn: '回复',
-    empty: '本页暂无批注',
-    clearAll: '清空本页批注',
-    add: '添加批注',
-    user: '测试用户',
-  },
-
   // === Mobile ===
   mobile: {
     // Header
@@ -1286,32 +1267,4 @@ export default {
     },
   },
 
-  // === Generic ===
-  generic: {
-    template: '模板',
-    insert: '插入',
-    loading: '加载中...',
-    cancel: '取消',
-    confirm: '确认',
-    close: '关闭',
-    back: '返回',
-    edit: '编辑',
-    delete: '删除',
-    add: '添加',
-    save: '保存',
-    yes: '是',
-    no: '否',
-    ok: '确定',
-    yesAll: '全部',
-    current: '当前',
-    custom: '自定义',
-    align: '对齐',
-    layer: '层级',
-    fill: '填充',
-    backgroundColor: '背景色',
-    borderColor: '边框色',
-    width: '宽度',
-    height: '高度',
-    fontSize: '字号',
-  },
 }

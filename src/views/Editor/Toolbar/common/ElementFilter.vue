@@ -35,6 +35,7 @@
 
 <script lang="ts" setup>
 import { ref, watch, type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { ImageElementFilterKeys, ImageElementFilters, PPTImageElement } from '@/types/slides'
@@ -42,6 +43,8 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import Switch from '@/components/Switch.vue'
 import Slider from '@/components/Slider.vue'
+
+const { t } = useI18n()
 
 interface FilterOption {
   label: string

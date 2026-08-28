@@ -921,7 +921,6 @@ export default {
     labelBorder: 'Border Style:',
     labelBorderColor: 'Border Color:',
     labelBorderWidth: 'Border Width:',
-    labelBorder: 'Border',
     labelEnableShadow: 'Enable Shadow:',
     labelShadowOffsetX: 'Horizontal Offset:',
     labelShadowOffsetY: 'Vertical Offset:',
@@ -993,14 +992,10 @@ export default {
     renameSubject: 'Rename Section',
     newPage: 'New Page',
     slideshow: 'Slideshow',
-    copy: 'Copy',
     copyPage: 'Copy Page',
     deletePage: 'Delete Page',
     addSubject: 'Add Section',
     playFromCurrent: 'Play from Current',
-    paste: 'Paste',
-    cut: 'Cut',
-    copy: 'Copy',
     sectionPlaceholder: 'Enter section name',
   },
 
@@ -1150,20 +1145,6 @@ export default {
     confirm: 'OK',
   },
 
-  // === Typing ===
-  notes: {
-    title: 'Notes - Slide X',
-    reply: 'Reply',
-    delete: 'Delete',
-    replyPlaceholder: 'Enter reply text',
-    cancel: 'Cancel',
-    replyBtn: 'Reply',
-    empty: 'No notes on this page',
-    clearAll: 'Clear all notes',
-    add: 'Add Note',
-    user: 'Test User',
-  },
-
   // === Mobile ===
   mobile: {
     // Header
@@ -1212,32 +1193,4 @@ export default {
     },
   },
 
-  // === Generic ===
-  generic: {
-    template: 'Template',
-    insert: 'Insert',
-    loading: 'Loading',
-    cancel: 'Cancel',
-    confirm: 'Confirm',
-    close: 'Close',
-    back: 'Back',
-    edit: 'Edit',
-    delete: 'Delete',
-    add: 'Add',
-    save: 'Save',
-    yes: 'Yes',
-    no: 'No',
-    ok: 'OK',
-    yesAll: 'All',
-    current: 'Current',
-    custom: 'Custom',
-    align: 'Align',
-    layer: 'Layer',
-    fill: 'Fill',
-    backgroundColor: 'Background Color',
-    borderColor: 'Border Color',
-    width: 'Width',
-    height: 'Height',
-    fontSize: 'Font Size',
-  },
 }
