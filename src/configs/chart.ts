@@ -1,54 +1,78 @@
 import type { ChartData } from '@/types/slides'
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
+
+// Helper for chart type names
+function chartTypeKey(key: string): string {
+  return t(`chart.${key}` as string)
+}
+
+// Helper for chart default labels
+function chartDefaultKey(key: string): string {
+  return t(`chartDefault.${key}` as string)
+}
 
 export const CHART_TYPE_MAP: Record<string, string> = {
-  'bar': '柱状图',
-  'column': '条形图',
-  'line': '折线图',
-  'area': '面积图',
-  'scatter': '散点图',
-  'pie': '饼图',
-  'ring': '环形图',
-  'radar': '雷达图',
+  'bar': chartTypeKey('bar'),
+  'column': chartTypeKey('column'),
+  'line': chartTypeKey('line'),
+  'area': chartTypeKey('area'),
+  'scatter': chartTypeKey('scatter'),
+  'pie': chartTypeKey('pie'),
+  'ring': chartTypeKey('ring'),
+  'radar': chartTypeKey('radar'),
+}
+
+// Chart default data with translations
+function createCategoryLabels(): string[] {
+  const base = chartDefaultKey('category')
+  return [`${base}1`, `${base}2`, `${base}3`, `${base}4`, `${base}5`]
+}
+
+function createSeriesLabels(count: number): string[] {
+  const base = chartDefaultKey('series')
+  return Array.from({ length: count }, (_, i) => `${base}${i + 1}`)
 }
 
 export const CHART_DEFAULT_DATA: Record<string, ChartData> = {
   'bar': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: createCategoryLabels(),
+    legends: createSeriesLabels(2),
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'column': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: createCategoryLabels(),
+    legends: createSeriesLabels(2),
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'line': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: createCategoryLabels(),
+    legends: createSeriesLabels(2),
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'pie': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['值'],
+    labels: createCategoryLabels(),
+    legends: [chartDefaultKey('value')],
     series: [[12, 19, 5, 2, 18]],
   },
   'ring': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['值'],
+    labels: createCategoryLabels(),
+    legends: [chartDefaultKey('value')],
     series: [[12, 19, 5, 2, 18]],
   },
   'area': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: createCategoryLabels(),
+    legends: createSeriesLabels(2),
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'radar': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: createCategoryLabels(),
+    legends: createSeriesLabels(2),
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'scatter': {
-    labels: ['坐标1', '坐标2', '坐标3', '坐标4', '坐标5'],
+    labels: createCategoryLabels().map((l, i) => `${chartDefaultKey('coordinate')}${i + 1}`),
     legends: ['X', 'Y'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },

@@ -790,6 +790,454 @@ export default {
     fontSize: '字号',
   },
 
+  // === Animations ===
+  animation: {
+    group: {
+      bounce: '弹跳',
+      fade: '浮现',
+      rotate: '旋转',
+      zoom: '缩放',
+      slide: '滑入',
+      flip: '翻转',
+      back: '放大滑入',
+      lightSpeed: '飞入',
+    },
+    effect: {
+      // Entrance
+      bounceIn: '弹入',
+      bounceInLeft: '向右弹入',
+      bounceInRight: '向左弹入',
+      bounceInUp: '向上弹入',
+      bounceInDown: '向下弹入',
+      fadeIn: '浮入',
+      fadeInDown: '向下浮入',
+      fadeInDownBig: '向下长距浮入',
+      fadeInLeft: '向右浮入',
+      fadeInLeftBig: '向右长距浮入',
+      fadeInRight: '向左浮入',
+      fadeInRightBig: '向左长距浮入',
+      fadeInUp: '向上浮入',
+      fadeInUpBig: '向上长距浮入',
+      fadeInTopLeft: '从左上浮入',
+      fadeInTopRight: '从右上浮入',
+      fadeInBottomLeft: '从左下浮入',
+      fadeInBottomRight: '从右下浮入',
+      rotateIn: '旋转进入',
+      rotateInDownLeft: '绕左下进入',
+      rotateInDownRight: '绕右下进入',
+      rotateInUpLeft: '绕左上进入',
+      rotateInUpRight: '绕右上进入',
+      zoomIn: '放大进入',
+      zoomInDown: '向下放大进入',
+      zoomInLeft: '从左放大进入',
+      zoomInRight: '从右放大进入',
+      zoomInUp: '向上放大进入',
+      slideInDown: '向下滑入',
+      slideInLeft: '从左滑入',
+      slideInRight: '从右滑入',
+      slideInUp: '向上滑入',
+      flipInX: 'X轴翻转进入',
+      flipInY: 'Y轴翻转进入',
+      backInDown: '向下放大滑入',
+      backInLeft: '从左放大滑入',
+      backInRight: '从右放大滑入',
+      backInUp: '向上放大滑入',
+      lightSpeedInRight: '从右飞入',
+      lightSpeedInLeft: '从左飞入',
+      // Exit
+      bounceOut: '弹出',
+      bounceOutLeft: '向左弹出',
+      bounceOutRight: '向右弹出',
+      bounceOutUp: '向上弹出',
+      bounceOutDown: '向下弹出',
+      fadeOut: '浮出',
+      fadeOutDown: '向下浮出',
+      fadeOutDownBig: '向下长距浮出',
+      fadeOutLeft: '向左浮出',
+      fadeOutLeftBig: '向左长距浮出',
+      fadeOutRight: '向右浮出',
+      fadeOutRightBig: '向右长距浮出',
+      fadeOutUp: '向上浮出',
+      fadeOutUpBig: '向上长距浮出',
+      fadeOutTopLeft: '从左上浮出',
+      fadeOutTopRight: '从右上浮出',
+      fadeOutBottomLeft: '从左下浮出',
+      fadeOutBottomRight: '从右下浮出',
+      rotateOut: '旋转退出',
+      rotateOutDownLeft: '绕左下退出',
+      rotateOutDownRight: '绕右下退出',
+      rotateOutUpLeft: '绕左上退出',
+      rotateOutUpRight: '绕右上退出',
+      zoomOut: '缩小退出',
+      zoomOutDown: '向下缩小退出',
+      zoomOutLeft: '从左缩小退出',
+      zoomOutRight: '从右缩小退出',
+      zoomOutUp: '向上缩小退出',
+      slideOutDown: '向下滑出',
+      slideOutLeft: '从左滑出',
+      slideOutRight: '从右滑出',
+      slideOutUp: '向上滑出',
+      flipOutX: 'X轴翻转退出',
+      flipOutY: 'Y轴翻转退出',
+      backOutDown: '向下缩小滑出',
+      backOutLeft: '从左缩小滑出',
+      backOutRight: '从右缩小滑出',
+      backOutUp: '向上缩小滑出',
+      lightSpeedOutRight: '从右飞出',
+      lightSpeedOutLeft: '从左飞出',
+      // Emphasis
+      shakeX: '左右摇晃',
+      shakeY: '上下摇晃',
+      headShake: '摇头',
+      swing: '摆动',
+      wobble: '晃动',
+      tada: '惊恐',
+      jello: '果冻',
+      flash: '闪烁',
+      pulse: '脉搏',
+      rubberBand: '橡皮筋',
+      heartBeat: '心跳（快）',
+      bounce: '弹跳',
+    },
+  },
+
+  // === Slide Transitions ===
+  slideTransition: {
+    no: '无',
+    random: '随机',
+    slideX: '左右推移',
+    slideY: '上下推移',
+    slideX3D: '左右推移（3D）',
+    slideY3D: '上下推移（3D）',
+    fade: '淡入淡出',
+    rotate: '旋转',
+    scaleY: '上下展开',
+    scaleX: '左右展开',
+    scale: '放大',
+    scaleReverse: '缩小',
+  },
+
+  // === Chart Defaults ===
+  chartDefault: {
+    category: '类别',
+    series: '系列',
+    value: '值',
+    coordinate: '坐标',
+    legend: '图例',
+  },
+
+  // === Clip Shape Names ===
+  clipShape: {
+    rect: '矩形',
+    snip1Rect: '矩形2',
+    snip2DiagRect: '矩形3',
+    roundRect: '圆角矩形',
+    ellipse: '圆形',
+    triangle: '三角形',
+    rtTriangle: '直角三角形',
+    triangleReverse: '倒三角形',
+    diamond: '菱形',
+    pentagon: '五边形',
+    hexagon: '六边形',
+    heptagon: '七边形',
+    octagon: '八边形',
+    chevron: '人字形',
+    homePlate: '点',
+    rightArrow: '箭头',
+    parallelogram: '平行四边形',
+    parallelogramReverse: '反平行四边形',
+    trapezoid: '梯形',
+    trapezoidReverse: '倒梯形',
+  },
+
+  // === Font Names ===
+  fontNames: {
+    default: '默认字体',
+    sourceHanSans: '思源黑体',
+    sourceHanSerif: '思源宋体',
+    wenDingPLKaiTi: '文鼎PL楷体',
+    wenDingPLSongTi: '文鼎PL宋体',
+    zhuQueFangSong: '朱雀仿宋',
+    liXiangWenKai: '霞鹜文楷',
+    liXiangWenKaiNeo: '霞鹜新致宋',
+    liXiangNewHei: '霞鹜新晰黑',
+    alibabaPuHuiTi: '阿里巴巴普惠体',
+    deYiHei: '得意黑',
+    xiaoQueFangSong: '小雀仿宋',
+  },
+
+  // === Table Toolbar ===
+  tableToolbar: {
+    fill: '填充',
+    add: '添加',
+    delete: '删除',
+    insert: '插入',
+    insertRowUp: '上方插入行',
+    insertRowDown: '下方插入行',
+    insertColLeft: '左侧插入列',
+    insertColRight: '右侧插入列',
+  },
+
+  // === Floating Toolbar ===
+  floatToolbar: {
+    crop: '裁剪',
+    replace: '替换',
+    editData: '编辑数据',
+    type: '类型',
+    editLatex: '编辑 LaTeX',
+    color: '颜色',
+    style: '样式',
+  },
+
+  // === Style Panel Labels ===
+  stylePanel: {
+    labelBorder: '边框样式：',
+    labelBorderColor: '边框颜色：',
+    labelBorderWidth: '边框粗细：',
+    labelBorder: '边框',
+    labelEnableShadow: '启用阴影：',
+    labelShadowOffsetX: '水平阴影：',
+    labelShadowOffsetY: '垂直阴影：',
+    labelShadowBlur: '模糊距离：',
+    labelShadowColor: '阴影颜色：',
+    labelEnableOutline: '启用边框：',
+    labelColorMask: '着色（蒙版）：',
+    labelMaskColor: '蒙版颜色：',
+    labelEnableFilter: '启用滤镜：',
+    labelOpacity: '不透明度：',
+    verticalFlip: '垂直翻转',
+    horizontalFlip: '水平翻转',
+    // Slide design panel
+    currentColorBlock: '当前色块：',
+    gradientAngle: '渐变角度：',
+    canvasSize: '画布尺寸：',
+    customCanvasSize: '自定义画布尺寸',
+    width: '宽度：',
+    height: '高度：',
+    canvasSizeRange: '宽高范围：500 ~ 2000',
+    textAa: '文字 Aa',
+    settings: '设置',
+    settingsAndApply: '设置并应用',
+    canvasSizeValidationError: '画布宽高需在 500 至 2000 之间',
+  },
+
+  // === Common / Dialog Labels ===
+  common: {
+    cancel: '取消',
+    confirm: '确认',
+    ok: '确定',
+    clearData: '清空数据',
+    clickToChange: '点击更换',
+    recentUsed: '最近使用',
+    videoLoadError: '视频加载失败',
+    loop: '循环',
+    loopOn: '开',
+    loopOff: '关',
+    doubleClickToEdit: '双击编辑',
+    add: '添加',
+    adding: '加载中...',
+    insertAll: '插入全部',
+    insertTemplate: '插入模板',
+    loading: '加载中...',
+  },
+
+  // === Context Menus ===
+  contextMenu: {
+    unlock: '解锁',
+    cut: '剪切',
+    copy: '复制',
+    paste: '粘贴',
+    horizontalCenter: '水平居中',
+    horizontalVerticalCenter: '水平垂直居中',
+    alignLeft: '左对齐',
+    alignRight: '右对齐',
+    verticalCenter: '垂直居中',
+    alignTop: '顶部对齐',
+    alignBottom: '底部对齐',
+    bringToFront: '置于顶层',
+    bringForward: '上移一层',
+    sendToBack: '置于底层',
+    sendBackward: '下移一层',
+    ungroup: '取消组合',
+    group: '组合',
+    selectAll: '全选',
+    lock: '锁定',
+    delete: '删除',
+    deleteSubject: '删除节',
+    renameSubject: '重命名节',
+    newPage: '新建页面',
+    slideshow: '幻灯片放映',
+    copy: '复制',
+    copyPage: '复制页面',
+    deletePage: '删除页面',
+    addSubject: '增加节',
+    playFromCurrent: '从当前放映',
+    paste: '粘贴',
+    cut: '剪切',
+    copy: '复制',
+    sectionPlaceholder: '输入节名称',
+  },
+
+  // === Video Player ===
+  videoPlayer: {
+    loadError: '视频加载失败',
+    loop: '循环',
+    loopOn: '开',
+    loopOff: '关',
+  },
+
+  // === Element Messages ===
+  elementMessage: {
+    menuEnabled: '启用',
+    menuDisabled: '禁用',
+    noSlides: '无幻灯片',
+    addFirst: '添加第一页',
+    addSlide: '添加幻灯片',
+    slideNumberLabel: '幻灯片',
+  },
+
+  // === Notes Panel ===
+  notesPanel: {
+    title: '幻灯片{{n}}的批注',
+    replyPlaceholder: '输入批注（为{{target}}）',
+    addPlaceholder: '输入批注',
+    subject: '选中元素',
+    currentSlide: '当前页幻灯片',
+  },
+
+  // === Select Panel ===
+  selectPanel: {
+    title: '选择（{current}/{total}）',
+  },
+
+  // === Link Dialog ===
+  linkDialog: {
+    placeholder: '请输入网页链接地址',
+    cancel: '取消',
+    confirm: '确认',
+    webLink: '网页链接',
+    slideLink: '幻灯片页面',
+    slideLabel: '幻灯片',
+  },
+
+  // === Link Handler ===
+  linkHandler: {
+    slidePageLabel: '幻灯片页面',
+    change: '更换',
+    remove: '移除',
+  },
+
+  // === LaTeX Editor ===
+  latexEditor: {
+    placeholder: '输入 LaTeX 公式',
+    preview: '公式预览',
+    cancel: '取消',
+    confirm: '确定',
+  },
+
+  // === Chart Data Editor ===
+  chartDataEditor: {
+    chartTypes: '图表类型：{type}',
+    clickToChange: '点击更换',
+    cancel: '取消',
+    clearData: '清空数据',
+    confirm: '确认',
+    specialChartType: '一些特殊图表类型',
+    scatterMinCols: '散点图至少有两列数据',
+    pieSingleCol: '饼图和环形图只有一列数据',
+    category: '类别',
+    series: '系列',
+  },
+
+  // === Template Thumbnails ===
+  thumbnailSection: {
+    placeholder: '输入节名称',
+    defaultName: '默认节',
+  },
+
+  // === Section ===
+  section: {
+    placeholder: '输入节名称',
+  },
+
+  // === Outline Editor Context Menu ===
+  outlineMenu: {
+    addParent: '添加子级大纲（章）',
+    addParentSibling: '上方添加同级大纲（章）',
+    addChild: '添加子级大纲（节）',
+    deleteChapter: '删除此章',
+    addSectionSibling: '上方添加同级大纲（节）',
+    addSubItem: '添加子级大纲（项）',
+    deleteSection: '删除此节',
+    addItemSibling: '上方添加同级大纲（项）',
+    addItemBelow: '下方添加同级大纲（项）',
+    deleteItem: '删除此项',
+  },
+
+  // === AIPPT Style Options ===
+  aipptStyles: {
+    general: '通用',
+    academic: '学术风',
+    work: '职场风',
+    education: '教育风',
+    marketing: '营销风',
+  },
+
+  // === Image Lib Panel ===
+  imageLibSearchDefault: '风景',
+
+  // === Emoji Categories ===
+  emojiCategories: {
+    faces: '表情',
+    gestures: '动作',
+    animals: '动植物',
+    food: '食物',
+    travel: '旅行',
+    activities: '活动',
+    objects: '物品',
+    symbols: '符号',
+  },
+
+  // === Export Defaults ===
+  exportDefaults: {
+    seriesName: '系列',
+    coordinateName: '坐标',
+  },
+
+  // === Hotkey Descriptions ===
+  hotkeyDesc: {
+    ctrlOrShift: '按住 Ctrl 或 Shift',
+    spaceDrag: 'Space + 鼠标拖拽',
+    ctrlWheel: 'Ctrl + 鼠标滚轮',
+    scrollUp: '鼠标上滚 / PgUp',
+    scrollDown: '鼠标下滚 / PgDown',
+    dblClickEmpty: '双击空白处 / T',
+    rightClick: '鼠标右键',
+    ctrlDrag: '按住 Ctrl 拖拽',
+  },
+
+  // === LaTeX Config Labels ===
+  latexLabels: {
+    placeholder: '输入 LaTeX 公式',
+    preview: '公式预览',
+    cancel: '取消',
+    confirm: '确定',
+  },
+
+  // === Typing ===
+  notes: {
+    title: '幻灯片X的批注',
+    reply: '回复',
+    delete: '删除',
+    replyPlaceholder: '输入回复内容',
+    cancel: '取消',
+    replyBtn: '回复',
+    empty: '本页暂无批注',
+    clearAll: '清空本页批注',
+    add: '添加批注',
+    user: '测试用户',
+  },
+
   // === Mobile ===
   mobile: {
     // Header
@@ -836,5 +1284,34 @@ export default {
       play: '播放',
       exitPlayer: '退出播放',
     },
+  },
+
+  // === Generic ===
+  generic: {
+    template: '模板',
+    insert: '插入',
+    loading: '加载中...',
+    cancel: '取消',
+    confirm: '确认',
+    close: '关闭',
+    back: '返回',
+    edit: '编辑',
+    delete: '删除',
+    add: '添加',
+    save: '保存',
+    yes: '是',
+    no: '否',
+    ok: '确定',
+    yesAll: '全部',
+    current: '当前',
+    custom: '自定义',
+    align: '对齐',
+    layer: '层级',
+    fill: '填充',
+    backgroundColor: '背景色',
+    borderColor: '边框色',
+    width: '宽度',
+    height: '高度',
+    fontSize: '字号',
   },
 }

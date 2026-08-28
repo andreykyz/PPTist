@@ -5,17 +5,18 @@
         style="flex: 1;"
         :checked="flipV"
         @click="updateFlip({ flipV: !flipV })"
-      ><i-icon-park-outline:flip-vertically /> 垂直翻转</CheckboxButton>
+      ><i-icon-park-outline:flip-vertically /> {{ t('stylePanel.verticalFlip') }}</CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="flipH"
         @click="updateFlip({ flipH: !flipH })"
-      ><i-icon-park-outline:flip-horizontally /> 水平翻转</CheckboxButton>
+      ><i-icon-park-outline:flip-horizontally /> {{ t('stylePanel.horizontalFlip') }}</CheckboxButton>
     </ButtonGroup>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -24,6 +25,8 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import CheckboxButton from '@/components/CheckboxButton.vue'
 import ButtonGroup from '@/components/ButtonGroup.vue'
+
+const { t } = useI18n()
 
 const slidesStore = useSlidesStore()
 const { handleElement } = storeToRefs(useMainStore())

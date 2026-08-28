@@ -6,7 +6,7 @@
     <template #content>
       <div class="border-popover">
         <div class="row">
-          <div class="label">边框样式：</div>
+          <div class="label">{{ t('stylePanel.labelBorder') }}</div>
           <SelectCustom class="control">
             <template #options>
               <div
@@ -24,7 +24,7 @@
           </SelectCustom>
         </div>
         <div class="row">
-          <div class="label">边框颜色：</div>
+          <div class="label">{{ t('stylePanel.labelBorderColor') }}</div>
           <Popover trigger="click" class="control">
             <template #content>
               <ColorPicker :modelValue="outline?.color || '#000'" @update:modelValue="value => updateOutline({ color: value })" />
@@ -33,7 +33,7 @@
           </Popover>
         </div>
         <div class="row">
-          <div class="label">边框粗细：</div>
+          <div class="label">{{ t('stylePanel.labelBorderWidth') }}</div>
           <NumberInput
             class="control"
             :value="outline?.width || 0"
@@ -44,13 +44,14 @@
     </template>
     <div class="toolbar-btn">
       <i-icon-park-outline:selected class="icon" />
-      <span>边框</span>
+      <span>{{ t('floatToolbar.borderColor') }}</span>
     </div>
   </Popover>
 </template>
 
 <script lang="ts" setup>
 import { computed, type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { LineStyleType, PPTElementOutline, PPTShapeElement, PPTTableElement } from '@/types/slides'
@@ -62,6 +63,8 @@ import ColorButton from '@/components/ColorButton.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
 import NumberInput from '@/components/NumberInput.vue'
 import SelectCustom from '@/components/SelectCustom.vue'
+
+const { t } = useI18n()
 
 const slidesStore = useSlidesStore()
 const { theme } = storeToRefs(slidesStore)

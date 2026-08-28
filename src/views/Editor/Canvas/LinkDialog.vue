@@ -11,7 +11,7 @@
       ref="inputRef"
       v-if="type === 'web'" 
       v-model:value="address" 
-      placeholder="请输入网页链接地址"
+      :placeholder="t('linkDialog.placeholder')"
       @enter="save()"
     />
 
@@ -28,13 +28,14 @@
     </div>
 
     <div class="btns">
-      <Button @click="emit('close')" style="margin-right: 10px;">取消</Button>
-      <Button type="primary" @click="save()">确认</Button>
+      <Button @click="emit('close')" style="margin-right: 10px;">{{ t('linkDialog.cancel') }}</Button>
+      <Button type="primary" @click="save()">{{ t('linkDialog.confirm') }}</Button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { computed, onMounted, ref, useTemplateRef, nextTick, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -46,6 +47,8 @@ import Tabs from '@/components/Tabs.vue'
 import Input from '@/components/Input.vue'
 import Button from '@/components/Button.vue'
 import Select from '@/components/Select.vue'
+
+const { t } = useI18n()
 
 interface TabItem {
   key: ElementLinkType
@@ -67,7 +70,7 @@ const inputRef = useTemplateRef<InstanceType<typeof Input>>('inputRef')
 
 const slideOptions = computed(() => {
   return slides.value.map((item, index) => ({
-    label: `幻灯片 ${index + 1}`,
+    label: `${t('linkDialog.slideLabel')} ${index + 1}`,
     value: item.id,
     disabled: currentSlide.value.id === item.id,
   }))
@@ -82,8 +85,8 @@ const selectedSlide = computed(() => {
 })
 
 const tabs = computed<TabItem[]>(() => [
-  { key: 'web', label: '网页链接' },
-  { key: 'slide', label: '幻灯片页面', disabled: slides.value.length <= 1 },
+  { key: 'web', label: t('linkDialog.webLink') },
+  { key: 'slide', label: t('linkDialog.slideLink'), disabled: slides.value.length <= 1 },
 ])
 
 const { setLink } = useLink()

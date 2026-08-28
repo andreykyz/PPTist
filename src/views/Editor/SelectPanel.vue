@@ -3,7 +3,7 @@
     class="select-panel" 
     :width="200" 
     :height="360" 
-    :title="`选择（${activeElementIdList.length}/${currentSlide.elements.length}）`" 
+    :title="selectPanelTitle"
     :left="-270" 
     :top="90"
     @close="close()"
@@ -102,6 +102,8 @@ import MoveablePanel from '@/components/MoveablePanel.vue'
 import Button from '@/components/Button.vue'
 
 const { t } = useI18n()
+
+const selectPanelTitle = computed(() => t('selectPanel.title', { current: activeElementIdList.value.length, total: currentSlide.value.elements.length }))
 
 const slidesStore = useSlidesStore()
 const mainStore = useMainStore()

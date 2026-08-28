@@ -2,7 +2,7 @@
   <div class="toolbar-content">
     <button class="toolbar-btn" @click="openLatexEditor()">
       <i-icon-park-outline:edit class="icon" />
-      <span>编辑 LaTeX</span>
+      <span>{{ t('floatToolbar.editLatex') }}</span>
     </button>
     <Popover trigger="click">
       <template #content>
@@ -10,13 +10,14 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:platte class="icon" />
-        <span>颜色</span>
+        <span>{{ t('floatToolbar.color') }}</span>
       </button>
     </Popover>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { type Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -26,6 +27,8 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import Popover from '@/components/Popover.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTLatexElement

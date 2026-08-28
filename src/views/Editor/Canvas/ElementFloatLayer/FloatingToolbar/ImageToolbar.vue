@@ -2,24 +2,27 @@
   <div class="toolbar-content">
     <button class="toolbar-btn" @click="clipImage()">
       <i-icon-park-outline:tailoring class="icon" />
-      <span>裁剪</span>
+      <span>{{ t('floatToolbar.crop') }}</span>
     </button>
     <FileInput @change="files => replaceImage(files)">
       <button class="toolbar-btn">
         <i-icon-park-outline:transform class="icon" />
-        <span>替换</span>
+        <span>{{ t('floatToolbar.replace') }}</span>
       </button>
     </FileInput>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/store'
 import type { PPTImageElement } from '@/types/slides'
 import useImageHandler from '@/hooks/useImageHandler'
 
 import FileInput from '@/components/FileInput.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTImageElement

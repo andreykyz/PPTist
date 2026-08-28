@@ -692,13 +692,461 @@ export default {
     layer: 'Слой',
   },
 
+  // === Animations ===
+  animation: {
+    group: {
+      bounce: 'Пружина',
+      fade: 'Растворение',
+      rotate: 'Вращение',
+      zoom: 'Масштаб',
+      slide: 'Перемещение',
+      flip: 'Отражение',
+      back: 'Возврат',
+      lightSpeed: 'Световая скорость',
+    },
+    effect: {
+      // Entrance
+      bounceIn: 'Пружинящий вход',
+      bounceInLeft: 'Пружинящий вход слева',
+      bounceInRight: 'Пружинящий вход справа',
+      bounceInUp: 'Пружинящий вход снизу',
+      bounceInDown: 'Пружинящий вход сверху',
+      fadeIn: 'Растворение',
+      fadeInDown: 'Появиться снизу',
+      fadeInDownBig: 'Появиться снизу крупно',
+      fadeInLeft: 'Появиться слева',
+      fadeInLeftBig: 'Появиться слева крупно',
+      fadeInRight: 'Появиться справа',
+      fadeInRightBig: 'Появиться справа крупно',
+      fadeInUp: 'Появиться сверху',
+      fadeInUpBig: 'Появиться сверху крупно',
+      fadeInTopLeft: 'Появиться сверху-слева',
+      fadeInTopRight: 'Появиться сверху-справа',
+      fadeInBottomLeft: 'Появиться снизу-слева',
+      fadeInBottomRight: 'Появиться снизу-справа',
+      rotateIn: 'Вращение вход',
+      rotateInDownLeft: 'Вращение вход слева-вниз',
+      rotateInDownRight: 'Вращение вход справа-вниз',
+      rotateInUpLeft: 'Вращение вход слева-вверх',
+      rotateInUpRight: 'Вращение вход справа-вверх',
+      zoomIn: 'Масштаб вход',
+      zoomInDown: 'Масштаб вход снизу',
+      zoomInLeft: 'Масштаб вход слева',
+      zoomInRight: 'Масштаб вход справа',
+      zoomInUp: 'Масштаб вход сверху',
+      slideInDown: 'Перемещение вход снизу',
+      slideInLeft: 'Перемещение вход слева',
+      slideInRight: 'Перемещение вход справа',
+      slideInUp: 'Перемещение вход сверху',
+      flipInX: 'Отражение вход X',
+      flipInY: 'Отражение вход Y',
+      backInDown: 'Возврат вход снизу',
+      backInLeft: 'Возврат вход слева',
+      backInRight: 'Возврат вход справа',
+      backInUp: 'Возврат вход сверху',
+      lightSpeedInRight: 'Световая скорость вход справа',
+      lightSpeedInLeft: 'Световая скорость вход слева',
+      // Exit
+      bounceOut: 'Пружинящий выход',
+      bounceOutLeft: 'Пружинящий выход влево',
+      bounceOutRight: 'Пружинящий выход вправо',
+      bounceOutUp: 'Пружинящий выход вверх',
+      bounceOutDown: 'Пружинящий выход вниз',
+      fadeOut: 'Растворение выход',
+      fadeOutDown: 'Растворение выход вниз',
+      fadeOutDownBig: 'Растворение выход вниз крупно',
+      fadeOutLeft: 'Растворение выход влево',
+      fadeOutLeftBig: 'Растворение выход влево крупно',
+      fadeOutRight: 'Растворение выход вправо',
+      fadeOutRightBig: 'Растворение выход вправо крупно',
+      fadeOutUp: 'Растворение выход вверх',
+      fadeOutUpBig: 'Растворение выход вверх крупно',
+      fadeOutTopLeft: 'Растворение выход сверху-влево',
+      fadeOutTopRight: 'Растворение выход сверху-вправо',
+      fadeOutBottomLeft: 'Растворение выход снизу-влево',
+      fadeOutBottomRight: 'Растворение выход снизу-вправо',
+      rotateOut: 'Вращение выход',
+      rotateOutDownLeft: 'Вращение выход слева-вниз',
+      rotateOutDownRight: 'Вращение выход справа-вниз',
+      rotateOutUpLeft: 'Вращение выход слева-вверх',
+      rotateOutUpRight: 'Вращение выход справа-вверх',
+      zoomOut: 'Масштаб выход',
+      zoomOutDown: 'Масштаб выход вниз',
+      zoomOutLeft: 'Масштаб выход влево',
+      zoomOutRight: 'Масштаб выход вправо',
+      zoomOutUp: 'Масштаб выход вверх',
+      slideOutDown: 'Перемещение выход вниз',
+      slideOutLeft: 'Перемещение выход влево',
+      slideOutRight: 'Перемещение выход вправо',
+      slideOutUp: 'Перемещение выход вверх',
+      flipOutX: 'Отражение выход X',
+      flipOutY: 'Отражение выход Y',
+      backOutDown: 'Возврат выход вниз',
+      backOutLeft: 'Возврат выход влево',
+      backOutRight: 'Возврат выход вправо',
+      backOutUp: 'Возврат выход вверх',
+      lightSpeedOutRight: 'Световая скорость выход справа',
+      lightSpeedOutLeft: 'Световая скорость выход слева',
+      // Emphasis
+      shakeX: 'Горизонтальная тряска',
+      shakeY: 'Вертикальная тряска',
+      headShake: 'Покачивание',
+      swing: 'Качание',
+      wobble: 'Покачивание',
+      tada: 'Танц',
+      jello: 'Желе',
+      flash: 'Вспышка',
+      pulse: 'Пульс',
+      rubberBand: 'Резинка',
+      heartBeat: 'Пульс сердца (быстро)',
+      bounce: 'Пружина',
+    },
+  },
+
+  // === Slide Transitions ===
+  slideTransition: {
+    no: 'Нет',
+    random: 'Случайно',
+    slideX: 'Сдвиг X',
+    slideY: 'Сдвиг Y',
+    slideX3D: 'Сдвиг X (3D)',
+    slideY3D: 'Сдвиг Y (3D)',
+    fade: 'Растворение',
+    rotate: 'Вращение',
+    scaleY: 'Масштаб Y',
+    scaleX: 'Масштаб X',
+    scale: 'Масштаб вверх',
+    scaleReverse: 'Масштаб вниз',
+  },
+
+  // === Chart Defaults ===
+  chartDefault: {
+    category: 'Категория',
+    series: 'Серия',
+    value: 'Значение',
+    coordinate: 'Координата',
+    legend: 'Легенда',
+  },
+
+  // === Clip Shape Names ===
+  clipShape: {
+    rect: 'Прямоугольник',
+    snip1Rect: 'Срез 1',
+    snip2DiagRect: 'Срез 2 диагонал.',
+    roundRect: 'Скругл. прямоугольник',
+    ellipse: 'Эллипс',
+    triangle: 'Треугольник',
+    rtTriangle: 'Прямоуг. треугольник',
+    triangleReverse: 'Перевёрнутый треугольник',
+    diamond: 'Ромб',
+    pentagon: 'Пятиугольник',
+    hexagon: 'Шестиугольник',
+    heptagon: 'Семиугольник',
+    octagon: 'Восьмиугольник',
+    chevron: 'Скошенный угол',
+    homePlate: 'База',
+    rightArrow: 'Стрелка',
+    parallelogram: 'Параллелограмм',
+    parallelogramReverse: 'Перевёрнутый параллелограмм',
+    trapezoid: 'Трапеция',
+    trapezoidReverse: 'Перевёрнутая трапеция',
+  },
+
+  // === Font Names ===
+  fontNames: {
+    default: 'По умолчанию',
+    sourceHanSans: 'Source Han Sans',
+    sourceHanSerif: 'Source Han Serif',
+    wenDingPLKaiTi: 'WenDing PL KaiTi',
+    wenDingPLSongTi: 'WenDing PL SongTi',
+    zhuQueFangSong: 'ZhuQue FangSong',
+    liXiangWenKai: 'LXGW WenKai',
+    liXiangWenKaiNeo: 'LXGW NeoZhiSong',
+    liXiangNewHei: 'LXGW NeoXiHei',
+    alibabaPuHuiTi: 'Alibaba PuHuiTi',
+    deYiHei: 'DeYiHei',
+    xiaoQueFangSong: 'XiaoQue FangSong',
+  },
+
+  // === Table Toolbar ===
+  tableToolbar: {
+    fill: 'Заливка',
+    add: 'Добавить',
+    delete: 'Удалить',
+    insert: 'Вставить',
+    insertRowUp: 'Вставить строку выше',
+    insertRowDown: 'Вставить строку ниже',
+    insertColLeft: 'Вставить столбец слева',
+    insertColRight: 'Вставить столбец справа',
+  },
+
+  // === Floating Toolbar ===
+  floatToolbar: {
+    crop: 'Обрезать',
+    replace: 'Заменить',
+    editData: 'Редакт. данные',
+    type: 'Тип',
+    editLatex: 'Редакт. LaTeX',
+    color: 'Цвет',
+    style: 'Стиль',
+    borderColor: 'Граница',
+  },
+
+  // === Style Panel Labels ===
+  stylePanel: {
+    labelBorder: 'Стиль границы:',
+    labelBorderColor: 'Цвет границы:',
+    labelBorderWidth: 'Толщина границы:',
+    labelBorder: 'Граница',
+    labelEnableShadow: 'Тень:',
+    labelShadowOffsetX: 'Сдвиг по горизонтали:',
+    labelShadowOffsetY: 'Сдвиг по вертикали:',
+    labelShadowBlur: 'Размытие:',
+    labelShadowColor: 'Цвет тени:',
+    labelEnableOutline: 'Конур:',
+    labelColorMask: 'Цветная маска:',
+    labelMaskColor: 'Цвет маски:',
+    labelEnableFilter: 'Фильтр:',
+    labelOpacity: 'Прозрачность:',
+    verticalFlip: 'Отразить вертикально',
+    horizontalFlip: 'Отразить горизонтально',
+    currentColorBlock: 'Цвет:',
+    gradientAngle: 'Угол градиента:',
+    canvasSize: 'Размер холста:',
+    customCanvasSize: 'Пользовательский размер',
+    width: 'Ширина:',
+    height: 'Высота:',
+    canvasSizeRange: 'Диапазон: 500 ~ 2000',
+    textAa: 'Текст Aa',
+    settings: 'Настроить',
+    settingsAndApply: 'Настроить и применя',
+    canvasSizeValidationError: 'Размер должен быть от 500 до 2000',
+  },
+
+  // === Common / Dialog Labels ===
+  common: {
+    cancel: 'Отмена',
+    confirm: 'Подтвердить',
+    ok: 'OK',
+    clearData: 'Очистить',
+    clickToChange: 'Нажмите для замены',
+    recentUsed: 'Недавние',
+    videoLoadError: 'Видео не загрузилось',
+    loop: 'Повтор',
+    loopOn: 'Вкл',
+    loopOff: 'Выкл',
+    doubleClickToEdit: 'Двойной клик для редактирования',
+    add: 'Добавить',
+    adding: 'Загрузка...',
+    insertAll: 'Вставить все',
+    insertTemplate: 'Вставить шаблон',
+    loading: 'Загрузка...',
+  },
+
+  // === Context Menus ===
+  contextMenu: {
+    unlock: 'Разблокировать',
+    cut: 'Вырезать',
+    copy: 'Копировать',
+    paste: 'Вставить',
+    horizontalCenter: 'Центр по горизонтали',
+    horizontalVerticalCenter: 'Центрировать',
+    alignLeft: 'По левому краю',
+    alignRight: 'По правому краю',
+    verticalCenter: 'Центр по вертикали',
+    alignTop: 'По верхнему краю',
+    alignBottom: 'По нижнему краю',
+    bringToFront: 'На передний план',
+    bringForward: 'Выше',
+    sendToBack: 'На задний план',
+    sendBackward: 'Ниже',
+    ungroup: 'Разгруппировать',
+    group: 'Группировать',
+    selectAll: 'Выбрать всё',
+    lock: 'Заблокировать',
+    delete: 'Удалить',
+    deleteSubject: 'Удалить раздел',
+    renameSubject: 'Переименовать раздел',
+    newPage: 'Новая страница',
+    slideshow: 'Показ слайдов',
+    copy: 'Копировать',
+    copyPage: 'Копировать страницу',
+    deletePage: 'Удалить страницу',
+    addSubject: 'Добавить раздел',
+    playFromCurrent: 'Играть сейчас',
+    paste: 'Вставить',
+    cut: 'Вырезать',
+    copy: 'Копировать',
+    sectionPlaceholder: 'Введите name раздела',
+  },
+
+  // === Video Player ===
+  videoPlayer: {
+    loadError: 'Видео не загрузилось',
+    loop: 'Повтор',
+    loopOn: 'Вкл',
+    loopOff: 'Выкл',
+  },
+
+  // === Element Messages ===
+  elementMessage: {
+    menuEnabled: 'включено',
+    menuDisabled: 'отключено',
+    noSlides: 'Нет слайдов',
+    addFirst: 'Добавить первый',
+    addSlide: 'Добавить слайд',
+    slideNumberLabel: 'Слайд',
+  },
+
+  // === Notes Panel ===
+  notesPanel: {
+    title: 'Примечания — Слайд {{n}}',
+    replyPlaceholder: 'Добавить примечание (для {{target}})',
+    addPlaceholder: 'Добавить примечание',
+    subject: 'выбранный объект',
+    currentSlide: 'текущий слайд',
+  },
+
+  // === Select Panel ===
+  selectPanel: {
+    title: 'Выбор ({current}/{total})',
+  },
+
+  // === Link Dialog ===
+  linkDialog: {
+    placeholder: 'Введите ссылку',
+    cancel: 'Отмена',
+    confirm: 'Подтвердить',
+    webLink: 'Веб-ссылка',
+    slideLink: 'Слайд',
+    slideLabel: 'Слайд',
+  },
+
+  // === Link Handler ===
+  linkHandler: {
+    slidePageLabel: 'Слайд ',
+    change: 'Замени',
+    remove: 'Удалить',
+  },
+
+  // === LaTeX Editor ===
+  latexEditor: {
+    placeholder: 'Введите формулу LaTeX',
+    preview: 'Предпросмотр',
+    cancel: 'Отмена',
+    confirm: 'OK',
+  },
+
+  // === Chart Data Editor ===
+  chartDataEditor: {
+    chartTypes: 'Тип диаграммы: {type}',
+    clickToChange: 'Нажмите для замены',
+    cancel: 'Отмена',
+    clearData: 'Очистить',
+    confirm: 'Подтвердить',
+    specialChartType: 'Специальные типы ',
+    scatterMinCols: 'Диаграмма требует минимум 2 столбца',
+    pieSingleCol: 'Круговая диаграмма только один столбец',
+    category: 'Категория',
+    series: 'Серия',
+  },
+
+  // === Template Thumbnails ===
+  thumbnailSection: {
+    placeholder: 'Введите name раздела',
+    defaultName: 'Раздел по умолчанию',
+  },
+
+  // === Section ===
+  section: {
+    placeholder: 'Введите name раздела',
+  },
+
+  // === Outline Editor Context Menu ===
+  outlineMenu: {
+    addParent: 'Добавить подраздел (глава)',
+    addParentSibling: 'Добавить sibling выше (глава)',
+    addChild: 'Добавить подраздел (раздел)',
+    deleteChapter: 'Удалить главу',
+    addSectionSibling: 'Добавить sibling выше (раздел)',
+    addSubItem: 'Добавить подраздел (элемент)',
+    deleteSection: 'Удалить раздел',
+    addItemSibling: 'Добавить sibling выше (элемент)',
+    addItemBelow: 'Добавить элемент ниже',
+    deleteItem: 'Удалить элемент',
+  },
+
+  // === AIPPT Style Options ===
+  aipptStyles: {
+    general: 'Общий',
+    academic: 'Академический',
+    work: 'Деловой',
+    education: 'Образовательный',
+    marketing: 'Маркетинговый',
+  },
+
+  // === Image Lib Panel ===
+  imageLibSearchDefault: 'пейзаж',
+
+  // === Emoji Categories ===
+  emojiCategories: {
+    faces: 'Губы',
+    gestures: 'Жесты',
+    animals: 'Животные',
+    food: 'Еда',
+    travel: 'Путешествия',
+    activities: 'Деятельность',
+    objects: 'Объекты',
+    symbols: 'Символы',
+  },
+
+  // === Export Defaults ===
+  exportDefaults: {
+    seriesName: 'Серия',
+    coordinateName: 'Координата',
+  },
+
+  // === Hotkey Descriptions ===
+  hotkeyDesc: {
+    ctrlOrShift: 'Ctrl или Shift',
+    spaceDrag: 'Space + перетаскивание',
+    ctrlWheel: 'Ctrl + колесо',
+    scrollUp: 'Прокрутка вверх / PgUp',
+    scrollDown: 'Прокрутка вниз / PgDown',
+    dblClickEmpty: 'Двойной клик / T',
+    rightClick: 'ПКМ',
+    ctrlDrag: 'Ctrl + перетаскивание',
+  },
+
+  // === LaTeX Config Labels ===
+  latexLabels: {
+    placeholder: 'Введите формулу LaTeX',
+    preview: 'Предпросмотр',
+    cancel: 'Отмена',
+    confirm: 'OK',
+  },
+
+  // === Typing ===
+  notes: {
+    title: 'Примечания — Слайд X',
+    reply: 'Ответить',
+    delete: 'Удалить',
+    replyPlaceholder: 'Введите текст ответа',
+    cancel: 'Отмена',
+    replyBtn: 'Ответить',
+    empty: 'На этой странице нет примечаний',
+    clearAll: 'Очистить все примечания',
+    add: 'Добавить примечание',
+    user: 'Тест Пользователь',
+  },
+
   // === Mobile ===
   mobile: {
     // Header
     header: {
       undo: 'Отмена',
-      redo: 'Повтор',
-      exitEdit: 'Выйти из редактирования',
+      redo: 'Повторить',
+      exitEdit: 'Выйти',
     },
     // SlideToolbar
     slideToolbar: {
@@ -708,14 +1156,14 @@ export default {
       delete: 'Удалить',
       insertText: 'Текст',
       insertImage: 'Изображение',
-      insertRect: 'Прямоугольник',
+      insertRect: 'Прямоуг.',
       insertCircle: 'Круг',
       newTextContent: 'Новый текст',
     },
     // ElementToolbar
     elementToolbar: {
       tabStyle: 'Стиль',
-      tabLayout: 'Расположение',
+      tabLayout: 'Компоновка',
       textColor: 'Цвет текста:',
       fillColor: 'Цвет заливки:',
       noProperties: 'Нет доступных свойств',
@@ -735,8 +1183,37 @@ export default {
     // Preview/Player
     view: {
       edit: 'Редактировать',
-      play: 'Воспроизведение',
-      exitPlayer: 'Выйти из проигрывателя',
+      play: 'Воспр.',
+      exitPlayer: 'Выйти',
     },
+  },
+
+  // === Generic ===
+  generic: {
+    template: 'Шаблон',
+    insert: 'Вставить',
+    loading: 'Загрузка',
+    cancel: 'Отмена',
+    confirm: 'Подтвердить',
+    close: 'Закрыть',
+    back: 'Назад',
+    edit: 'Редактировать',
+    delete: 'Удалить',
+    add: 'Добавить',
+    save: 'Сохранить',
+    yes: 'Да',
+    no: 'Нет',
+    ok: 'OK',
+    yesAll: 'Все',
+    current: 'Текущий',
+    custom: 'Пользовательский',
+    align: 'Выравнивание',
+    layer: 'Слой',
+    fill: 'Заливка',
+    backgroundColor: 'Цвет фона',
+    borderColor: 'Цвет границы',
+    width: 'Ширина',
+    height: 'Высота',
+    fontSize: 'Размер шрифта',
   },
 }

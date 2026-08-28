@@ -2,7 +2,7 @@
   <div class="toolbar-content">
     <button class="toolbar-btn" @click="openDataEditor()">
       <i-icon-park-outline:edit class="icon" />
-      <span>编辑数据</span>
+      <span>{{ t('floatToolbar.editData') }}</span>
     </button>
     <Popover trigger="click">
       <template #content>
@@ -17,13 +17,14 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:chart-histogram class="icon" />
-        <span>类型</span>
+        <span>{{ t('floatToolbar.type') }}</span>
       </button>
     </Popover>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { type Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore, useMainStore } from '@/store'
@@ -34,6 +35,8 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 
 import Popover from '@/components/Popover.vue'
 import PopoverMenuItem from '@/components/PopoverMenuItem.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTChartElement

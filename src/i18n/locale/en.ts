@@ -716,6 +716,454 @@ export default {
     fontSize: 'Font Size',
   },
 
+  // === Animations ===
+  animation: {
+    group: {
+      bounce: 'Bounce',
+      fade: 'Fade',
+      rotate: 'Rotate',
+      zoom: 'Zoom',
+      slide: 'Slide',
+      flip: 'Flip',
+      back: 'Back In',
+      lightSpeed: 'Light Speed',
+    },
+    effect: {
+      // Entrance
+      bounceIn: 'Bounce In',
+      bounceInLeft: 'Bounce In Left',
+      bounceInRight: 'Bounce In Right',
+      bounceInUp: 'Bounce In Up',
+      bounceInDown: 'Bounce In Down',
+      fadeIn: 'Fade In',
+      fadeInDown: 'Fade In Down',
+      fadeInDownBig: 'Fade In Down Big',
+      fadeInLeft: 'Fade In Left',
+      fadeInLeftBig: 'Fade In Left Big',
+      fadeInRight: 'Fade In Right',
+      fadeInRightBig: 'Fade In Right Big',
+      fadeInUp: 'Fade In Up',
+      fadeInUpBig: 'Fade In Up Big',
+      fadeInTopLeft: 'Fade In From Top Left',
+      fadeInTopRight: 'Fade In From Top Right',
+      fadeInBottomLeft: 'Fade In From Bottom Left',
+      fadeInBottomRight: 'Fade In From Bottom Right',
+      rotateIn: 'Rotate In',
+      rotateInDownLeft: 'Rotate In Down Left',
+      rotateInDownRight: 'Rotate In Down Right',
+      rotateInUpLeft: 'Rotate In Up Left',
+      rotateInUpRight: 'Rotate In Up Right',
+      zoomIn: 'Zoom In',
+      zoomInDown: 'Zoom In Down',
+      zoomInLeft: 'Zoom In Left',
+      zoomInRight: 'Zoom In Right',
+      zoomInUp: 'Zoom In Up',
+      slideInDown: 'Slide In Down',
+      slideInLeft: 'Slide In Left',
+      slideInRight: 'Slide In Right',
+      slideInUp: 'Slide In Up',
+      flipInX: 'Flip In X',
+      flipInY: 'Flip In Y',
+      backInDown: 'Back In Down',
+      backInLeft: 'Back In Left',
+      backInRight: 'Back In Right',
+      backInUp: 'Back In Up',
+      lightSpeedInRight: 'Light Speed In Right',
+      lightSpeedInLeft: 'Light Speed In Left',
+      // Exit
+      bounceOut: 'Bounce Out',
+      bounceOutLeft: 'Bounce Out Left',
+      bounceOutRight: 'Bounce Out Right',
+      bounceOutUp: 'Bounce Out Up',
+      bounceOutDown: 'Bounce Out Down',
+      fadeOut: 'Fade Out',
+      fadeOutDown: 'Fade Out Down',
+      fadeOutDownBig: 'Fade Out Down Big',
+      fadeOutLeft: 'Fade Out Left',
+      fadeOutLeftBig: 'Fade Out Left Big',
+      fadeOutRight: 'Fade Out Right',
+      fadeOutRightBig: 'Fade Out Right Big',
+      fadeOutUp: 'Fade Out Up',
+      fadeOutUpBig: 'Fade Out Up Big',
+      fadeOutTopLeft: 'Fade Out To Top Left',
+      fadeOutTopRight: 'Fade Out To Top Right',
+      fadeOutBottomLeft: 'Fade Out To Bottom Left',
+      fadeOutBottomRight: 'Fade Out To Bottom Right',
+      rotateOut: 'Rotate Out',
+      rotateOutDownLeft: 'Rotate Out Down Left',
+      rotateOutDownRight: 'Rotate Out Down Right',
+      rotateOutUpLeft: 'Rotate Out Up Left',
+      rotateOutUpRight: 'Rotate Out Up Right',
+      zoomOut: 'Zoom Out',
+      zoomOutDown: 'Zoom Out Down',
+      zoomOutLeft: 'Zoom Out Left',
+      zoomOutRight: 'Zoom Out Right',
+      zoomOutUp: 'Zoom Out Up',
+      slideOutDown: 'Slide Out Down',
+      slideOutLeft: 'Slide Out Left',
+      slideOutRight: 'Slide Out Right',
+      slideOutUp: 'Slide Out Up',
+      flipOutX: 'Flip Out X',
+      flipOutY: 'Flip Out Y',
+      backOutDown: 'Back Out Down',
+      backOutLeft: 'Back Out Left',
+      backOutRight: 'Back Out Right',
+      backOutUp: 'Back Out Up',
+      lightSpeedOutRight: 'Light Speed Out Right',
+      lightSpeedOutLeft: 'Light Speed Out Left',
+      // Emphasis
+      shakeX: 'Shake X',
+      shakeY: 'Shake Y',
+      headShake: 'Head Shake',
+      swing: 'Swing',
+      wobble: 'Wobble',
+      tada: 'Tada',
+      jello: 'Jello',
+      flash: 'Flash',
+      pulse: 'Pulse',
+      rubberBand: 'Rubber Band',
+      heartBeat: 'Heartbeat (Fast)',
+      bounce: 'Bounce',
+    },
+  },
+
+  // === Slide Transitions ===
+  slideTransition: {
+    no: 'None',
+    random: 'Random',
+    slideX: 'Slide X',
+    slideY: 'Slide Y',
+    slideX3D: 'Slide X (3D)',
+    slideY3D: 'Slide Y (3D)',
+    fade: 'Fade',
+    rotate: 'Rotate',
+    scaleY: 'Scale Y',
+    scaleX: 'Scale X',
+    scale: 'Scale Up',
+    scaleReverse: 'Scale Down',
+  },
+
+  // === Chart Defaults ===
+  chartDefault: {
+    category: 'Category',
+    series: 'Series',
+    value: 'Value',
+    coordinate: 'Coordinate',
+    legend: 'Legend',
+  },
+
+  // === Clip Shape Names ===
+  clipShape: {
+    rect: 'Rectangle',
+    snip1Rect: 'Snip 1 Rectangle',
+    snip2DiagRect: 'Snip 2 Diagonal Rectangle',
+    roundRect: 'Rounded Rectangle',
+    ellipse: 'Ellipse',
+    triangle: 'Triangle',
+    rtTriangle: 'Right Triangle',
+    triangleReverse: 'Inverted Triangle',
+    diamond: 'Diamond',
+    pentagon: 'Pentagon',
+    hexagon: 'Hexagon',
+    heptagon: 'Heptagon',
+    octagon: 'Octagon',
+    chevron: 'Chevron',
+    homePlate: 'Base',
+    rightArrow: 'Arrow',
+    parallelogram: 'Parallelogram',
+    parallelogramReverse: 'Reverse Parallelogram',
+    trapezoid: 'Trapezoid',
+    trapezoidReverse: 'Inverted Trapezoid',
+  },
+
+  // === Font Names ===
+  fontNames: {
+    default: 'Default',
+    sourceHanSans: 'Source Han Sans',
+    sourceHanSerif: 'Source Han Serif',
+    wenDingPLKaiTi: 'WenDing PL KaiTi',
+    wenDingPLSongTi: 'WenDing PL SongTi',
+    zhuQueFangSong: 'ZhuQue FangSong',
+    liXiangWenKai: 'LXGW WenKai',
+    liXiangWenKaiNeo: 'LXGW NeoZhiSong',
+    liXiangNewHei: 'LXGW NeoXiHei',
+    alibabaPuHuiTi: 'Alibaba PuHuiTi',
+    deYiHei: 'DeYiHei',
+    xiaoQueFangSong: 'XiaoQue FangSong',
+  },
+
+  // === Table Toolbar ===
+  tableToolbar: {
+    fill: 'Fill',
+    add: 'Add',
+    delete: 'Delete',
+    insert: 'Insert',
+    insertRowUp: 'Insert Row Above',
+    insertRowDown: 'Insert Row Below',
+    insertColLeft: 'Insert Column Left',
+    insertColRight: 'Insert Column Right',
+  },
+
+  // === Floating Toolbar ===
+  floatToolbar: {
+    crop: 'Crop',
+    replace: 'Replace',
+    editData: 'Edit Data',
+    type: 'Type',
+    editLatex: 'Edit LaTeX',
+    color: 'Color',
+    style: 'Style',
+    borderColor: 'Border',
+  },
+
+  // === Style Panel Labels ===
+  stylePanel: {
+    labelBorder: 'Border Style:',
+    labelBorderColor: 'Border Color:',
+    labelBorderWidth: 'Border Width:',
+    labelBorder: 'Border',
+    labelEnableShadow: 'Enable Shadow:',
+    labelShadowOffsetX: 'Horizontal Offset:',
+    labelShadowOffsetY: 'Vertical Offset:',
+    labelShadowBlur: 'Blur Distance:',
+    labelShadowColor: 'Shadow Color:',
+    labelEnableOutline: 'Enable Outline:',
+    labelColorMask: 'Color Mask:',
+    labelMaskColor: 'Mask Color:',
+    labelEnableFilter: 'Enable Filter:',
+    labelOpacity: 'Opacity:',
+    verticalFlip: 'Flip Vertical',
+    horizontalFlip: 'Flip Horizontal',
+    currentColorBlock: 'Current Color:',
+    gradientAngle: 'Gradient Angle:',
+    canvasSize: 'Canvas Size:',
+    customCanvasSize: 'Custom Canvas Size',
+    width: 'Width:',
+    height: 'Height:',
+    canvasSizeRange: 'Canvas size range: 500 ~ 2000',
+    textAa: 'Text Aa',
+    settings: 'Set',
+    settingsAndApply: 'Set & Apply',
+    canvasSizeValidationError: 'Canvas width/height must be between 500 and 2000',
+  },
+
+  // === Common / Dialog Labels ===
+  common: {
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    ok: 'OK',
+    clearData: 'Clear Data',
+    clickToChange: 'Click to Change',
+    recentUsed: 'Recently Used',
+    videoLoadError: 'Video failed to load',
+    loop: 'Loop',
+    loopOn: 'On',
+    loopOff: 'Off',
+    doubleClickToEdit: 'Double-click to edit',
+    add: 'Add',
+    adding: 'Loading...',
+    insertAll: 'Insert All',
+    insertTemplate: 'Insert Template',
+    loading: 'Loading...',
+  },
+
+  // === Context Menus ===
+  contextMenu: {
+    unlock: 'Unlock',
+    cut: 'Cut',
+    copy: 'Copy',
+    paste: 'Paste',
+    horizontalCenter: 'Center Horizontally',
+    horizontalVerticalCenter: 'Center',
+    alignLeft: 'Align Left',
+    alignRight: 'Align Right',
+    verticalCenter: 'Center Vertically',
+    alignTop: 'Align Top',
+    alignBottom: 'Align Bottom',
+    bringToFront: 'Bring to Front',
+    bringForward: 'Forward',
+    sendToBack: 'Send to Back',
+    sendBackward: 'Backward',
+    ungroup: 'Ungroup',
+    group: 'Group',
+    selectAll: 'Select All',
+    lock: 'Lock',
+    delete: 'Delete',
+    deleteSubject: 'Delete Section',
+    renameSubject: 'Rename Section',
+    newPage: 'New Page',
+    slideshow: 'Slideshow',
+    copy: 'Copy',
+    copyPage: 'Copy Page',
+    deletePage: 'Delete Page',
+    addSubject: 'Add Section',
+    playFromCurrent: 'Play from Current',
+    paste: 'Paste',
+    cut: 'Cut',
+    copy: 'Copy',
+    sectionPlaceholder: 'Enter section name',
+  },
+
+  // === Video Player ===
+  videoPlayer: {
+    loadError: 'Video failed to load',
+    loop: 'Loop',
+    loopOn: 'On',
+    loopOff: 'Off',
+  },
+
+  // === Element Messages ===
+  elementMessage: {
+    menuEnabled: 'enabled',
+    menuDisabled: 'disabled',
+    noSlides: 'No Slides',
+    addFirst: 'Add First Slide',
+    addSlide: 'Add Slide',
+    slideNumberLabel: 'Slide',
+  },
+
+  // === Notes Panel ===
+  notesPanel: {
+    title: 'Notes - Slide {{n}}',
+    replyPlaceholder: 'Add note (for {{target}})',
+    addPlaceholder: 'Add note',
+    subject: 'selected element',
+    currentSlide: 'current slide',
+  },
+
+  // === Select Panel ===
+  selectPanel: {
+    title: 'Selection ({current}/{total})',
+  },
+
+  // === Link Dialog ===
+  linkDialog: {
+    placeholder: 'Enter web link',
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    webLink: 'Web Link',
+    slideLink: 'Slide',
+    slideLabel: 'Slide',
+  },
+
+  // === Link Handler ===
+  linkHandler: {
+    slidePageLabel: 'Slide ',
+    change: 'Change',
+    remove: 'Remove',
+  },
+
+  // === LaTeX Editor ===
+  latexEditor: {
+    placeholder: 'Enter LaTeX formula',
+    preview: 'Formula Preview',
+    cancel: 'Cancel',
+    confirm: 'OK',
+  },
+
+  // === Chart Data Editor ===
+  chartDataEditor: {
+    chartTypes: 'Chart Type: {type}',
+    clickToChange: 'Click to Change',
+    cancel: 'Cancel',
+    clearData: 'Clear Data',
+    confirm: 'Confirm',
+    specialChartType: 'Special chart types',
+    scatterMinCols: 'Scatter chart requires at least two columns',
+    pieSingleCol: 'Pie and donut charts only have one column',
+    category: 'Category',
+    series: 'Series',
+  },
+
+  // === Template Thumbnails ===
+  thumbnailSection: {
+    placeholder: 'Enter section name',
+    defaultName: 'Default Section',
+  },
+
+  // === Section ===
+  section: {
+    placeholder: 'Enter section name',
+  },
+
+  // === Outline Editor Context Menu ===
+  outlineMenu: {
+    addParent: 'Add Sub-level (Chapter)',
+    addParentSibling: 'Add Sibling Above (Chapter)',
+    addChild: 'Add Sub-level (Section)',
+    deleteChapter: 'Delete Chapter',
+    addSectionSibling: 'Add Sibling Above (Section)',
+    addSubItem: 'Add Sub-level (Item)',
+    deleteSection: 'Delete Section',
+    addItemSibling: 'Add Sibling Above (Item)',
+    addItemBelow: 'Add Item Below',
+    deleteItem: 'Delete Item',
+  },
+
+  // === AIPPT Style Options ===
+  aipptStyles: {
+    general: 'General',
+    academic: 'Academic',
+    work: 'Professional',
+    education: 'Education',
+    marketing: 'Marketing',
+  },
+
+  // === Image Lib Panel ===
+  imageLibSearchDefault: 'landscape',
+
+  // === Emoji Categories ===
+  emojiCategories: {
+    faces: 'Faces',
+    gestures: 'Gestures',
+    animals: 'Animals',
+    food: 'Food',
+    travel: 'Travel',
+    activities: 'Activities',
+    objects: 'Objects',
+    symbols: 'Symbols',
+  },
+
+  // === Export Defaults ===
+  exportDefaults: {
+    seriesName: 'Series',
+    coordinateName: 'Coordinate',
+  },
+
+  // === Hotkey Descriptions ===
+  hotkeyDesc: {
+    ctrlOrShift: 'Ctrl or Shift',
+    spaceDrag: 'Space + drag',
+    ctrlWheel: 'Ctrl + scroll',
+    scrollUp: 'Scroll up / PgUp',
+    scrollDown: 'Scroll down / PgDown',
+    dblClickEmpty: 'Double-click / T',
+    rightClick: 'Right-click',
+    ctrlDrag: 'Ctrl + drag',
+  },
+
+  // === LaTeX Config Labels ===
+  latexLabels: {
+    placeholder: 'Enter LaTeX formula',
+    preview: 'Formula Preview',
+    cancel: 'Cancel',
+    confirm: 'OK',
+  },
+
+  // === Typing ===
+  notes: {
+    title: 'Notes - Slide X',
+    reply: 'Reply',
+    delete: 'Delete',
+    replyPlaceholder: 'Enter reply text',
+    cancel: 'Cancel',
+    replyBtn: 'Reply',
+    empty: 'No notes on this page',
+    clearAll: 'Clear all notes',
+    add: 'Add Note',
+    user: 'Test User',
+  },
+
   // === Mobile ===
   mobile: {
     // Header
@@ -762,5 +1210,34 @@ export default {
       play: 'Play',
       exitPlayer: 'Exit Player',
     },
+  },
+
+  // === Generic ===
+  generic: {
+    template: 'Template',
+    insert: 'Insert',
+    loading: 'Loading',
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    close: 'Close',
+    back: 'Back',
+    edit: 'Edit',
+    delete: 'Delete',
+    add: 'Add',
+    save: 'Save',
+    yes: 'Yes',
+    no: 'No',
+    ok: 'OK',
+    yesAll: 'All',
+    current: 'Current',
+    custom: 'Custom',
+    align: 'Align',
+    layer: 'Layer',
+    fill: 'Fill',
+    backgroundColor: 'Background Color',
+    borderColor: 'Border Color',
+    width: 'Width',
+    height: 'Height',
+    fontSize: 'Font Size',
   },
 }

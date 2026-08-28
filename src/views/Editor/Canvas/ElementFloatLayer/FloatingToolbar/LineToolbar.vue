@@ -19,7 +19,7 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:connection class="icon" />
-        <span>样式</span>
+        <span>{{ t('floatToolbar.style') }}</span>
       </button>
     </Popover>
     <Popover trigger="click">
@@ -28,7 +28,7 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:platte class="icon" />
-        <span>颜色</span>
+        <span>{{ t('floatToolbar.color') }}</span>
       </button>
     </Popover>
     <div class="width-slider">
@@ -44,6 +44,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { type Ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -54,6 +55,8 @@ import SVGLine from '@/views/Editor/Toolbar/common/SVGLine.vue'
 import Popover from '@/components/Popover.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
 import Slider from '@/components/Slider.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTLineElement

@@ -6,7 +6,7 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:fill class="icon" />
-        <span>填充</span>
+        <span>{{ t('tableToolbar.fill') }}</span>
       </button>
     </Popover>
     <BorderPanel />
@@ -16,27 +16,27 @@
     <Popover trigger="click">
       <template #content>
         <div class="table-command-menu">
-          <PopoverMenuItem center @click="emitTableCommand('insert-row', 'before')">上方插入行</PopoverMenuItem>
-          <PopoverMenuItem center @click="emitTableCommand('insert-row', 'after')">下方插入行</PopoverMenuItem>
-          <PopoverMenuItem center @click="emitTableCommand('insert-col', 'before')">左侧插入列</PopoverMenuItem>
-          <PopoverMenuItem center @click="emitTableCommand('insert-col', 'after')">右侧插入列</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('insert-row', 'before')">{{ t('tableToolbar.insertRowUp') }}</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('insert-row', 'after')">{{ t('tableToolbar.insertRowDown') }}</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('insert-col', 'before')">{{ t('tableToolbar.insertColLeft') }}</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('insert-col', 'after')">{{ t('tableToolbar.insertColRight') }}</PopoverMenuItem>
         </div>
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:add class="icon" />
-        <span>添加</span>
+        <span>{{ t('tableToolbar.add') }}</span>
       </button>
     </Popover>
     <Popover trigger="click">
       <template #content>
         <div class="table-command-menu">
-          <PopoverMenuItem center @click="emitTableCommand('delete-row')">删除行</PopoverMenuItem>
-          <PopoverMenuItem center @click="emitTableCommand('delete-col')">删除列</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('delete-row')">{{ t('contextMenu.delete') }}</PopoverMenuItem>
+          <PopoverMenuItem center @click="emitTableCommand('delete-col')">{{ t('contextMenu.delete') }}</PopoverMenuItem>
         </div>
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:reduce class="icon" />
-        <span>删除</span>
+        <span>{{ t('contextMenu.delete') }}</span>
       </button>
     </Popover>
   </div>
@@ -44,6 +44,7 @@
 
 <script lang="ts" setup>
 import { computed, type Ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTTableElement, TableCell, TableCellStyle } from '@/types/slides'
@@ -54,6 +55,8 @@ import BorderPanel from './BorderPanel.vue'
 import Popover from '@/components/Popover.vue'
 import PopoverMenuItem from '@/components/PopoverMenuItem.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   elementInfo: PPTTableElement

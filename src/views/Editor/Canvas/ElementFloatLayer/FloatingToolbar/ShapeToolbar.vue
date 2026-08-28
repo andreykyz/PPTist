@@ -6,7 +6,7 @@
       </template>
       <button class="toolbar-btn">
         <i-icon-park-outline:fill class="icon" />
-        <span>填充</span>
+        <span>{{ t('tableToolbar.fill') }}</span>
       </button>
     </Popover>
     <BorderPanel />
@@ -18,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { computed, nextTick, type Ref, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -28,6 +29,8 @@ import BorderPanel from './BorderPanel.vue'
 import TextStyleControls from './TextStyleControls.vue'
 import Popover from '@/components/Popover.vue'
 import ColorPicker from '@/components/ColorPicker/index.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTShapeElement

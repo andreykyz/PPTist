@@ -1,15 +1,19 @@
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
+
 export const FONTS = [
-  { label: '默认字体', value: '' },
-  { label: '思源黑体', value: 'SourceHanSans' },
-  { label: '思源宋体', value: 'SourceHanSerif' },
-  { label: '文鼎PL楷体', value: 'WenDingPLKaiTi' },
-  { label: '文鼎PL宋体', value: 'WenDingPLSongTi' },
-  { label: '朱雀仿宋', value: 'ZhuQueFangSong' },
-  { label: '霞鹜文楷', value: 'LXGWWenKai' },
-  { label: '霞鹜新致宋', value: 'LXGWNeoZhiSong' },
-  { label: '霞鹜新晰黑', value: 'LXGWNeoXiHei' },
-  { label: '阿里巴巴普惠体', value: 'AlibabaPuHuiTi' },
-  { label: '得意黑', value: 'DeYiHei' },
+  { label: t('font.default'), value: '' },
+  { label: t('font.sourceHanSans'), value: 'SourceHanSans' },
+  { label: t('font.sourceHanSerif'), value: 'SourceHanSerif' },
+  { label: t('font.wenDingPLKaiTi'), value: 'WenDingPLKaiTi' },
+  { label: t('font.wenDingPLSongTi'), value: 'WenDingPLSongTi' },
+  { label: t('font.zhuQueFangSong'), value: 'ZhuQueFangSong' },
+  { label: t('font.liXiangWenKai'), value: 'LXGWWenKai' },
+  { label: t('font.liXiangWenKaiNeo'), value: 'LXGWNeoZhiSong' },
+  { label: t('font.liXiangNewHei'), value: 'LXGWNeoXiHei' },
+  { label: t('font.alibabaPuHuiTi'), value: 'AlibabaPuHuiTi' },
+  { label: t('font.deYiHei'), value: 'DeYiHei' },
   { label: 'MiSans', value: 'MiSans' },
   { label: 'Source Serif 4', value: 'SourceSerif4' },
   { label: 'JetBrains Mono', value: 'JetBrainsMono' },
