@@ -426,6 +426,7 @@ export default {
     langZh: '中文',
     langEn: '英文',
     langJa: '日本語',
+    langRu: '俄语',
     style: '风格：',
     styleGeneral: '通用',
     styleAcademic: '学术风',

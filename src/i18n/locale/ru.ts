@@ -382,6 +382,7 @@ export default {
     langZh: '中文',
     langEn: 'English',
     langJa: '日本語',
+    langRu: 'Русский',
     style: 'Стиль:',
     styleGeneral: 'Общий',
     styleAcademic: 'Академический',

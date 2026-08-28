@@ -31,8 +31,9 @@
             style="width: 80px;"
             v-model:value="language"
             :options="[
-              { label: t('aippt.langZh'), value: 'zh' },
               { label: t('aippt.langEn'), value: 'en' },
+              { label: t('aippt.langRu'), value: 'ru' },
+              { label: t('aippt.langZh'), value: 'zh' },
               { label: t('aippt.langJa'), value: 'ja' },
             ]"
           />
@@ -59,6 +60,7 @@
             style="width: 190px;"
             v-model:value="model"
             :options="[
+              { label: 'writer', value: 'writer' },
               { label: 'Qwen3.7-Flash', value: 'qwen:qwen3.7-flash' },
               { label: 'Doubao-Seed-2.0-mini', value: 'doubao:doubao-seed-2.0-mini' },
               { label: 'DeepSeek-v4-Flash', value: 'qwen:deepseek-v4-flash-0731' },
