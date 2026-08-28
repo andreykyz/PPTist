@@ -160,18 +160,18 @@ const model = ref('qwen:qwen3.7-flash')
 const outlineRef = useTemplateRef<HTMLElement>('outlineRef')
 const inputRef = useTemplateRef<InstanceType<typeof Input>>('inputRef')
 
-const recommends = ref([
-  '2025科技前沿动态',
-  '大数据如何改变世界',
-  '餐饮市场调查与研究',
-  'AIGC在教育领域的应用',
-  '社交媒体与品牌营销',
-  '5G技术如何改变我们的生活',
-  '年度工作总结与展望',
-  '区块链技术及其应用',
-  '大学生职业生涯规划',
-  '公司年会策划方案',
-]) 
+const recommends = computed<string[]>(() => [
+  t('aippt.topics.t1'),
+  t('aippt.topics.t2'),
+  t('aippt.topics.t3'),
+  t('aippt.topics.t4'),
+  t('aippt.topics.t5'),
+  t('aippt.topics.t6'),
+  t('aippt.topics.t7'),
+  t('aippt.topics.t8'),
+  t('aippt.topics.t9'),
+  t('aippt.topics.t10'),
+])
 
 onMounted(() => {
   setTimeout(() => {

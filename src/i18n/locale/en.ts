@@ -400,6 +400,18 @@ export default {
     modelConcurrentHigh: 'This model API has high concurrency, please try another model',
     modelUnavailable: 'This model is unavailable, please try another model',
     templateError: 'Uploaded template data is invalid, please re-upload or use preset templates',
+    topics: {
+      t1: '2025 Tech Frontier Trends',
+      t2: 'How Big Data Is Changing the World',
+      t3: 'Restaurant Market Research and Study',
+      t4: 'Applications of AIGC in Education',
+      t5: 'Social Media and Brand Marketing',
+      t6: 'How 5G Technology Changes Our Lives',
+      t7: 'Annual Work Summary and Outlook',
+      t8: 'Blockchain Technology and Its Applications',
+      t9: 'Career Planning for College Students',
+      t10: 'Company Annual Meeting Plan',
+    },
   },
   notes: {
     title: 'Notes - Slide X',
