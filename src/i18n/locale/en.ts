@@ -188,6 +188,7 @@ export default {
     uniformVertical: 'Distribute Vertically',
   },
   slideDesign: {
+    applyToAll: 'Apply to All Slides',
     solid: 'Solid Fill',
     image: 'Image Fill',
     linearGradient: 'Linear Gradient',
@@ -732,6 +733,18 @@ export default {
     bottomInset: 'Bottom Padding',
     leftInset: 'Left Padding',
     rightInset: 'Right Padding',
+    insertTable: 'Insert Table',
+    backgroundColorFill: 'Background Fill',
+    globalTheme: 'Global Theme',
+    more: 'More',
+    fontFamily: 'Font Family',
+    fontColor: 'Text Color',
+    backgroundColorLabel: 'Background Color',
+    themeColor: 'Theme Color',
+    presetThemes: 'Preset Themes',
+    applyThemeToAll: 'Apply to All',
+    uniformFont: 'Uniform Font',
+    extractTheme: 'Extract Theme',
   },
 
   // === Animations ===
@@ -745,6 +758,7 @@ export default {
       flip: 'Flip',
       back: 'Back In',
       lightSpeed: 'Light Speed',
+      shake: 'Shake',
     },
     effect: {
       // Entrance
@@ -842,6 +856,7 @@ export default {
       rubberBand: 'Rubber Band',
       heartBeat: 'Heartbeat (Fast)',
       bounce: 'Bounce',
+      other: 'Other',
     },
   },
 

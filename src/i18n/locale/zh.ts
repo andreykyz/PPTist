@@ -213,6 +213,7 @@ export default {
 
   // === Slide Design Panel ===
   slideDesign: {
+    applyToAll: '应用到全部页面',
     solid: '纯色填充',
     image: '图片填充',
     linearGradient: '线性渐变',
@@ -806,6 +807,18 @@ export default {
     bottomInset: '下边距',
     leftInset: '左边距',
     rightInset: '右边距',
+    insertTable: '插入表格',
+    backgroundColorFill: '背景填充',
+    globalTheme: '全局主题',
+    more: '更多',
+    fontFamily: '字体',
+    fontColor: '文字颜色',
+    backgroundColorLabel: '背景颜色',
+    themeColor: '主题色',
+    presetThemes: '预置主题',
+    applyThemeToAll: '应用到全部',
+    uniformFont: '统一字体',
+    extractTheme: '提取主题',
   },
 
   // === Animations ===
@@ -819,6 +832,7 @@ export default {
       flip: '翻转',
       back: '放大滑入',
       lightSpeed: '飞入',
+      shake: '摇晃',
     },
     effect: {
       // Entrance
@@ -916,6 +930,7 @@ export default {
       rubberBand: '橡皮筋',
       heartBeat: '心跳（快）',
       bounce: '弹跳',
+      other: '其他',
     },
   },
 

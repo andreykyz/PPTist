@@ -89,7 +89,7 @@
       <div class="menu-item" v-tooltip="t('header.aiGenerate')" @click="openAIPPTDialog(); mainMenuVisible = false">
         <span class="text ai">AI</span>
       </div>
-      <div class="menu-item" v-tooltip="t('header.export')" @click="setDialogForExport('pptx')">
+      <div class="menu-item" v-tooltip="t('header.exportTooltip')" @click="setDialogForExport('pptx')">
         <i-icon-park-outline:download class="icon" />
       </div>
       <a class="github-link" v-tooltip="t('header.copyright')" href="https://github.com/pipipi-pikachu/PPTist" target="_blank">

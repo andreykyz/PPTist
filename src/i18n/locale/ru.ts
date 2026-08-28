@@ -188,6 +188,7 @@ export default {
     uniformVertical: 'Равном. по верт.',
   },
   slideDesign: {
+    applyToAll: 'Применить ко всем слайдам',
     solid: 'Сплошная заливка',
     image: 'Рисунок',
     linearGradient: 'Линейная',
@@ -696,6 +697,18 @@ export default {
     bottomInset: 'Нижний отступ',
     leftInset: 'Левый отступ',
     rightInset: 'Правый отступ',
+    insertTable: 'Вставить таблицу',
+    backgroundColorFill: 'Заливка фона',
+    globalTheme: 'Глобальная тема',
+    more: 'Ещё',
+    fontFamily: 'Шрифт',
+    fontColor: 'Цвет текста',
+    backgroundColorLabel: 'Цвет фона',
+    themeColor: 'Цвет темы',
+    presetThemes: 'Готовые темы',
+    applyThemeToAll: 'Применить ко всем',
+    uniformFont: 'Единый шрифт',
+    extractTheme: 'Извлечь тему',
   },
 
   // === Animations ===
@@ -709,6 +722,7 @@ export default {
       flip: 'Отражение',
       back: 'Возврат',
       lightSpeed: 'Световая скорость',
+      shake: 'Встряска',
     },
     effect: {
       // Entrance
@@ -806,6 +820,7 @@ export default {
       rubberBand: 'Резинка',
       heartBeat: 'Пульс сердца (быстро)',
       bounce: 'Пружина',
+      other: 'Другое',
     },
   },
 
