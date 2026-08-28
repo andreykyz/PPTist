@@ -1,5 +1,8 @@
 import Clipboard from 'clipboard'
 import { decrypt } from '@/utils/crypto'
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
 
 /**
  * 复制文本到剪贴板
@@ -32,11 +35,11 @@ export const readClipboard = (): Promise<string> => {
   return new Promise((resolve, reject) => {
     if (navigator.clipboard?.readText) {
       navigator.clipboard.readText().then(text => {
-        if (!text) reject('剪贴板为空或者不包含文本')
+        if (!text) reject(t('clipboard.empty'))
         return resolve(text)
       })
     }
-    else reject('浏览器不支持或禁止访问剪贴板，请使用快捷键 Ctrl + V')
+    else reject(t('clipboard.notSupported'))
   })
 }
 

@@ -1,21 +1,24 @@
 <template>
   <div class="link-handler" :style="handlerStyle">
     <a class="link" v-if="elementInfo.link?.type === 'web'" :href="elementInfo.link.target" target="_blank">{{elementInfo.link.target}}</a>
-    <a class="link" v-else-if="elementInfo.link" @click="turnTarget(elementInfo.link.target)">幻灯片页面 {{elementInfo.link.target}}</a>
+    <a class="link" v-else-if="elementInfo.link" @click="turnTarget(elementInfo.link.target)">{{ t('linkHandler.slidePageLabel') }} {{elementInfo.link.target}}</a>
     <div class="btns">
-      <div class="btn" @click="openLinkDialog()">更换</div>
+      <div class="btn" @click="openLinkDialog()">{{ t('linkHandler.change') }}</div>
       <Divider type="vertical" />
-      <div class="btn" @click="removeLink(elementInfo)">移除</div>
+      <div class="btn" @click="removeLink(elementInfo)">{{ t('linkHandler.remove') }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
 import type { PPTElement } from '@/types/slides'
 import useLink from '@/hooks/useLink'
 import Divider from '@/components/Divider.vue'
+
+const { t } = useI18n()
 
 defineProps<{
   elementInfo: PPTElement

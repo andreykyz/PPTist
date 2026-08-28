@@ -31,6 +31,7 @@
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { debounce } from 'lodash'
 import { useMainStore } from '@/store'
 import type { EditorView } from 'prosemirror-view'
@@ -42,6 +43,8 @@ import tippy, { type Instance } from 'tippy.js'
 import ColorPicker from '@/components/ColorPicker/index.vue'
 import Popover from '@/components/Popover.vue'
 import { toggleMark } from 'prosemirror-commands'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   value: string
@@ -177,7 +180,7 @@ onMounted(() => {
       input: handleInput,
     },
   }, {
-    placeholder: '点击输入演讲者备注',
+    placeholder: t('mobile.slideToolbar.remarkPlaceholder'),
   })
 
   menuInstance.value = tippy(editorViewRef.value!, {

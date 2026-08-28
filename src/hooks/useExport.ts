@@ -767,7 +767,7 @@ export default () => {
           for (let i = 0; i < el.data.series.length; i++) {
             const item = el.data.series[i]
             chartData.push({
-              name: `系列${i + 1}`,
+              name: t('exportDefaults.seriesName') + (i + 1),
               labels: el.data.labels,
               values: item,
             })

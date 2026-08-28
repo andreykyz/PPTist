@@ -116,7 +116,7 @@ const close = () => {
 }
 
 onMounted(() => {
-  search('风景')
+  search(t('imageLibSearchDefault'))
 })
 
 const search = (q?: string) => {  
@@ -156,7 +156,7 @@ const loadMore = () => {
   page.value += 1
 
   api.searchImage({
-    query: searchWord.value || '风景',
+    query: searchWord.value || t('imageLibSearchDefault'),
     per_page: perPage.value,
     page: page.value,
     orientation: orientation.value,

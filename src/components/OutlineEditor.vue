@@ -25,6 +25,7 @@
 
 <script lang="ts" setup>
 import { ref, nextTick, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { nanoid } from 'nanoid'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import Input from './Input.vue'
@@ -35,6 +36,8 @@ interface OutlineItem {
   lv: number
   title?: boolean
 }
+
+const { t } = useI18n()
 
 const props = defineProps<{
   value: string
@@ -196,23 +199,23 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
   if (lv === 1) {
     return [
       {
-        text: '添加子级大纲（章）',
-        handler: () => addItem(id, 'next', '新的一章'),
+        text: t('outlineMenu.addParent'),
+        handler: () => addItem(id, 'next', t('outlineMenu.newChapter')),
       },
     ]
   }
   else if (lv === 2) {
     return [
       {
-        text: '上方添加同级大纲（章）',
-        handler: () => addItem(id, 'prev', '新的一章'),
+        text: t('outlineMenu.addParentSibling'),
+        handler: () => addItem(id, 'prev', t('outlineMenu.newChapter')),
       },
       {
-        text: '添加子级大纲（节）',
-        handler: () => addItem(id, 'next', '新的一节'),
+        text: t('outlineMenu.addChild'),
+        handler: () => addItem(id, 'next', t('outlineMenu.newSection')),
       },
       {
-        text: '删除此章',
+        text: t('outlineMenu.deleteChapter'),
         handler: () => deleteItem(id, true),
       },
     ]
@@ -220,30 +223,30 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
   else if (lv === 3) {
     return [
       {
-        text: '上方添加同级大纲（节）',
-        handler: () => addItem(id, 'prev', '新的一节'),
+        text: t('outlineMenu.addSectionSibling'),
+        handler: () => addItem(id, 'prev', t('outlineMenu.newSection')),
       },
       {
-        text: '添加子级大纲（项）',
-        handler: () => addItem(id, 'next', '新的一项'),
+        text: t('outlineMenu.addSubItem'),
+        handler: () => addItem(id, 'next', t('outlineMenu.newItem')),
       },
       {
-        text: '删除此节',
+        text: t('outlineMenu.deleteSection'),
         handler: () => deleteItem(id, true),
       },
     ]
   }
   return [
     {
-      text: '上方添加同级大纲（项）',
-      handler: () => addItem(id, 'prev', '新的一项'),
+      text: t('outlineMenu.addItemSibling'),
+      handler: () => addItem(id, 'prev', t('outlineMenu.newItem')),
     },
     {
-      text: '下方添加同级大纲（项）',
-      handler: () => addItem(id, 'next', '新的一项'),
+      text: t('outlineMenu.addItemBelow'),
+      handler: () => addItem(id, 'next', t('outlineMenu.newItem')),
     },
     {
-      text: '删除此项',
+      text: t('outlineMenu.deleteItem'),
       handler: () => deleteItem(id),
     },
   ]

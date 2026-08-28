@@ -22,12 +22,13 @@
         :elementIndex="index + 1"
       />
     </div>
-    <div class="placeholder" v-else>加载中 ...</div>
+    <div class="placeholder" v-else>{{ t('common.loading') }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, provide } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { useSlidesStore } from '@/store'
 import type { Slide } from '@/types/slides'
@@ -35,6 +36,8 @@ import { injectKeySlideScale } from '@/types/injectKey'
 import useSlideBackgroundStyle from '@/hooks/useSlideBackgroundStyle'
 
 import ThumbnailElement from './ThumbnailElement.vue'
+
+const { t } = useI18n()
 
 const props = withDefaults(defineProps<{
   slide: Slide

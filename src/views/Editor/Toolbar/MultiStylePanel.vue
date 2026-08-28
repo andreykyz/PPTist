@@ -41,7 +41,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">边框粗细：</div>
+      <div style="width: 40%;">{{ t('stylePanel.labelBorderWidth') }}</div>
       <NumberInput 
         :value="outline.width || 0"
         @update:value="value => updateOutline({ width: value })" 

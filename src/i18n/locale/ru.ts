@@ -672,6 +672,8 @@ export default {
   },
   generic: {
     template: 'Шаблон',
+    initializing: 'Инициализация данных, подождите ...',
+    search: 'Поиск',
     insert: 'Вставить',
     loading: 'Загрузка',
     cancel: 'Отмена',
@@ -690,6 +692,10 @@ export default {
     custom: 'Пользовательский',
     align: 'Выравнивание',
     layer: 'Слой',
+    topInset: 'Верхний отступ',
+    bottomInset: 'Нижний отступ',
+    leftInset: 'Левый отступ',
+    rightInset: 'Правый отступ',
   },
 
   // === Animations ===
@@ -948,6 +954,9 @@ export default {
     cut: 'Вырезать',
     copy: 'Копировать',
     paste: 'Вставить',
+    setLink: 'Задать ссылку',
+    deleteSectionSlides: 'Удалить раздел и слайды',
+    deleteAllSections: 'Удалить все разделы',
     horizontalCenter: 'Центр по горизонтали',
     horizontalVerticalCenter: 'Центрировать',
     alignLeft: 'По левому краю',
@@ -981,6 +990,7 @@ export default {
     loop: 'Повтор',
     loopOn: 'Вкл',
     loopOff: 'Выкл',
+    speed: 'Скорость',
   },
 
   // === Element Messages ===
@@ -1015,6 +1025,7 @@ export default {
     webLink: 'Веб-ссылка',
     slideLink: 'Слайд',
     slideLabel: 'Слайд',
+    preview: 'Предпросмотр:',
   },
 
   // === Link Handler ===
@@ -1030,6 +1041,9 @@ export default {
     preview: 'Предпросмотр',
     cancel: 'Отмена',
     confirm: 'OK',
+    symbolTab: 'Частые символы',
+    formulaTab: 'Готовые формулы',
+    emptyError: 'Формула не может быть пустой',
   },
 
   // === Chart Data Editor ===
@@ -1050,6 +1064,7 @@ export default {
   thumbnailSection: {
     placeholder: 'Введите name раздела',
     defaultName: 'Раздел по умолчанию',
+    untitled: 'Без названия',
   },
 
   // === Section ===
@@ -1069,6 +1084,9 @@ export default {
     addItemSibling: 'Добавить sibling выше (элемент)',
     addItemBelow: 'Добавить элемент ниже',
     deleteItem: 'Удалить элемент',
+    newChapter: 'Новая глава',
+    newSection: 'Новый раздел',
+    newItem: 'Новый элемент',
   },
 
   // === AIPPT Style Options ===
@@ -1167,6 +1185,88 @@ export default {
       play: 'Воспр.',
       exitPlayer: 'Выйти',
     },
+  },
+
+  // === Clipboard ===
+  clipboard: {
+    empty: 'Буфер обмена пуст или не содержит текста',
+    notSupported: 'Браузер не поддерживает или блокирует доступ к буферу обмена. Используйте сочетание Ctrl + V',
+  },
+
+  // === LaTeX Config (formula labels + symbol categories) ===
+  latexConfig: {
+    formula: {
+      gauss: 'Теорема Гаусса',
+      fourier: 'Ряд Фурье',
+      taylor: 'Разложение Тейлора',
+      definiteIntegral: 'Определённый интеграл',
+      trigIdentity1: 'Тригонометрическое тождество 1',
+      trigIdentity2: 'Тригонометрическое тождество 2',
+      sumExpansion: 'Разложение суммы',
+      euler: 'Формула Эйлера',
+      bernoulli: 'Уравнение Бернулли',
+      exactDifferential: 'Уравнение в полных дифференциалах',
+      inhomogeneous: 'Неоднородное уравнение',
+      cauchyMVT: 'Теорема Коши о среднем значении',
+      lagrangeMVT: 'Теорема Лагранжа о среднем значении',
+      derivative: 'Формула производной',
+      trigIntegral: 'Тригонометрический интеграл',
+      quadricSurface: 'Квадрическая поверхность',
+      secondOrderDiff: 'Дифференциал второго порядка',
+      directionalDerivative: 'Производная по направлению',
+    },
+    category: {
+      math: 'Математика',
+      group: 'Группы',
+      function: 'Функции',
+      greek: 'Греческие буквы',
+    },
+  },
+
+  // === Color Picker ===
+  colorPicker: {
+    escTip: 'Нажмите ESC, чтобы закрыть пипетку',
+    initFailed: 'Не удалось инициализировать пипетку',
+  },
+
+  // === Table Context Menu ===
+  tableContext: {
+    insertColumn: 'Вставить столбец',
+    toLeft: 'Слева',
+    toRight: 'Справа',
+    insertRow: 'Вставить строку',
+    toTop: 'Выше',
+    toBottom: 'Ниже',
+    deleteColumn: 'Удалить столбец',
+    deleteRow: 'Удалить строку',
+    mergeCells: 'Объединить ячейки',
+    mergeCellsCancel: 'Разъединить ячейки',
+    selectColumn: 'Выбрать текущий столбец',
+    selectRow: 'Выбрать текущую строку',
+    selectAllCells: 'Выбрать все ячейки',
+  },
+
+  // === Canvas Context Menu ===
+  canvasContext: {
+    ruler: 'Линейка',
+    gridLines: 'Сетка',
+    none: 'Нет',
+    small: 'Маленькая',
+    medium: 'Средняя',
+    large: 'Большая',
+    resetPage: 'Сбросить текущую страницу',
+    bubbleMenu: 'Пузырьковое меню',
+    bubbleMenuState: 'Пузырьковое меню элементов сейчас ',
+  },
+
+  // === Custom Shape Create ===
+  shapeCreate: {
+    tip: 'Нажмите, чтобы нарисовать произвольную фигуру. Замкните контур, чтобы завершить. ESC или ПКМ — отмена, ENTER — досрочное завершение.',
+  },
+
+  // === Image Style Panel ===
+  imageStyle: {
+    byRatio: 'По {label}:',
   },
 
 }

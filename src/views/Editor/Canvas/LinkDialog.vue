@@ -23,7 +23,7 @@
     />
 
     <div class="preview" v-if="type === 'slide' && selectedSlide">
-      <div>预览：</div>
+      <div>{{ t('linkDialog.preview') }}</div>
       <ThumbnailSlide class="thumbnail" :slide="selectedSlide" :size="500" />
     </div>
 

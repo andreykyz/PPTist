@@ -63,6 +63,7 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { debounce, isEqual } from 'lodash'
 import { storeToRefs } from 'pinia'
 import { nanoid } from 'nanoid'
@@ -77,6 +78,8 @@ import useHideCells from './useHideCells'
 import useSubThemeColor from './useSubThemeColor'
 
 import CustomTextarea from './CustomTextarea.vue'
+
+const { t } = useI18n()
 
 const props = withDefaults(defineProps<{
   elementId: string
@@ -688,11 +691,11 @@ const execTableCommand = (payload: TableCommand) => {
   const { canDeleteRow, canDeleteCol } = checkCanDeleteRowOrCol()
 
   if (payload.command === 'delete-row') {
-    if (!canDeleteRow) return message.warning('表格至少保留一行')
+    if (!canDeleteRow) return message.warning(t('message.tableMinRow'))
     return deleteRow(targetCell ? targetCell.rowIndex : tableCells.value.length - 1)
   }
   if (payload.command === 'delete-col') {
-    if (!canDeleteCol) return message.warning('表格至少保留一列')
+    if (!canDeleteCol) return message.warning(t('message.tableMinCol'))
     const colCount = tableCells.value[0]?.length || 1
     return deleteCol(targetCell ? targetCell.colIndex : colCount - 1)
   }
@@ -733,51 +736,51 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
 
   return [
     {
-      text: '插入列',
+      text: t('tableContext.insertColumn'),
       children: [
-        { text: '到左侧', handler: () => insertCol(colIndex) },
-        { text: '到右侧', handler: () => insertCol(colIndex + 1) },
+        { text: t('tableContext.toLeft'), handler: () => insertCol(colIndex) },
+        { text: t('tableContext.toRight'), handler: () => insertCol(colIndex + 1) },
       ],
     },
     {
-      text: '插入行',
+      text: t('tableContext.insertRow'),
       children: [
-        { text: '到上方', handler: () => insertRow(rowIndex) },
-        { text: '到下方', handler: () => insertRow(rowIndex + 1) },
+        { text: t('tableContext.toTop'), handler: () => insertRow(rowIndex) },
+        { text: t('tableContext.toBottom'), handler: () => insertRow(rowIndex + 1) },
       ],
     },
     {
-      text: '删除列',
+      text: t('tableContext.deleteColumn'),
       disable: !canDeleteCol,
       handler: () => deleteCol(colIndex),
     },
     {
-      text: '删除行',
+      text: t('tableContext.deleteRow'),
       disable: !canDeleteRow,
       handler: () => deleteRow(rowIndex),
     },
     { divider: true },
     {
-      text: '合并单元格',
+      text: t('tableContext.mergeCells'),
       disable: !canMerge,
       handler: mergeCells,
     },
     {
-      text: '取消合并单元格',
+      text: t('tableContext.mergeCellsCancel'),
       disable: !canSplit,
       handler: () => splitCells(rowIndex, colIndex),
     },
     { divider: true },
     {
-      text: '选中当前列',
+      text: t('tableContext.selectColumn'),
       handler: () => selectCol(colIndex),
     },
     {
-      text: '选中当前行',
+      text: t('tableContext.selectRow'),
       handler: () => selectRow(rowIndex),
     },
     {
-      text: '选中全部单元格',
+      text: t('tableContext.selectAllCells'),
       handler: selectAll,
     },
   ]

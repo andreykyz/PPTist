@@ -103,7 +103,7 @@
         @update:value="value => updateInset(2, value)"
         style="width: 45%;"
       >
-        <template #prefix>下边距：</template>
+        <template #prefix>{{ t('generic.bottomInset') }}：</template>
       </NumberInput>
     </div>
     <div class="row">
@@ -138,7 +138,7 @@
         @update:value="value => updateInset(1, value)"
         style="width: 45%;"
       >
-        <template #prefix>右边距：</template>
+        <template #prefix>{{ t('generic.rightInset') }}：</template>
       </NumberInput>
     </div>
 

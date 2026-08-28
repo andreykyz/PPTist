@@ -766,6 +766,8 @@ export default {
     template: '模板',
     insert: '插入',
     loading: '加载中',
+    initializing: '数据初始化中，请稍等 ...',
+    search: '搜索',
     cancel: '取消',
     confirm: '确认',
     close: '关闭',
@@ -788,6 +790,10 @@ export default {
     width: '宽度',
     height: '高度',
     fontSize: '字号',
+    topInset: '上边距',
+    bottomInset: '下边距',
+    leftInset: '左边距',
+    rightInset: '右边距',
   },
 
   // === Animations ===
@@ -1046,6 +1052,9 @@ export default {
     cut: '剪切',
     copy: '复制',
     paste: '粘贴',
+    setLink: '设置链接',
+    deleteSectionSlides: '删除节和幻灯片',
+    deleteAllSections: '删除所有节',
     horizontalCenter: '水平居中',
     horizontalVerticalCenter: '水平垂直居中',
     alignLeft: '左对齐',
@@ -1079,6 +1088,7 @@ export default {
     loop: '循环',
     loopOn: '开',
     loopOff: '关',
+    speed: '倍速',
   },
 
   // === Element Messages ===
@@ -1113,6 +1123,7 @@ export default {
     webLink: '网页链接',
     slideLink: '幻灯片页面',
     slideLabel: '幻灯片',
+    preview: '预览：',
   },
 
   // === Link Handler ===
@@ -1128,6 +1139,9 @@ export default {
     preview: '公式预览',
     cancel: '取消',
     confirm: '确定',
+    symbolTab: '常用符号',
+    formulaTab: '预置公式',
+    emptyError: '公式不能为空',
   },
 
   // === Chart Data Editor ===
@@ -1148,6 +1162,7 @@ export default {
   thumbnailSection: {
     placeholder: '输入节名称',
     defaultName: '默认节',
+    untitled: '无标题节',
   },
 
   // === Section ===
@@ -1167,6 +1182,9 @@ export default {
     addItemSibling: '上方添加同级大纲（项）',
     addItemBelow: '下方添加同级大纲（项）',
     deleteItem: '删除此项',
+    newChapter: '新的一章',
+    newSection: '新的一节',
+    newItem: '新的一项',
   },
 
   // === AIPPT Style Options ===
@@ -1265,6 +1283,88 @@ export default {
       play: '播放',
       exitPlayer: '退出播放',
     },
+  },
+
+  // === Clipboard ===
+  clipboard: {
+    empty: '剪贴板为空或者不包含文本',
+    notSupported: '浏览器不支持或禁止访问剪贴板，请使用快捷键 Ctrl + V',
+  },
+
+  // === LaTeX Config (formula labels + symbol categories) ===
+  latexConfig: {
+    formula: {
+      gauss: '高斯公式',
+      fourier: '傅里叶级数',
+      taylor: '泰勒展开式',
+      definiteIntegral: '定积分',
+      trigIdentity1: '三角恒等式1',
+      trigIdentity2: '三角恒等式2',
+      sumExpansion: '和的展开式',
+      euler: '欧拉公式',
+      bernoulli: '贝努利方程',
+      exactDifferential: '全微分方程',
+      inhomogeneous: '非齐次方程',
+      cauchyMVT: '柯西中值定理',
+      lagrangeMVT: '拉格朗日中值定理',
+      derivative: '导数公式',
+      trigIntegral: '三角函数积分',
+      quadricSurface: '二次曲面',
+      secondOrderDiff: '二阶微分',
+      directionalDerivative: '方向导数',
+    },
+    category: {
+      math: '数学',
+      group: '组合',
+      function: '函数',
+      greek: '希腊字母',
+    },
+  },
+
+  // === Color Picker ===
+  colorPicker: {
+    escTip: '按 ESC 键关闭取色吸管',
+    initFailed: '取色吸管初始化失败',
+  },
+
+  // === Table Context Menu ===
+  tableContext: {
+    insertColumn: '插入列',
+    toLeft: '到左侧',
+    toRight: '到右侧',
+    insertRow: '插入行',
+    toTop: '到上方',
+    toBottom: '到下方',
+    deleteColumn: '删除列',
+    deleteRow: '删除行',
+    mergeCells: '合并单元格',
+    mergeCellsCancel: '取消合并单元格',
+    selectColumn: '选中当前列',
+    selectRow: '选中当前行',
+    selectAllCells: '选中全部单元格',
+  },
+
+  // === Canvas Context Menu ===
+  canvasContext: {
+    ruler: '标尺',
+    gridLines: '网格线',
+    none: '无',
+    small: '小',
+    medium: '中',
+    large: '大',
+    resetPage: '重置当前页',
+    bubbleMenu: '气泡菜单',
+    bubbleMenuState: '元素气泡菜单已',
+  },
+
+  // === Custom Shape Create ===
+  shapeCreate: {
+    tip: '点击绘制任意形状，首尾闭合完成绘制，按 ESC 键或鼠标右键取消，按 ENTER 键提前完成',
+  },
+
+  // === Image Style Panel ===
+  imageStyle: {
+    byRatio: '按{label}：',
   },
 
 }

@@ -1,3 +1,7 @@
+import { i18n } from '@/i18n'
+
+const t = i18n.global.t
+
 export const enum KEYS {
   C = 'C',
   X = 'X',
@@ -52,7 +56,7 @@ export const HOTKEY_DOC: HotkeyItem[] = [
       { label: 'hotkey.generalKeys.undo', value: 'Ctrl + Z' },
       { label: 'hotkey.generalKeys.redo', value: 'Ctrl + Y' },
       { label: 'hotkey.generalKeys.delete', value: 'Delete / Backspace' },
-      { label: 'hotkey.generalKeys.multiSelect', value: '按住 Ctrl 或 Shift' },
+      { label: 'hotkey.generalKeys.multiSelect', value: t('hotkeyDesc.ctrlOrShift') },
       { label: 'hotkey.generalKeys.searchReplace', value: 'Ctrl + F' },
       { label: 'hotkey.generalKeys.print', value: 'Ctrl + P' },
       { label: 'hotkey.generalKeys.closeDialog', value: 'ESC' },
@@ -73,20 +77,20 @@ export const HOTKEY_DOC: HotkeyItem[] = [
     type: 'hotkey.slideEdit',
     children: [
       { label: 'hotkey.slideEditKeys.newSlide', value: 'Enter' },
-      { label: 'hotkey.slideEditKeys.pan', value: 'Space + 鼠标拖拽' },
-      { label: 'hotkey.slideEditKeys.zoom', value: 'Ctrl + 鼠标滚轮' },
+      { label: 'hotkey.slideEditKeys.pan', value: t('hotkeyDesc.spaceDrag') },
+      { label: 'hotkey.slideEditKeys.zoom', value: t('hotkeyDesc.ctrlWheel') },
       { label: 'hotkey.slideEditKeys.zoomIn', value: 'Ctrl + =' },
       { label: 'hotkey.slideEditKeys.zoomOut', value: 'Ctrl + -' },
       { label: 'hotkey.slideEditKeys.fitScreen', value: 'Ctrl + 0' },
       { label: 'hotkey.slideEditKeys.prevSlide', value: '↑' },
       { label: 'hotkey.slideEditKeys.nextSlide', value: '↓' },
-      { label: 'hotkey.slideEditKeys.prevMousewheel', value: '鼠标上滚 / PgUp' },
-      { label: 'hotkey.slideEditKeys.nextMousewheel', value: '鼠标下滚 / PgDown' },
-      { label: 'hotkey.slideEditKeys.fastText', value: '双击空白处 / T' },
+      { label: 'hotkey.slideEditKeys.prevMousewheel', value: t('hotkeyDesc.scrollUp') },
+      { label: 'hotkey.slideEditKeys.nextMousewheel', value: t('hotkeyDesc.scrollDown') },
+      { label: 'hotkey.slideEditKeys.fastText', value: t('hotkeyDesc.dblClickEmpty') },
       { label: 'hotkey.slideEditKeys.fastRect', value: 'R' },
       { label: 'hotkey.slideEditKeys.fastCircle', value: 'O' },
       { label: 'hotkey.slideEditKeys.fastLine', value: 'L' },
-      { label: 'hotkey.slideEditKeys.exitDraw', value: '鼠标右键' },
+      { label: 'hotkey.slideEditKeys.exitDraw', value: t('hotkeyDesc.rightClick') },
     ],
   },
   {
@@ -98,9 +102,9 @@ export const HOTKEY_DOC: HotkeyItem[] = [
       { label: 'hotkey.elementOpKeys.ungroup', value: 'Ctrl + Shift + G' },
       { label: 'hotkey.elementOpKeys.layerTop', value: 'Alt + F' },
       { label: 'hotkey.elementOpKeys.layerBottom', value: 'Alt + B' },
-      { label: 'hotkey.elementOpKeys.lockAspect', value: '按住 Ctrl 或 Shift' },
-      { label: 'hotkey.elementOpKeys.quickCopy', value: '按住 Ctrl + 拖拽' },
-      { label: 'hotkey.elementOpKeys.straightLine', value: '按住 Ctrl 或 Shift' },
+      { label: 'hotkey.elementOpKeys.lockAspect', value: t('hotkeyDesc.ctrlOrShift') },
+      { label: 'hotkey.elementOpKeys.quickCopy', value: t('hotkeyDesc.ctrlDrag') },
+      { label: 'hotkey.elementOpKeys.straightLine', value: t('hotkeyDesc.ctrlOrShift') },
       { label: 'hotkey.elementOpKeys.switchFocus', value: 'Tab' },
       { label: 'hotkey.elementOpKeys.confirmCrop', value: 'Enter' },
       { label: 'hotkey.elementOpKeys.finishShape', value: 'Enter' },

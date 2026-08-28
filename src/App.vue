@@ -4,11 +4,12 @@
     <Editor v-else-if="_isPC" />
     <Mobile v-else />
   </template>
-  <FullscreenSpin tip="数据初始化中，请稍等 ..." v-else  loading :mask="false" />
+  <FullscreenSpin :tip="t('generic.initializing')" v-else  loading :mask="false" />
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 import { nanoid } from 'nanoid'
 import { useScreenStore, useMainStore, useSnapshotStore, useSlidesStore } from '@/store'
@@ -21,6 +22,8 @@ import Editor from './views/Editor/index.vue'
 import Screen from './views/Screen/index.vue'
 import Mobile from './views/Mobile/index.vue'
 import FullscreenSpin from '@/components/FullscreenSpin.vue'
+
+const { t } = useI18n()
 
 const _isPC = isPC()
 

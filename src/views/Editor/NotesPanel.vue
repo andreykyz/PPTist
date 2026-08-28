@@ -102,8 +102,8 @@ const replyNoteId = ref('')
 const textAreaRef = useTemplateRef<InstanceType<typeof TextArea>>('textAreaRef')
 const notesRef = useTemplateRef<HTMLElement>('notesRef')
 
-const panelTitle = computed(() => `幻灯片${slideIndex.value + 1}的批注`)
-const newPlaceholder = computed(() => `输入批注（为${handleElementId.value ? '选中元素' : '当前页幻灯片' }）`)
+const panelTitle = computed(() => t('notesPanel.title', { n: slideIndex.value + 1 }))
+const newPlaceholder = computed(() => t('notesPanel.replyPlaceholder', { target: t(handleElementId.value ? 'notesPanel.subject' : 'notesPanel.currentSlide') }))
 
 watch(slideIndex, () => {
   activeNoteId.value = ''

@@ -68,7 +68,7 @@
         />
       </div>
       <div class="row">
-        <div style="width: 40%;">当前色块：</div>
+        <div style="width: 40%;">{{ t('stylePanel.currentColorBlock') }}</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker
@@ -80,7 +80,7 @@
         </Popover>
       </div>
       <div class="row" v-if="background.gradient?.type === 'linear'">
-        <div style="width: 40%;">渐变角度：</div>
+        <div style="width: 40%;">{{ t('stylePanel.gradientAngle') }}</div>
         <Slider
           :min="0"
           :max="360"
@@ -101,7 +101,7 @@
     <div class="row">
       <Select 
         style="width: 100%;" 
-        defaultLabel="自定义"
+        :defaultLabel="t('slideDesign.canvasSize.custom')"
         :value="viewportRatio" 
         @update:value="value => updateViewportRatio(value)"
         :options="[
@@ -116,7 +116,7 @@
     </div>
 
     <div class="row">
-      <div class="canvas-size">画布尺寸：{{  viewportSize  }} × {{ toFixed(viewportSize * viewportRatio) }}</div>
+      <div class="canvas-size">{{ t('stylePanel.canvasSize') }} {{  viewportSize  }} × {{ toFixed(viewportSize * viewportRatio) }}</div>
     </div>
 
     <Divider />
@@ -135,7 +135,7 @@
         style="width: 60%;"
         :value="theme.fontName"
         search
-        searchLabel="搜索字体"
+        :searchLabel="t('richText.searchFont')"
         autofocus
         @update:value="value => updateTheme({ fontName: value as string })"
         :options="FONTS"
@@ -172,7 +172,7 @@
     
     <template v-if="moreThemeConfigsVisible">
       <div class="row">
-        <div style="width: 40%;">边框样式：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelBorder') }}</div>
         <SelectCustom style="width: 60%;">
           <template #options>
             <div class="option" v-for="item in lineStyleOptions" :key="item" @click="updateTheme({ outline: { ...theme.outline, style: item } })">
@@ -185,7 +185,7 @@
         </SelectCustom>
       </div>
       <div class="row">
-        <div style="width: 40%;">边框颜色：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelBorderColor') }}</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker
@@ -197,7 +197,7 @@
         </Popover>
       </div>
       <div class="row">
-        <div style="width: 40%;">边框粗细：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelBorderWidth') }}</div>
         <NumberInput 
           :value="theme.outline.width || 0" 
           @update:value="value => updateTheme({ outline: { ...theme.outline, width: value } })" 
@@ -205,7 +205,7 @@
         />
       </div>
       <div class="row" style="height: 30px;">
-        <div style="width: 40%;">水平阴影：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelShadowOffsetX') }}</div>
         <Slider 
           style="width: 60%;"
           :min="-20" 
@@ -216,7 +216,7 @@
         />
       </div>
       <div class="row" style="height: 30px;">
-        <div style="width: 40%;">垂直阴影：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelShadowOffsetY') }}</div>
         <Slider
           style="width: 60%;"
           :min="-20"
@@ -227,7 +227,7 @@
         />
       </div>
       <div class="row" style="height: 30px;">
-        <div style="width: 40%;">模糊距离：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelShadowBlur') }}</div>
         <Slider
           style="width: 60%;"
           :min="1"
@@ -238,7 +238,7 @@
         />
       </div>
       <div class="row">
-        <div style="width: 40%;">阴影颜色：</div>
+        <div style="width: 40%;">{{ t('stylePanel.labelShadowColor') }}</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker
@@ -277,14 +277,14 @@
         }"
       >
         <div class="theme-item-content">
-          <div class="text" :style="{ color: item.fontColor }">文字 Aa</div>
+          <div class="text" :style="{ color: item.fontColor }">{{ t('stylePanel.textAa') }}</div>
           <div class="colors">
             <div class="color-block" v-for="(color, index) in item.colors" :key="index" :style="{ backgroundColor: color}"></div>
           </div>
 
           <div class="btns">
-            <Button type="primary" size="small" @click="applyPresetTheme(item)">设置</Button>
-            <Button type="primary" size="small" style="margin-top: 3px;" @click="applyPresetTheme(item, true)">设置并应用</Button>
+            <Button type="primary" size="small" @click="applyPresetTheme(item)">{{ t('stylePanel.settings') }}</Button>
+            <Button type="primary" size="small" style="margin-top: 3px;" @click="applyPresetTheme(item, true)">{{ t('stylePanel.settingsAndApply') }}</Button>
           </div>
         </div>
       </div>

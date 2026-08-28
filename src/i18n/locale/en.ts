@@ -692,6 +692,8 @@ export default {
   },
   generic: {
     template: 'Template',
+    initializing: 'Initializing data, please wait ...',
+    search: 'Search',
     insert: 'Insert',
     loading: 'Loading',
     cancel: 'Cancel',
@@ -714,6 +716,10 @@ export default {
     backgroundColor: 'Background Color',
     borderColor: 'Border Color',
     fontSize: 'Font Size',
+    topInset: 'Top Padding',
+    bottomInset: 'Bottom Padding',
+    leftInset: 'Left Padding',
+    rightInset: 'Right Padding',
   },
 
   // === Animations ===
@@ -972,6 +978,9 @@ export default {
     cut: 'Cut',
     copy: 'Copy',
     paste: 'Paste',
+    setLink: 'Set Link',
+    deleteSectionSlides: 'Delete Section and Slides',
+    deleteAllSections: 'Delete All Sections',
     horizontalCenter: 'Center Horizontally',
     horizontalVerticalCenter: 'Center',
     alignLeft: 'Align Left',
@@ -1005,6 +1014,7 @@ export default {
     loop: 'Loop',
     loopOn: 'On',
     loopOff: 'Off',
+    speed: 'Speed',
   },
 
   // === Element Messages ===
@@ -1034,6 +1044,7 @@ export default {
   // === Link Dialog ===
   linkDialog: {
     placeholder: 'Enter web link',
+    preview: 'Preview:',
     cancel: 'Cancel',
     confirm: 'Confirm',
     webLink: 'Web Link',
@@ -1054,6 +1065,9 @@ export default {
     preview: 'Formula Preview',
     cancel: 'Cancel',
     confirm: 'OK',
+    symbolTab: 'Common Symbols',
+    formulaTab: 'Preset Formulas',
+    emptyError: 'Formula cannot be empty',
   },
 
   // === Chart Data Editor ===
@@ -1074,6 +1088,7 @@ export default {
   thumbnailSection: {
     placeholder: 'Enter section name',
     defaultName: 'Default Section',
+    untitled: 'Untitled Section',
   },
 
   // === Section ===
@@ -1093,6 +1108,9 @@ export default {
     addItemSibling: 'Add Sibling Above (Item)',
     addItemBelow: 'Add Item Below',
     deleteItem: 'Delete Item',
+    newChapter: 'New Chapter',
+    newSection: 'New Section',
+    newItem: 'New Item',
   },
 
   // === AIPPT Style Options ===
@@ -1191,6 +1209,88 @@ export default {
       play: 'Play',
       exitPlayer: 'Exit Player',
     },
+  },
+
+  // === Clipboard ===
+  clipboard: {
+    empty: 'Clipboard is empty or contains no text',
+    notSupported: 'Browser does not support or blocks clipboard access. Please use the shortcut Ctrl + V',
+  },
+
+  // === LaTeX Config (formula labels + symbol categories) ===
+  latexConfig: {
+    formula: {
+      gauss: 'Gauss\'s theorem',
+      fourier: 'Fourier series',
+      taylor: 'Taylor expansion',
+      definiteIntegral: 'Definite integral',
+      trigIdentity1: 'Trigonometric identity 1',
+      trigIdentity2: 'Trigonometric identity 2',
+      sumExpansion: 'Sum expansion',
+      euler: 'Euler\'s formula',
+      bernoulli: 'Bernoulli equation',
+      exactDifferential: 'Exact differential equation',
+      inhomogeneous: 'Inhomogeneous equation',
+      cauchyMVT: 'Cauchy\'s mean value theorem',
+      lagrangeMVT: 'Lagrange\'s mean value theorem',
+      derivative: 'Derivative formula',
+      trigIntegral: 'Trigonometric integral',
+      quadricSurface: 'Quadric surface',
+      secondOrderDiff: 'Second-order differential',
+      directionalDerivative: 'Directional derivative',
+    },
+    category: {
+      math: 'Math',
+      group: 'Groups',
+      function: 'Functions',
+      greek: 'Greek letters',
+    },
+  },
+
+  // === Color Picker ===
+  colorPicker: {
+    escTip: 'Press ESC to close the eyedropper',
+    initFailed: 'Failed to initialize the eyedropper',
+  },
+
+  // === Table Context Menu ===
+  tableContext: {
+    insertColumn: 'Insert Column',
+    toLeft: 'To the Left',
+    toRight: 'To the Right',
+    insertRow: 'Insert Row',
+    toTop: 'Above',
+    toBottom: 'Below',
+    deleteColumn: 'Delete Column',
+    deleteRow: 'Delete Row',
+    mergeCells: 'Merge Cells',
+    mergeCellsCancel: 'Unmerge Cells',
+    selectColumn: 'Select Current Column',
+    selectRow: 'Select Current Row',
+    selectAllCells: 'Select All Cells',
+  },
+
+  // === Canvas Context Menu ===
+  canvasContext: {
+    ruler: 'Ruler',
+    gridLines: 'Grid Lines',
+    none: 'None',
+    small: 'Small',
+    medium: 'Medium',
+    large: 'Large',
+    resetPage: 'Reset Current Page',
+    bubbleMenu: 'Bubble Menu',
+    bubbleMenuState: 'Element bubble menu is now ',
+  },
+
+  // === Custom Shape Create ===
+  shapeCreate: {
+    tip: 'Click to draw a custom shape. Close the path to finish. Press ESC or right-click to cancel, or press ENTER to finish early.',
+  },
+
+  // === Image Style Panel ===
+  imageStyle: {
+    byRatio: 'By {label}:',
   },
 
 }
