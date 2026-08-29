@@ -11,12 +11,12 @@
       <Input class="input" 
         ref="inputRef"
         v-model:value="keyword" 
-        :maxlength="50" 
+        multiline
         :placeholder="t('aippt.themePlaceholder')" 
         @enter="createOutline()"
       >
         <template #suffix>
-          <span class="count">{{ keyword.length }} / 50</span>
+          <span class="count">{{ keyword.length }}</span>
           <div class="submit" type="primary" @click="createOutline()"><i-icon-park-outline:send class="icon" /> {{ t('aippt.aiGenerate') }}</div>
         </template>
       </Input>
@@ -453,7 +453,6 @@ const uploadLocalTemplate = () => {
 .count {
   font-size: 12px;
   color: #999;
-  margin-right: 10px;
 }
 .submit {
   height: 20px;

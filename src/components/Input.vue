@@ -5,12 +5,26 @@
       'disabled': disabled,
       'focused': focused,
       'simple': simple,
+      'multiline': multiline,
     }"
   >
     <span class="prefix">
       <slot name="prefix"></slot>
     </span>
+    <textarea
+      v-if="multiline"
+      ref="inputRef"
+      :disabled="disabled"
+      :value="value" 
+      :placeholder="placeholder"
+      :maxlength="maxlength"
+      @input="$event => handleInput($event)"
+      @focus="$event => handleFocus($event)"
+      @blur="$event => handleBlur($event)"
+      @change="$event => emit('change', $event)"
+    ></textarea>
     <input
+      v-else
       type="text"
       ref="inputRef"
       :disabled="disabled"
@@ -38,11 +52,13 @@ withDefaults(defineProps<{
   disabled?: boolean
   placeholder?: string
   simple?: boolean
+  multiline?: boolean
   maxlength?: number
 }>(), {
   disabled: false,
   placeholder: '',
   simple: false,
+  multiline: false,
 })
 
 const emit = defineEmits<{
@@ -107,6 +123,23 @@ defineExpose({
     }
   }
 
+  textarea {
+    min-width: 0;
+    outline: 0;
+    border: 0;
+    resize: vertical;
+    color: $textColor;
+    padding: 8px 5px;
+    flex: 1;
+    font-size: 13px;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    min-height: 60px;
+
+    &::placeholder {
+      color: #bfbfbf;
+    }
+  }
+
   &:not(.disabled):hover, &.focused {
     border-color: $themeColor;
   }
@@ -116,7 +149,7 @@ defineExpose({
     border-color: #dcdcdc;
     color: #b7b7b7;
 
-    input {
+    input, textarea {
       color: #b7b7b7;
     }
   }
@@ -131,6 +164,28 @@ defineExpose({
     align-items: center;
     line-height: 30px;
     user-select: none;
+  }
+
+  &.multiline {
+    flex-direction: column;
+    align-items: stretch;
+
+    .prefix {
+      order: 1;
+    }
+
+    textarea {
+      order: 2;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .suffix {
+      order: 3;
+      justify-content: flex-end;
+      padding: 5px;
+      gap: 8px;
+    }
   }
 }
 </style>
